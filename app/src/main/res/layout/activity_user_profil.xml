@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+
+    <ImageView
+        android:id="@+id/userImage"
+        android:layout_width="99dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/userimage" />
+
+    <TextView
+        android:id="@+id/createUserText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/userImage"
+        android:layout_alignTop="@id/userImage"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="7dp"
+        android:text="@string/createProfil" />
+
+    <TextView
+        android:id="@+id/instructionsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/createUserText"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="7dp"
+        android:layout_toEndOf="@id/userImage"
+        android:text="@string/instructionsProfil" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/instructionsText"
+        android:background="?android:attr/listDivider"
+        android:visibility="visible" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/divider"
+        android:layout_above="@+id/createProfilButton"
+        android:layout_marginTop="14dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/femaleRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="7dp"
+                    android:layout_weight="1"
+                    android:text="@string/femaleRadio" />
+
+                <RadioButton
+                    android:id="@+id/maleRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/maleRadio" />
+            </RadioGroup>
+
+
+            <TextView
+                android:id="@+id/birthdayText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/radioGroup"
+                android:padding="15dp"
+                android:text="@string/birthdayText" />
+
+            <EditText
+                android:id="@+id/dateEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radioGroup"
+                android:layout_toEndOf="@+id/birthdayText"
+                android:ems="5"
+                android:inputType="date"
+                android:visibility="visible" />
+
+                <ImageButton
+                    android:id="@+id/calenderButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/dateEdit"
+                    android:layout_below="@+id/radioGroup"
+                    app:srcCompat="@drawable/calender" />
+
+
+
+            <TextView
+                android:id="@+id/weightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/calenderButton"
+                android:padding="15dp"
+                android:text="@string/weightText" />
+
+            <EditText
+                android:id="@+id/weightEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dateEdit"
+                android:layout_toEndOf="@id/birthdayText"
+                android:ems="3"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/weightUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/calenderButton"
+                android:layout_toEndOf="@id/weightEdit"
+                android:padding="15dp"
+                android:text="@string/weightUnit" />
+
+            <TextView
+                android:id="@+id/predispositions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/weightText"
+                android:padding="15dp"
+                android:text="@string/instructionsPredispos" />
+
+            <CheckBox
+                android:id="@+id/cardiac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/predispositions"
+                android:text="@string/cardiacDiseases"/>
+
+            <CheckBox
+                android:id="@+id/neuro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cardiac"
+                android:text="@string/neurologicalDiseases"/>
+
+            <CheckBox
+                android:id="@+id/ortho"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/neuro"
+                android:text="@string/orthopaedicDiseases"/>
+
+            <CheckBox
+                android:id="@+id/skin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ortho"
+                android:text="@string/skinDiseases"/>
+
+            <CheckBox
+                android:id="@+id/eye"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/skin"
+                android:text="@string/eyeDisease"/>
+
+            <CheckBox
+                android:id="@+id/hearing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/eye"
+                android:text="@string/hearingImpairment"/>
+
+            <TextView
+                android:id="@+id/smoking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hearing"
+                android:padding="15dp"
+                android:text="@string/smoking" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupSmoke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/smoking"
+                android:layout_below="@+id/hearing"
+                android:padding="8dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/yesSmoke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="7dp"
+                    android:layout_weight="1"
+
+                    android:text="@string/yesRadio" />
+
+                <RadioButton
+                    android:id="@+id/noSmoke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/noRadio" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/allergies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/radioGroupSmoke"
+                android:padding="15dp"
+                android:text="@string/allergies" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupAllergies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/smoking"
+                android:layout_below="@+id/radioGroupSmoke"
+                android:padding="8dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/yesAllergies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="7dp"
+                    android:layout_weight="1"
+
+                    android:text="@string/yesRadio" />
+
+                <RadioButton
+                    android:id="@+id/noAllergies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/noRadio" />
+            </RadioGroup>
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+
+<Button
+        android:id="@+id/createProfilButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/createProfilButton"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
+

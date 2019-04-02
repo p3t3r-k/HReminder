@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">HReminder</string>
+    <string name="app_name">HealthyReminder</string>
+    <string name="createProfil">"Benutzerprofil erstellen:"</string>
+    <string name="instructionsProfil">"Tragen Sie hier alle Informationen ein."</string>
+    <string name="femaleRadio">"weiblich"</string>
+    <string name="maleRadio">"männlich"</string>
+    <string name="birthdayText">"Geburtsdatum:"</string>
+    <string name="birthdayInput">"__.__.____"</string>
+    <string name="weightText">"Gewicht:"</string>
+    <string name="weightUnit">"kg"</string>
+    <string name="predispos">"(erbliche) Vorerkrankungen"</string>
+    <string name="cardiacDiseases">"Herzerkrankungen"</string>
+    <string name="neurologicalDiseases">"neurologische Erkrankungen"</string>
+    <string name="orthopaedicDiseases">"orthopädische Erkrankungen"</string>
+    <string name="skinDiseases">"Hauterkrankungen"</string>
+    <string name="hearingImpairment">"Hörbeeinträchtigung"</string>
+    <string name="eyeDisease">"Augenerkrankung"</string>
+    <string name="createProfilButton">"Profil erstellen"</string>
+    <string name="instructionsPredispos">"Wählen Sie (erbliche) Vorbelastungen aus:"</string>
+    <string name="smoking">"RaucherIn?"</string>
+    <string name="allergies">"Allergien?"</string>
+    <string name="yesRadio">Ja</string>
+    <string name="noRadio">Nein</string>
+
 </resources>
