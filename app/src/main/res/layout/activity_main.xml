@@ -12,10 +12,12 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="156dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <TextView
             android:id="@+id/textView"
@@ -28,14 +30,15 @@
 
         <EditText
             android:id="@+id/editText"
-            android:layout_width="296dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name"
             tools:layout_editor_absoluteX="36dp"
-            tools:layout_editor_absoluteY="361dp" />
+            tools:layout_editor_absoluteY="361dp"
+            tools:text="Name" />
 
         <TextView
             android:id="@+id/textViewPIN"
@@ -48,7 +51,7 @@
 
         <EditText
             android:id="@+id/editText2"
-            android:layout_width="213dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:ems="10"
@@ -61,20 +64,19 @@
             android:layout_width="236dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="12dp"
             android:text="Anmelden"
             app:layout_constraintStart_toStartOf="@+id/textView"
             tools:layout_editor_absoluteY="523dp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonRegistrieren"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@android:color/white"
             android:text="Neu hier? Registriere dich jetzt!"
             android:textAllCaps="false"
-            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteX="63dp"
             tools:layout_editor_absoluteY="604dp" />
 
     </LinearLayout>
