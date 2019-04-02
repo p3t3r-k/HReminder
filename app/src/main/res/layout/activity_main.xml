@@ -67,15 +67,14 @@
     <TextView
         android:id="@+id/textViewPIN"
         android:layout_width="213dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="317dp"
-        android:layout_marginBottom="258dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="99dp"
+        android:layout_marginEnd="99dp"
         android:text="Geben Sie einen PIN ein:"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/enterPIN"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.614" />
+        app:layout_constraintTop_toBottomOf="@+id/enterUsername" />
 
     <Button
         android:id="@+id/buttonLogin"
