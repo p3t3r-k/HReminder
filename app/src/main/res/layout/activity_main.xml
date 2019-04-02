@@ -2,95 +2,120 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="148dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Geben Sie Ihren Benutzernamen ein:"
+            tools:layout_editor_absoluteX="68dp"
+            tools:layout_editor_absoluteY="331dp" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="296dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name"
+            tools:layout_editor_absoluteX="36dp"
+            tools:layout_editor_absoluteY="361dp" />
+
+        <TextView
+            android:id="@+id/textViewPIN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Geben Sie einen PIN ein:"
+            tools:layout_editor_absoluteX="114dp"
+            tools:layout_editor_absoluteY="421dp" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="213dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:inputType="numberPassword"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="450dp" />
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="236dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="12dp"
+            android:text="Anmelden"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            tools:layout_editor_absoluteY="523dp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@android:color/white"
+            android:text="Neu hier? Registriere dich jetzt!"
+            android:textAllCaps="false"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="604dp" />
+
+    </LinearLayout>
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="112dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/userimage" />
 
-    <EditText
-        android:id="@+id/enterUsername"
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="342dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="344dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="153dp"
+        app:layout_constraintGuide_end="312dp" />
 
-    <EditText
-        android:id="@+id/enterPIN"
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="421dp"
-        android:layout_marginEnd="99dp"
-        android:layout_marginBottom="265dp"
-        android:ems="10"
-        android:inputType="numberPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="208dp" />
 
     <TextView
-        android:id="@+id/textViewUsername"
-        android:layout_width="213dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="317dp"
-        android:layout_marginBottom="393dp"
-        android:text="Geben Sie einen Usernamen ein:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/textView2"
+        android:layout_width="265dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="10dp"
+        android:text="NAME DER APP"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textViewPIN"
-        android:layout_width="213dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="99dp"
-        android:layout_marginEnd="99dp"
-        android:text="Geben Sie einen PIN ein:"
-        app:layout_constraintBottom_toTopOf="@+id/enterPIN"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterUsername" />
-
-    <Button
-        android:id="@+id/buttonLogin"
-        android:layout_width="287dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:text="Anmelden"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <android.support.constraint.Group
-        android:id="@+id/group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
 
 </android.support.constraint.ConstraintLayout>

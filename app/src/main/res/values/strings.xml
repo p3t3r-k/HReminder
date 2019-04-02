@@ -1,4 +1,9 @@
+
+
 <resources>
+
+    <!--Strings fuer Userprofil-->
+
     <string name="app_name">HealthyReminder</string>
     <string name="createProfil">"Benutzerprofil erstellen:"</string>
     <string name="instructionsProfil">"Tragen Sie hier alle Informationen ein."</string>
@@ -21,5 +26,6 @@
     <string name="allergies">"Allergien?"</string>
     <string name="yesRadio">Ja</string>
     <string name="noRadio">Nein</string>
+
 
 </resources>
