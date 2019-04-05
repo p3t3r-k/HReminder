@@ -167,7 +167,6 @@
                     android:longClickable="false"
                     android:text="@string/deleteApp" />
 
-
             </TableRow>
 
             <TableRow
@@ -201,7 +200,6 @@
                     android:clickable="true"
                     android:focusable="auto"
                     android:text="@string/deleteApp" />
-
 
             </TableRow>
         </TableLayout>
