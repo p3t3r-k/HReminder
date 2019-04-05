@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:focusableInTouchMode="true"
+    tools:context=".LastAppointmentsActivity">
+
+    <ImageView
+        android:id="@+id/calenderView"
+        android:layout_width="99dp"
+        android:layout_height="93dp"
+        app:srcCompat="@drawable/calenderappointment" />
+
+    <TextView
+        android:id="@+id/lastAppointmentsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/calenderView"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@id/calenderView"
+        android:text="@string/lastAppointmentText" />
+
+    <TextView
+        android:id="@+id/instructionsTextApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lastAppointmentsText"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/calenderView"
+        android:text="@string/instructionsTextApp" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/instructionsTextApp"
+        android:layout_marginTop="3dp"
+        android:background="?android:attr/listDivider"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/pickDocText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider2"
+        android:layout_marginTop="50dp"
+        android:padding="3dp"
+        android:text="@string/doc_prompt" />
+
+    <Spinner
+        android:id="@+id/spinnerDoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/pickDocText"
+        android:layout_marginStart="30dp"
+        android:layout_toEndOf="@id/pickDocText"
+        android:tag="@string/doc_prompt" />
+
+    <EditText
+        android:id="@+id/dateEditlastApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pickDocText"
+        android:layout_alignStart="@id/pickDocText"
+        android:layout_marginTop="20dp"
+        android:ems="6"
+        android:inputType="date" />
+
+    <TextView
+        android:id="@+id/lastApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dateEditlastApp"
+        android:layout_alignStart="@id/dateEditlastApp"
+        android:text="@string/lastApp" />
+
+    <ImageButton
+        android:id="@+id/calenderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/dateEditlastApp"
+        android:layout_toEndOf="@id/dateEditlastApp"
+        app:srcCompat="@drawable/calender" />
+
+    <Button
+        android:id="@+id/getDateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lastApp"
+        android:layout_alignStart="@id/lastApp"
+        android:layout_marginTop="30dp"
+        android:text="@string/getDate" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+
+        android:layout_below="@id/getDateButton"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/savedDates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/getDateButton"
+        android:layout_alignStart="@id/getDateButton"
+        android:layout_marginTop="20dp"
+        android:text="@string/savedDates" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/savedDates"
+        android:alwaysDrawnWithCache="true">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+
+            <TableRow
+                android:id="@+id/row"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/exampleDoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:text="@string/exampleDoc" />
+
+                <TextView
+                    android:id="@+id/exampleDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:text="@string/exampleDate" />
+
+                <Button
+                    android:id="@+id/deleteAppButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:contextClickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="auto"
+                    android:linksClickable="false"
+                    android:longClickable="false"
+                    android:text="@string/deleteApp" />
+
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/exampleDoc2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:text="@string/exampleDoc" />
+
+                <TextView
+                    android:id="@+id/exampleDate2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:text="@string/exampleDate" />
+
+                <Button
+                    android:id="@+id/deleteAppButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:focusable="auto"
+                    android:text="@string/deleteApp" />
+
+
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+</RelativeLayout>

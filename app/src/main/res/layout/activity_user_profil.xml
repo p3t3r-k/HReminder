@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:paddingRight="16dp"
+    android:focusableInTouchMode="true">
 
 
     <ImageView
@@ -19,10 +20,10 @@
         android:id="@+id/createUserText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/userImage"
         android:layout_alignTop="@id/userImage"
-        android:layout_marginTop="30dp"
         android:layout_marginStart="7dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@id/userImage"
         android:text="@string/createProfil" />
 
     <TextView
@@ -30,8 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/createUserText"
-        android:layout_marginTop="15dp"
         android:layout_marginStart="7dp"
+        android:layout_marginTop="15dp"
         android:layout_toEndOf="@id/userImage"
         android:text="@string/instructionsProfil" />
 
@@ -47,14 +48,13 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/divider"
         android:layout_above="@+id/createProfilButton"
+        android:layout_below="@+id/divider"
         android:layout_marginTop="14dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
 
 
             <RadioGroup
@@ -94,18 +94,17 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radioGroup"
                 android:layout_toEndOf="@+id/birthdayText"
-                android:ems="5"
+                android:ems="6"
                 android:inputType="date"
                 android:visibility="visible" />
 
-                <ImageButton
-                    android:id="@+id/calenderButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/dateEdit"
-                    android:layout_below="@+id/radioGroup"
-                    app:srcCompat="@drawable/calender" />
-
+            <ImageButton
+                android:id="@+id/calenderButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radioGroup"
+                android:layout_toEndOf="@+id/dateEdit"
+                app:srcCompat="@drawable/calender" />
 
 
             <TextView
@@ -147,42 +146,42 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/predispositions"
-                android:text="@string/cardiacDiseases"/>
+                android:text="@string/cardiacDiseases" />
 
             <CheckBox
                 android:id="@+id/neuro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cardiac"
-                android:text="@string/neurologicalDiseases"/>
+                android:text="@string/neurologicalDiseases" />
 
             <CheckBox
                 android:id="@+id/ortho"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/neuro"
-                android:text="@string/orthopaedicDiseases"/>
+                android:text="@string/orthopaedicDiseases" />
 
             <CheckBox
                 android:id="@+id/skin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ortho"
-                android:text="@string/skinDiseases"/>
+                android:text="@string/skinDiseases" />
 
             <CheckBox
                 android:id="@+id/eye"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/skin"
-                android:text="@string/eyeDisease"/>
+                android:text="@string/eyeDisease" />
 
             <CheckBox
                 android:id="@+id/hearing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/eye"
-                android:text="@string/hearingImpairment"/>
+                android:text="@string/hearingImpairment" />
 
             <TextView
                 android:id="@+id/smoking"
@@ -196,10 +195,10 @@
                 android:id="@+id/radioGroupSmoke"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/smoking"
                 android:layout_below="@+id/hearing"
-                android:padding="8dp"
-                android:orientation="horizontal">
+                android:layout_toEndOf="@id/smoking"
+                android:orientation="horizontal"
+                android:padding="8dp">
 
                 <RadioButton
                     android:id="@+id/yesSmoke"
@@ -230,10 +229,10 @@
                 android:id="@+id/radioGroupAllergies"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/smoking"
                 android:layout_below="@+id/radioGroupSmoke"
-                android:padding="8dp"
-                android:orientation="horizontal">
+                android:layout_toEndOf="@id/smoking"
+                android:orientation="horizontal"
+                android:padding="8dp">
 
                 <RadioButton
                     android:id="@+id/yesAllergies"
@@ -253,20 +252,17 @@
             </RadioGroup>
 
 
-
         </RelativeLayout>
     </ScrollView>
 
 
-
-
-<Button
+    <Button
         android:id="@+id/createProfilButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/createProfilButton"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"/>
+        android:text="@string/createProfilButton" />
 
 </RelativeLayout>
 

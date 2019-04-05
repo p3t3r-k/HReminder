@@ -22,4 +22,25 @@
     <string name="yesRadio">Ja</string>
     <string name="noRadio">Nein</string>
 
+    <!--Last Appointmens Activity -->
+    <string name="lastAppointmentText">"Vergangene Termine:"</string>
+    <string name="instructionsTextApp">"Wenn Sie sich an Ihre letzten Arzttermine erinnern, tragen Sie diese hier ein."</string>
+    <string name="doc_prompt">"Arzt auswählen:"</string>
+    <string-array name="doctorsArray">
+        <item>Hausarzt</item>
+        <item>Zahnarzt</item>
+        <item>Hautarzt</item>
+        <item>Augenarzt</item>
+        <item>HNO Arzt</item>
+        <item>Kardiologe</item>
+        <item>Neurologe</item>
+        <item>Orthopäde</item>
+    </string-array>
+    <string name="lastApp">"Letzter Besuch"</string>
+    <string name="getDate">"Termin erfassen"</string>
+    <string name="savedDates">"Erfasste Termine:"</string>
+    <string name="exampleDoc">"Beispiel: Zahnarzt"</string>
+    <string name="exampleDate">"Beispiel: 10.12.2018"</string>
+    <string name="deleteApp">"x"</string>
+
 </resources>
