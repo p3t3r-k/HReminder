@@ -167,6 +167,7 @@
                     android:longClickable="false"
                     android:text="@string/deleteApp" />
 
+
             </TableRow>
 
             <TableRow
