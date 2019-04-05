@@ -16,9 +16,6 @@ public class UserProfilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_profil);
 
 
-
-
-
     }
 
 }

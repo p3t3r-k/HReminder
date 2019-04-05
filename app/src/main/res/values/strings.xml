@@ -1,4 +1,9 @@
+
+
 <resources>
+
+    <!--Strings fuer Userprofil-->
+
     <string name="app_name">HealthyReminder</string>
     <string name="createProfil">"Benutzerprofil erstellen:"</string>
     <string name="instructionsProfil">"Tragen Sie hier alle Informationen ein."</string>
@@ -42,5 +47,6 @@
     <string name="exampleDoc">"Beispiel: Zahnarzt"</string>
     <string name="exampleDate">"Beispiel: 10.12.2018"</string>
     <string name="deleteApp">"x"</string>
+
 
 </resources>
