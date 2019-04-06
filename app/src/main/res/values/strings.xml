@@ -1,5 +1,3 @@
-
-
 <resources>
 
     <!--Strings fuer Userprofil-->
@@ -27,7 +25,7 @@
     <string name="yesRadio">Ja</string>
     <string name="noRadio">Nein</string>
 
-    <!--Last Appointmens Activity -->
+    <!--Last Appointments Activity -->
     <string name="lastAppointmentText">"Vergangene Termine:"</string>
     <string name="instructionsTextApp">"Wenn Sie sich an Ihre letzten Arzttermine erinnern, tragen Sie diese hier ein."</string>
     <string name="doc_prompt">"Arzt auswählen:"</string>
@@ -48,7 +46,8 @@
     <string name="exampleDate">"Beispiel: 10.12.2018"</string>
     <string name="deleteApp">"x"</string>
 
-
+    <!-- DocsAround Activity -->
+    <string name="docsAroundTitle">"Ärzte in Ihrer Nähe"</string>
 
 
 </resources>

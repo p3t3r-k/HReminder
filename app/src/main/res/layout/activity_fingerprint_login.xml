@@ -27,8 +27,7 @@
         android:layout_marginTop="122dp"
         android:layout_marginEnd="145dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/fingerprint" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Fingerprint_q"
