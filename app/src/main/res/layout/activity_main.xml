@@ -65,7 +65,7 @@
             tools:layout_editor_absoluteY="331dp" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/inputUsername"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -80,12 +80,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Geben Sie einen PIN ein:"
+            android:text="@string/loginPIN"
             tools:layout_editor_absoluteX="114dp"
             tools:layout_editor_absoluteY="421dp" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/inputPin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -99,7 +99,7 @@
             android:layout_width="236dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Anmelden"
+            android:text="@string/loginButton"
             app:layout_constraintStart_toStartOf="@+id/textView"
             tools:layout_editor_absoluteY="523dp" />
 
@@ -109,8 +109,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@android:color/white"
-            android:text="Neu hier? Registriere dich jetzt!"
-            android:textAllCaps="false"
+            android:text="@string/registerNewButton"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             tools:layout_editor_absoluteX="63dp"
             tools:layout_editor_absoluteY="604dp" />
 

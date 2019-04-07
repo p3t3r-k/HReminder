@@ -60,9 +60,20 @@
 
     <!-- Login Activity -->
     <string name="loginName">"Geben Sie Ihren Benutzernamen ein:"</string>
-
+    <string name="loginPIN">"Geben Sie Ihren PIN ein:"</string>
+    <string name="loginButton">"Anmelden"</string>
+    <string name="registerNewButton">"Neu hier? Jetzt registrieren!"</string>
 
     <!-- Register Activity -->
+    <string name="registerName">"Erstellen Sie einen Benutzernamen:"</string>
+    <string name="registerPIN">"Geben Sie einen PIN-Code ein:"</string>
+    <string name="registerValidatePin">"Wiederholen Sie den Pin:"</string>
+    <string name="registerButton">"Registrieren"</string>
+    
+    <!-- Calender Activity -->
+    <string name="calenderHead">"Termin-Empfehlungen"</string>
+    <string name="calenderOverview">"Überblick:"</string>
+    <string name="calenderAppointments">"Arzttermine eintragen:"</string>
 
     <!-- NavigationDrawer Activity -->
     <string name="titleMenu">"Menü"</string>

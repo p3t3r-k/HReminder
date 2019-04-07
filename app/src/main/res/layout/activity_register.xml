@@ -35,9 +35,9 @@
             android:layout_height="300dp"
             android:layout_marginStart="68dp"
             android:layout_marginTop="10dp"
-            android:text="NAME DER APP"
+            android:text="@string/app_name"
             app:layout_constraintBottom_toTopOf="@+id/InputLayout"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
 
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Geben Sie Ihren Benutzernamen ein:"
+            android:text="@string/registerName"
             tools:layout_editor_absoluteX="68dp"
             tools:layout_editor_absoluteY="331dp" />
 
@@ -77,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Geben Sie einen PIN ein:"
+            android:text="@string/registerPIN"
             tools:layout_editor_absoluteX="114dp"
             tools:layout_editor_absoluteY="421dp" />
 
@@ -97,7 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Wiederholen Sie Ihren PIN:" />
+            android:text="@string/registerValidatePin" />
 
         <EditText
             android:id="@+id/editText3"
@@ -112,7 +112,7 @@
             android:layout_width="236dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Registrieren"
+            android:text="@string/registerButton"
             app:layout_constraintStart_toStartOf="@+id/textView"
             tools:layout_editor_absoluteY="523dp" />
     </LinearLayout>

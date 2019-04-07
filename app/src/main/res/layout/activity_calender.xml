@@ -26,8 +26,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="Termin-Empfehlungen"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:text="@string/calenderHead"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/tableLayout3"
         app:layout_constraintTop_toTopOf="@+id/tableLayout3" />
 
@@ -37,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="16dp"
-        android:text="Arzttermin eintragen:"
+        android:text="@string/calenderAppointments"
         app:layout_constraintBottom_toTopOf="@+id/calendarView2"
         app:layout_constraintStart_toStartOf="@+id/tableLayout3" />
 
@@ -47,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="100dp"
-        android:text="Überblick:"
+        android:text="@string/calenderOverview"
         app:layout_constraintStart_toStartOf="@+id/tableLayout3"
         app:layout_constraintTop_toTopOf="@+id/tableLayout3" />
 
@@ -57,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="350dp"
+        android:layout_gravity="center"
         app:layout_constraintStart_toStartOf="@+id/tableLayout3"
         app:layout_constraintTop_toTopOf="@id/tableLayout3" />
 
