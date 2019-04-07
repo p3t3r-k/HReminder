@@ -2,25 +2,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hreminder">
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-
-
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".SettingsActivity"
+            android:exported="true"></activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <activity android:name=".DoctorsMapActivity"
-            android:exported="true"/>
+
+        <activity
+            android:name=".DoctorsMapActivity"
+            android:exported="true" />
         <activity
             android:name=".LastAppointmentsActivity"
             android:exported="true" />
