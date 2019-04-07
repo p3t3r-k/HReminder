@@ -49,11 +49,26 @@
     <!-- DocsAround Activity -->
     <string name="docsAroundTitle">"Ärzte in Ihrer Nähe"</string>
 
+    <!-- Settings Activity -->
+    <string name="settingsTitle">"Einstellungen"</string>
+    <string name="changeLanguage">"Sprache ändern"</string>
+    <string name="changePIN">"PIN ändern"</string>
+    <string name="signOut">"Abmelden"</string>
+    <string name="datasecurity">"Datenschutz (Rechtliche Hinweise)"</string>
+    <string name="deleteProfil">"Profil löschen"</string>
+    <string name="about">"Über"</string>
+
     <!-- Login Activity -->
 
 
-    
+
     <!-- Register Activity -->
 
+    <!-- NavigationDrawer Activity -->
+    <string name="titleMenu">"Menü"</string>
+    <string name="editProfilItem">"Benutzerprofil ändern"</string>
+    <string name="viewCalenderItem">"Kalender anzeigen"</string>
+    <string name="settingsItem">"Einstellungen"</string>
+    <string name="helpItem">"Hilfe"</string>
 
 </resources>
