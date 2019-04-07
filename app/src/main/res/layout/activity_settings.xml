@@ -57,5 +57,4 @@
         android:layout_below="@id/btnDelete"
         android:text="@string/about" />
 
-
 </RelativeLayout>
