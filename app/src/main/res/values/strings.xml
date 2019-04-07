@@ -89,4 +89,12 @@
     <string name="settingsItem">"Einstellungen"</string>
     <string name="helpItem">"Hilfe"</string>
 
+    <!-- Change PIN Activity -->
+    <string name="changePINHeading">"PIN ändern"</string>
+    <string name="changePINOld">"Geben Sie den alten PIN ein:"</string>
+    <string name="changePINNew">"Geben Sie den neuen PIN ein:"</string>
+    <string name="changePINValidateNew">"Wiederholen Sie den neuen PIN:"</string>
+    <string name="changePINCommitButton">"PIN ändern"</string>
+
+
 </resources>

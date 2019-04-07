@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChangePinActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="715dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewChangePINHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/changePINHeading"
+            android:textSize="35sp" />
+
+        <TextView
+            android:id="@+id/textViewOldPIN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/changePINOld" />
+
+        <EditText
+            android:id="@+id/inputOldPin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberPassword" />
+
+        <TextView
+            android:id="@+id/textViewNewPin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/changePINNew" />
+
+        <EditText
+            android:id="@+id/inputNewPin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberPassword" />
+
+        <TextView
+            android:id="@+id/textViewValidatePIN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/changePINValidateNew" />
+
+        <EditText
+            android:id="@+id/inputValidatePin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberPassword" />
+
+        <Button
+            android:id="@+id/buttonChangePin"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/changePINCommitButton" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

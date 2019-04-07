@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hreminder">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -12,16 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".SettingsActivity"
-            android:exported="true"></activity>
-        android:theme="@style/AppTheme">
-        <activity android:name=".CalenderActivity"
-            android:exported="true"></activity>
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="true" />
-
-
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -30,6 +21,18 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
+        <activity
+            android:name=".ChangePinActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CalenderActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" />
         <activity
             android:name=".DoctorsMapActivity"
             android:exported="true" />
@@ -43,7 +46,6 @@
             android:name=".Fingerprint_login"
             android:exported="true" />
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
