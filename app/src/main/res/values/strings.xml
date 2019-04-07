@@ -1,7 +1,26 @@
 <resources>
 
-    <!--Strings fuer Userprofil-->
+    <!-- Login Activity -->
+    <string name="logo">"Logo"</string>
+    <string name="loginName">"Geben Sie Ihren Benutzernamen ein:"</string>
+    <string name="loginPIN">"Geben Sie Ihren PIN ein:"</string>
+    <string name="loginButton">"Anmelden"</string>
+    <string name="registerNewButton">"Neu hier? Jetzt registrieren!"</string>
 
+    <!-- Register Activity -->
+    <string name="registerName">"Erstellen Sie einen Benutzernamen:"</string>
+    <string name="registerPIN">"Geben Sie einen PIN-Code ein:"</string>
+    <string name="registerValidatePin">"Wiederholen Sie den Pin:"</string>
+    <string name="registerButton">"Registrieren"</string>
+
+    <!-- Fingerprint Activity -->
+    <string name="fingerprintImage">"FingerprintImage"</string>
+    <string name="fingerprintQuestion1">"Wollen Sie den Fingerabrucksensor für"</string>
+    <string name="fingerprintQuestion2">"das Login verwenden?"</string>
+    <string name="fingerprintButtonYes">"Ja"</string>
+    <string name="fingerprintButtonSkip">"Überspringen"</string>
+
+    <!--Strings fuer Userprofil-->
     <string name="app_name">HealthyReminder</string>
     <string name="createProfil">"Benutzerprofil erstellen:"</string>
     <string name="instructionsProfil">"Tragen Sie hier alle Informationen ein."</string>
@@ -58,19 +77,6 @@
     <string name="deleteProfil">"Profil löschen"</string>
     <string name="about">"Über"</string>
 
-    <!-- Login Activity -->
-    <string name="logo">"Logo"</string>
-    <string name="loginName">"Geben Sie Ihren Benutzernamen ein:"</string>
-    <string name="loginPIN">"Geben Sie Ihren PIN ein:"</string>
-    <string name="loginButton">"Anmelden"</string>
-    <string name="registerNewButton">"Neu hier? Jetzt registrieren!"</string>
-
-    <!-- Register Activity -->
-    <string name="registerName">"Erstellen Sie einen Benutzernamen:"</string>
-    <string name="registerPIN">"Geben Sie einen PIN-Code ein:"</string>
-    <string name="registerValidatePin">"Wiederholen Sie den Pin:"</string>
-    <string name="registerButton">"Registrieren"</string>
-    
     <!-- Calender Activity -->
     <string name="calenderHead">"Termin-Empfehlungen"</string>
     <string name="calenderOverview">"Überblick:"</string>

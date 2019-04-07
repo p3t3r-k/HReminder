@@ -6,103 +6,76 @@
     android:layout_height="match_parent"
     tools:context=".Fingerprint_login">
 
-    <TextView
-        android:id="@+id/fingerprint_q2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="119dp"
-        android:layout_marginTop="332dp"
-        android:layout_marginEnd="117dp"
-        android:text="den Login verwenden?"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="387dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/fingerprint_image"
-        android:layout_width="122dp"
-        android:layout_height="115dp"
-        android:layout_marginTop="122dp"
-        android:layout_marginEnd="145dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/fingerprint_image"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:contentDescription="@string/fingerprintImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/Fingerprint_q"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="288dp"
-        android:layout_marginEnd="71dp"
-        android:text="Wollen Sie Ihren Fingerabdruck für"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/fingerprint_q1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:text="@string/fingerprintQuestion1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/fingerprint_q2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/fingerprintQuestion2"
+            android:textSize="19sp" />
+    </LinearLayout>
+
 
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="395dp"
         android:layout_height="251dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="520dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="59dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="424dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
-        
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </TableLayout>
 
     <Button
         android:id="@+id/Button_fingerprint_Y"
-        android:layout_width="150dp"
+        android:layout_width="140dp"
         android:layout_height="45dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="536dp"
-        android:layout_marginEnd="224dp"
-        android:layout_marginBottom="150dp"
-        android:text="Ja"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="112dp"
+        android:text="@string/fingerprintButtonYes"
+        app:layout_constraintStart_toStartOf="@+id/tableLayout"
+        app:layout_constraintTop_toTopOf="@+id/tableLayout" />
 
     <Button
         android:id="@+id/Button_Fingerprint_N"
         android:layout_width="141dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="226dp"
-        android:layout_marginTop="536dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="147dp"
-        android:text="Überspringen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="45dp"
+        android:layout_marginStart="244dp"
+        android:layout_marginTop="112dp"
+        android:text="@string/fingerprintButtonSkip"
+        app:layout_constraintStart_toStartOf="@+id/tableLayout"
+        app:layout_constraintTop_toTopOf="@+id/tableLayout" />
+
 
 </android.support.constraint.ConstraintLayout>
