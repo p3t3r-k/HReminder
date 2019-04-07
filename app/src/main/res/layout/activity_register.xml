@@ -2,11 +2,9 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+    tools:context=".RegisterActivity">
 
     <LinearLayout
         android:id="@+id/LogoLayout"
@@ -47,7 +45,7 @@
     <LinearLayout
         android:id="@+id/InputLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="257dp"
         android:layout_marginTop="50dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,7 +68,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:ems="10"
-            android:hint="Name"
             android:inputType="textPersonName"
             tools:layout_editor_absoluteX="36dp"
             tools:layout_editor_absoluteY="361dp" />
@@ -94,26 +91,30 @@
             tools:layout_editor_absoluteX="83dp"
             tools:layout_editor_absoluteY="450dp" />
 
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Wiederholen Sie Ihren PIN:" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:inputType="numberPassword" />
+
         <Button
             android:id="@+id/buttonLogin"
             android:layout_width="236dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Anmelden"
+            android:text="Registrieren"
             app:layout_constraintStart_toStartOf="@+id/textView"
             tools:layout_editor_absoluteY="523dp" />
-
-        <Button
-            android:id="@+id/buttonRegistrieren"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="@android:color/white"
-            android:text="Neu hier? Registriere dich jetzt!"
-            android:textAllCaps="false"
-            tools:layout_editor_absoluteX="63dp"
-            tools:layout_editor_absoluteY="604dp" />
-
     </LinearLayout>
 
 
