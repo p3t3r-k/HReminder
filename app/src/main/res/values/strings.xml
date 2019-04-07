@@ -59,6 +59,7 @@
     <string name="about">"Über"</string>
 
     <!-- Login Activity -->
+    <string name="logo">"Logo"</string>
     <string name="loginName">"Geben Sie Ihren Benutzernamen ein:"</string>
     <string name="loginPIN">"Geben Sie Ihren PIN ein:"</string>
     <string name="loginButton">"Anmelden"</string>

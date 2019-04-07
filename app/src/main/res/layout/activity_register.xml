@@ -18,7 +18,7 @@
 
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -30,12 +30,14 @@
 
 
         <TextView
-            android:id="@+id/textView2"
-            android:layout_width="265dp"
+            android:id="@+id/registerSlogan"
+            android:layout_width="wrap_content"
             android:layout_height="300dp"
             android:layout_marginStart="68dp"
             android:layout_marginTop="10dp"
             android:text="@string/app_name"
+            android:textSize="34sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/InputLayout"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -54,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/LogoLayout">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textviewUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -63,7 +65,7 @@
             tools:layout_editor_absoluteY="331dp" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/inputCreateUsername"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -82,7 +84,7 @@
             tools:layout_editor_absoluteY="421dp" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/inputCreatePin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -93,14 +95,14 @@
 
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textviewValidatePin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/registerValidatePin" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/inputValidatePin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -108,12 +110,12 @@
             android:inputType="numberPassword" />
 
         <Button
-            android:id="@+id/buttonLogin"
+            android:id="@+id/buttonRegister"
             android:layout_width="236dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/registerButton"
-            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textviewUsername"
             tools:layout_editor_absoluteY="523dp" />
     </LinearLayout>
 
