@@ -1,7 +1,9 @@
 package com.example.hreminder;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,5 +14,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //test
+    public void onClickSwitchToCalender(View view) {
+        Intent intent = new Intent(this, CalenderActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onClickSwitchToRegister(View view) {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
+
 }

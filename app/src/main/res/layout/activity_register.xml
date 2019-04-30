@@ -116,7 +116,8 @@
             android:layout_gravity="center"
             android:text="@string/registerButton"
             app:layout_constraintStart_toStartOf="@+id/textviewUsername"
-            tools:layout_editor_absoluteY="523dp" />
+            tools:layout_editor_absoluteY="523dp"
+            android:onClick="onClickSwitchToFingerprint"/>
     </LinearLayout>
 
 

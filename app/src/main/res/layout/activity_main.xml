@@ -104,7 +104,8 @@
             android:layout_gravity="center"
             android:text="@string/loginButton"
             app:layout_constraintStart_toStartOf="@+id/textviewUsername"
-            tools:layout_editor_absoluteY="523dp" />
+            tools:layout_editor_absoluteY="523dp"
+            android:onClick="onClickSwitchToCalender"/>
 
         <Button
             android:id="@+id/buttonRegister"
@@ -115,7 +116,8 @@
             android:text="@string/registerNewButton"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             tools:layout_editor_absoluteX="63dp"
-            tools:layout_editor_absoluteY="604dp" />
+            tools:layout_editor_absoluteY="604dp"
+            android:onClick="onClickSwitchToRegister"/>
 
     </LinearLayout>
 

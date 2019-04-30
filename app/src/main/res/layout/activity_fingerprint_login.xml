@@ -65,7 +65,8 @@
         android:layout_marginTop="112dp"
         android:text="@string/fingerprintButtonYes"
         app:layout_constraintStart_toStartOf="@+id/tableLayout"
-        app:layout_constraintTop_toTopOf="@+id/tableLayout" />
+        app:layout_constraintTop_toTopOf="@+id/tableLayout"
+        android:onClick="onClickSwitchToProfile"/>
 
     <Button
         android:id="@+id/Button_Fingerprint_N"
@@ -75,7 +76,8 @@
         android:layout_marginTop="112dp"
         android:text="@string/fingerprintButtonSkip"
         app:layout_constraintStart_toStartOf="@+id/tableLayout"
-        app:layout_constraintTop_toTopOf="@+id/tableLayout" />
+        app:layout_constraintTop_toTopOf="@+id/tableLayout"
+        android:onClick="onClickSwitchToProfile"/>
 
 
 </android.support.constraint.ConstraintLayout>

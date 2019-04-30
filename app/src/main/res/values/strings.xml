@@ -64,6 +64,7 @@
     <string name="exampleDoc">"Beispiel: Zahnarzt"</string>
     <string name="exampleDate">"Beispiel: 10.12.2018"</string>
     <string name="deleteApp">"x"</string>
+    <string name="finished">"Fertig"</string>
 
     <!-- DocsAround Activity -->
     <string name="docsAroundTitle">"Ärzte in Ihrer Nähe"</string>

@@ -262,7 +262,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/createProfilButton" />
+        android:text="@string/createProfilButton"
+        android:onClick="onClickSwitchToLastApp"/>
 
 </RelativeLayout>
 

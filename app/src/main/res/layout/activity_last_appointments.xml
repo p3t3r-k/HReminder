@@ -207,4 +207,13 @@
         </TableLayout>
     </ScrollView>
 
+    <Button
+        android:id="@+id/buttonFinished"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/finished"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="onClickSwitchToCalenderAct"/>
+
 </RelativeLayout>
