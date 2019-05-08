@@ -51,6 +51,7 @@
     <string-array name="doctorsArray">
         <item>Hausarzt</item>
         <item>Zahnarzt</item>
+        <item>Frauenarzt</item>
         <item>Hautarzt</item>
         <item>Augenarzt</item>
         <item>HNO Arzt</item>

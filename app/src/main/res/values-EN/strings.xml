@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Login Activity -->
+    <string name="logo">"Logo"</string>
+    <string name="loginName">"Type in your username:"</string>
+    <string name="loginPIN">"Type in your PIN code"</string>
+    <string name="loginButton">"Sign in"</string>
+    <string name="registerNewButton">"New? Register now!"</string>
+
+    <!-- Register Activity -->
+    <string name="registerName">"Define an username:"</string>
+    <string name="registerPIN">"Type in a PIN code:"</string>
+    <string name="registerValidatePin">"Re-enter your PIN code:"</string>
+    <string name="registerButton">"Register"</string>
+
+    <!-- Fingerprint Activity -->
+    <string name="fingerprintImage">"FingerprintImage"</string>
+    <string name="fingerprintQuestion1">"Wollen Sie den Fingerabrucksensor für"</string>
+    <string name="fingerprintQuestion2">"das Login verwenden?"</string>
+    <string name="fingerprintButtonYes">"Yes"</string>
+    <string name="fingerprintButtonSkip">"Skip"</string>
+
+    <!--Strings fuer Userprofil-->
+    <string name="app_name">HealthyReminder</string>
+    <string name="createProfil">"Create Userprofil:"</string>
+    <string name="instructionsProfil">"Put in your information."</string>
+    <string name="femaleRadio">"female"</string>
+    <string name="maleRadio">"male"</string>
+    <string name="birthdayText">"Birthdate:"</string>
+    <string name="birthdayInput">"__.__.____"</string>
+    <string name="weightText">"Weight:"</string>
+    <string name="weightUnit">"kg"</string>
+    <string name="predispos">"(genetic) predispositions"</string>
+    <string name="cardiacDiseases">"cardiac diseases"</string>
+    <string name="neurologicalDiseases">"neurological diseases"</string>
+    <string name="orthopaedicDiseases">"orthopedic diseases"</string>
+    <string name="skinDiseases">"skin diseases"</string>
+    <string name="hearingImpairment">"hearing impairment"</string>
+    <string name="eyeDisease">"eye diseases"</string>
+    <string name="createProfilButton">"Create profil"</string>
+    <string name="instructionsPredispos">"Choose your (genetic) predispositions:"</string>
+    <string name="smoking">"Smoking?"</string>
+    <string name="allergies">"Allergies?"</string>
+    <string name="yesRadio">Yes</string>
+    <string name="noRadio">No</string>
+
+    <!--Last Appointments Activity -->
+    <string name="lastAppointmentText">"Last appointments:"</string>
+    <string name="instructionsTextApp">"If you can remember your last appointments, please type them in:"</string>
+    <string name="doc_prompt">"Choose doctor:"</string>
+    <string-array name="doctorsArray">
+        <item>physician</item>
+        <item>dentist</item>
+        <item>gynaecologist</item>
+        <item>dermatologist</item>
+        <item>ophthalmologist</item>
+        <item>ENT specialist</item>
+        <item>cardiologist</item>
+        <item>neurologist</item>
+        <item>orthopedist</item>
+    </string-array>
+    <string name="lastApp">"Last Appointment"</string>
+    <string name="getDate">"Register appointment"</string>
+    <string name="savedDates">"Erfasste Termine:"</string>
+    <string name="exampleDoc">"Beispiel: Zahnarzt"</string>
+    <string name="exampleDate">"Beispiel: 10.12.2018"</string>
+    <string name="deleteApp">"x"</string>
+    <string name="finished">"Finished"</string>
+
+    <!-- DocsAround Activity -->
+    <string name="docsAroundTitle">"Doctors in your area"</string>
+
+    <!-- Settings Activity -->
+    <string name="settingsTitle">"Settings"</string>
+    <string name="changeLanguage">"Change language"</string>
+    <string name="changePIN">"Change PIN code"</string>
+    <string name="signOut">"Sign out"</string>
+    <string name="datasecurity">"Datasecurity"</string>
+    <string name="deleteProfil">"Delete profil"</string>
+    <string name="about">"About"</string>
+
+    <!-- Calender Activity -->
+    <string name="calenderHead">"Appointment-Recommendation"</string>
+    <string name="calenderOverview">"Overview:"</string>
+    <string name="calenderAppointments">"Add appointment:"</string>
+
+    <!-- NavigationDrawer Activity -->
+    <string name="titleMenu">"Menu"</string>
+    <string name="editProfilItem">"Change userprofil"</string>
+    <string name="viewCalenderItem">"Show calender"</string>
+    <string name="settingsItem">"Settings"</string>
+    <string name="helpItem">"Help"</string>
+
+    <!-- Change PIN Activity -->
+    <string name="changePINHeading">"Change PIN code"</string>
+    <string name="changePINOld">"Type in your old PIN code:"</string>
+    <string name="changePINNew">"Type in your new PIN code:"</string>
+    <string name="changePINValidateNew">"Re-enter your new PIN code:"</string>
+    <string name="changePINCommitButton">"Change PIN code"</string>
+
+    </resources>
