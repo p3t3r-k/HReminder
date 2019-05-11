@@ -99,4 +99,10 @@
     <string name="changePINValidateNew">"Re-enter your new PIN code:"</string>
     <string name="changePINCommitButton">"Change PIN code"</string>
 
+    <!-- Actionbar -->
+    <string name="actionBarSettings">"Settings"</string>
+    <string name="actionBarHelp">"Help"</string>
+    <string name="actionBarOptions">"Options"</string>
+    <string name="actionBarShare">"Share"</string>
+
     </resources>

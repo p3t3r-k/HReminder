@@ -23,7 +23,8 @@
             android:layout_marginTop="50dp"
             android:contentDescription="@string/fingerprintImage"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/fingerprint" />
 
         <TextView
             android:id="@+id/fingerprint_q1"

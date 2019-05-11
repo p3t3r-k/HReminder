@@ -97,6 +97,12 @@
     <string name="changePINNew">"Geben Sie den neuen PIN ein:"</string>
     <string name="changePINValidateNew">"Wiederholen Sie den neuen PIN:"</string>
     <string name="changePINCommitButton">"PIN ändern"</string>
+    
+    <!-- Actionbar -->
+    <string name="actionBarSettings">"Einstellungen"</string>
+    <string name="actionBarHelp">"Hilfe"</string>
+    <string name="actionBarOptions">"Optionen"</string>
+    <string name="actionBarShare">"Teilen"</string>
 
 
 </resources>
