@@ -103,6 +103,8 @@
     <string name="actionBarSettings">"Settings"</string>
     <string name="actionBarHelp">"Help"</string>
     <string name="actionBarOptions">"Options"</string>
-    <string name="actionBarShare">"Share"</string>
+    <string name="actionBarHome">"Calenderview"</string>
+    <string name="actionBarBack">"Back"</string>
+    <string name="ActionBarChangeProfil">"Change Profile"</string>
 
     </resources>

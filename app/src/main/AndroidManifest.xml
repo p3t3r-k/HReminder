@@ -23,7 +23,12 @@
 
         <activity
             android:name=".ChangePinActivity"
-            android:exported="true" />
+            android:exported="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.hreminder.SettingsActivity" />
+        </activity>
+
         <activity
             android:name=".SettingsActivity"
             android:exported="true" />
@@ -52,6 +57,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

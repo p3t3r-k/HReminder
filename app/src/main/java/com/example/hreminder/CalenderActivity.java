@@ -1,5 +1,6 @@
 package com.example.hreminder;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +25,7 @@ public class CalenderActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuinfl = getMenuInflater();
-        menuinfl.inflate(R.menu.calender_ab, menu);
+        menuinfl.inflate(R.menu.actionbar_calender, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -32,15 +33,27 @@ public class CalenderActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Toast.makeText(getApplicationContext(), "Settings icon is selected", Toast.LENGTH_SHORT).show();
+               gotToSettings();
                 return true;
             case R.id.action_help:
                 Toast.makeText(getApplicationContext(), "Help icon is selected", Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.menu_item_share:
-                Toast.makeText(getApplicationContext(), "Share icon is selected", Toast.LENGTH_SHORT).show();
+            case R.id.action_changeProfile:
+                goToProfile();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void goToProfile() {
+        //userprofileactivity ist noch die falsche --> die neue muss noch gemacht werden
+        Intent intent = new Intent(this, UserProfilActivity.class);
+        startActivity(intent);
+    }
+
+    public void gotToSettings(){
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 }

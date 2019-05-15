@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/action_changeProfile"
+        android:icon="@drawable/account_circle_black"
+        android:title="@string/ActionBarChangeProfil"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_options"
+        android:icon="@drawable/baseline_more_vert_white_18dp"
+        android:orderInCategory="101"
+        android:title="@string/actionBarOptions"
+        app:showAsAction="always">
+
+
+
+        <menu>
+
+            <item
+                android:id="@+id/action_settings"
+                android:icon="@android:drawable/ic_menu_preferences"
+                android:title="@string/actionBarSettings"
+                app:showAsAction="always" />
+
+            <item
+                android:id="@+id/action_help"
+                android:icon="@android:drawable/ic_menu_help"
+                android:title="@string/actionBarHelp"
+                app:showAsAction="always" />
+
+        </menu>
+
+    </item>
+
+</menu>
