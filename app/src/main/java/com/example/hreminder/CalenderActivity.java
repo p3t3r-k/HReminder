@@ -18,10 +18,7 @@ public class CalenderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calender);
         ActionBar abar = getSupportActionBar();
-        abar.setLogo(R.drawable.deletesign);
-        abar.setDisplayUseLogoEnabled(true);
         abar.setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
-
     }
 
     @Override
@@ -35,11 +32,13 @@ public class CalenderActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Toast.makeText(getApplicationContext(), "Info icon is selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Settings icon is selected", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_help:
-                Toast.makeText(getApplicationContext(), "Setting icon is selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Help icon is selected", Toast.LENGTH_SHORT).show();
                 return true;
+            case R.id.menu_item_share:
+                Toast.makeText(getApplicationContext(), "Share icon is selected", Toast.LENGTH_SHORT).show();
             default:
                 return super.onOptionsItemSelected(item);
         }
