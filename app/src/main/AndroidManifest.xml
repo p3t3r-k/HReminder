@@ -29,6 +29,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.hreminder.SettingsActivity" />
         </activity>
+
         <activity
             android:name=".SettingsActivity"
             android:exported="true">
@@ -36,6 +37,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.hreminder.SettingsActivity" />
         </activity>
+
         <activity
             android:name=".CalenderActivity"
             android:exported="true" />
