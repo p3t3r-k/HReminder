@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/calenderButton"
-                android:layout_toEndOf="@id/weightEdit"
+                android:layout_toEndOf="@+id/weightEdit"
                 android:padding="15dp"
                 android:text="@string/weightUnit" />
 
@@ -276,6 +276,8 @@
                     android:layout_weight="1"
                     android:text="@string/noRadio" />
             </RadioGroup>
+
+
 
 
         </RelativeLayout>

@@ -31,6 +31,8 @@
     <string name="birthdayInput">"__.__.____"</string>
     <string name="weightText">"Weight:"</string>
     <string name="weightUnit">"kg"</string>
+    <string name="heightText">"Height:"</string>
+    <string name="heightUnit">"cm"</string>
     <string name="predispos">"(genetic) predispositions"</string>
     <string name="cardiacDiseases">"cardiac diseases"</string>
     <string name="neurologicalDiseases">"neurological diseases"</string>

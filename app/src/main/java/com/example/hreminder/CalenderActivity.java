@@ -33,7 +33,7 @@ public class CalenderActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-               gotToSettings();
+                gotToSettings();
                 return true;
             case R.id.action_help:
                 Toast.makeText(getApplicationContext(), "Help icon is selected", Toast.LENGTH_SHORT).show();
@@ -52,7 +52,7 @@ public class CalenderActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void gotToSettings(){
+    public void gotToSettings() {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }

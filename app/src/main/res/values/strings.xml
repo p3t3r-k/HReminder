@@ -30,6 +30,8 @@
     <string name="birthdayInput">"__.__.____"</string>
     <string name="weightText">"Gewicht:"</string>
     <string name="weightUnit">"kg"</string>
+    <string name="heightText">"Größe:"</string>
+    <string name="heightUnit">"cm"</string>
     <string name="predispos">"(erbliche) Vorerkrankungen"</string>
     <string name="cardiacDiseases">"Herzerkrankungen"</string>
     <string name="neurologicalDiseases">"neurologische Erkrankungen"</string>
@@ -97,7 +99,7 @@
     <string name="changePINNew">"Geben Sie den neuen PIN ein:"</string>
     <string name="changePINValidateNew">"Wiederholen Sie den neuen PIN:"</string>
     <string name="changePINCommitButton">"PIN ändern"</string>
-    
+
     <!-- Actionbar -->
     <string name="actionBarSettings">"Einstellungen"</string>
     <string name="actionBarHelp">"Hilfe"</string>
