@@ -13,7 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
-        <activity android:name=".ChangeProfileActivity"></activity>
+
+
+        <activity android:name=".ChangeProfileActivity">
+            <!--
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.hreminder.CalenderActivity" />
+                -->
+        </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

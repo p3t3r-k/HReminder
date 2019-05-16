@@ -27,11 +27,19 @@ public class SettingsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onClickSwitchToChangeProfile(View view) {
+        Intent intent = new Intent(this, ChangeProfileActivity.class);
+        intent.putExtra("source", "SettingsActivity");
+        startActivity(intent);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+
                 NavUtils.navigateUpFromSameTask(this);
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

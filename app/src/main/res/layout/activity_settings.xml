@@ -58,4 +58,12 @@
         android:layout_below="@id/btnDelete"
         android:text="@string/about" />
 
+    <Button
+        android:id="@+id/btnChangeProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnAbout"
+        android:text="@string/changeProfile"
+        android:onClick="onClickSwitchToChangeProfile"/>
+
 </RelativeLayout>

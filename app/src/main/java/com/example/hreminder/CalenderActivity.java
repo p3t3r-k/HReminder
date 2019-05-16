@@ -47,8 +47,8 @@ public class CalenderActivity extends AppCompatActivity {
     }
 
     public void goToProfile() {
-        //userprofileactivity ist noch die falsche --> die neue muss noch gemacht werden
-        Intent intent = new Intent(this, UserProfilActivity.class);
+        Intent intent = new Intent(this, ChangeProfileActivity.class);
+        intent.putExtra("source","CalenderActivity");
         startActivity(intent);
     }
 

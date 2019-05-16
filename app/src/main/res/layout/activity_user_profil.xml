@@ -24,7 +24,7 @@
         android:layout_marginStart="7dp"
         android:layout_marginTop="30dp"
         android:layout_toEndOf="@id/userImage"
-        android:text="@string/createProfil" />
+        android:text="@string/createProfile" />
 
     <TextView
         android:id="@+id/instructionsText"
@@ -34,7 +34,7 @@
         android:layout_marginStart="7dp"
         android:layout_marginTop="15dp"
         android:layout_toEndOf="@id/userImage"
-        android:text="@string/instructionsProfil" />
+        android:text="@string/instructionsProfile" />
 
     <View
         android:id="@+id/divider"
@@ -48,7 +48,7 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/createProfilButton"
+        android:layout_above="@+id/createProfileButton"
         android:layout_below="@+id/divider"
         android:layout_marginTop="14dp">
 
@@ -283,12 +283,12 @@
 
 
     <Button
-        android:id="@+id/createProfilButton"
+        android:id="@+id/createProfileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/createProfilButton"
+        android:text="@string/createProfileButton"
         android:onClick="onClickSwitchToLastApp"/>
 
 </RelativeLayout>
