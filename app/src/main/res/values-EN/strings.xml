@@ -23,8 +23,8 @@
 
     <!--Strings fuer Userprofil-->
     <string name="app_name">HealthyReminder</string>
-    <string name="createProfil">"Create Userprofil:"</string>
-    <string name="instructionsProfil">"Put in your information."</string>
+    <string name="createProfile">"Create Userprofil:"</string>
+    <string name="instructionsProfile">"Put in your information."</string>
     <string name="femaleRadio">"female"</string>
     <string name="maleRadio">"male"</string>
     <string name="birthdayText">"Birthdate:"</string>
@@ -40,12 +40,16 @@
     <string name="skinDiseases">"skin diseases"</string>
     <string name="hearingImpairment">"hearing impairment"</string>
     <string name="eyeDisease">"eye diseases"</string>
-    <string name="createProfilButton">"Create profil"</string>
+    <string name="createProfileButton">"Create profil"</string>
     <string name="instructionsPredispos">"Choose your (genetic) predispositions:"</string>
     <string name="smoking">"Smoking?"</string>
     <string name="allergies">"Allergies?"</string>
     <string name="yesRadio">Yes</string>
     <string name="noRadio">No</string>
+
+    <!-- Change Profile Activity -->
+    <string name="changeDataButton">"Change data"</string>
+    <string name="changeProfileText">"Change userprofile data:"</string>
 
     <!--Last Appointments Activity -->
     <string name="lastAppointmentText">"Last appointments:"</string>
@@ -81,6 +85,7 @@
     <string name="datasecurity">"Datasecurity"</string>
     <string name="deleteProfil">"Delete profil"</string>
     <string name="about">"About"</string>
+    <string name="changeProfile">"Change Profile"</string>
 
     <!-- Calender Activity -->
     <string name="calenderHead">"Appointment-Recommendation"</string>
