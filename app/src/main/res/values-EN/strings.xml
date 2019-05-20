@@ -113,5 +113,7 @@
     <string name="actionBarHome">"Calenderview"</string>
     <string name="actionBarBack">"Back"</string>
     <string name="ActionBarChangeProfil">"Change Profile"</string>
+    <string name="actionBarMap">"Google Maps View"</string>
+    <string name="actionBarAppointments">"Enter last appointments"</string>
 
     </resources>

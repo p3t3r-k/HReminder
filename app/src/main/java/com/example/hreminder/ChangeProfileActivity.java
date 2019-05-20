@@ -28,7 +28,12 @@ public class ChangeProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Bundle extras = getIntent().getExtras();
-        callingActivity = extras.getString("source");
+        if (extras != null) {
+            callingActivity = extras.getString("source");
+        } else{
+            //kein Extra
+        }
+
     }
 
     @Override
@@ -51,16 +56,16 @@ public class ChangeProfileActivity extends AppCompatActivity {
                 goToHome();
                 return true;
             case android.R.id.home:
-
                 System.out.println(callingActivity);
                 if(callingActivity.equals("SettingsActivity")){
-
                     NavUtils.navigateUpTo(this, new Intent(this, SettingsActivity.class));
                 }else{
                     //zu Calender zurück
                     NavUtils.navigateUpTo(this,new Intent(this, CalenderActivity.class));
                 }
-
+                return true;
+            case R.id.action_appointments:
+                goToAppointments();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -79,6 +84,12 @@ public class ChangeProfileActivity extends AppCompatActivity {
 
     public void onClickSwitchToHome(View view) {
         Intent intent = new Intent(this, CalenderActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToAppointments() {
+        Intent intent = new Intent(this, LastAppointmentsActivity.class);
+        intent.putExtra("source", "ChangeProfileActivity");
         startActivity(intent);
     }
 }

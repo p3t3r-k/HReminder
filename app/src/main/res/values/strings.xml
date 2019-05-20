@@ -112,6 +112,8 @@
     <string name="actionBarHome">"Kalenderansicht"</string>
     <string name="actionBarBack">"Zurück"</string>
     <string name="ActionBarChangeProfil">"Profil ändern"</string>
+    <string name="actionBarMap">"Google Maps Ansicht"</string>
+    <string name="actionBarAppointments">"Vergangene Termine eintragen"</string>
 
 
 </resources>

@@ -30,6 +30,12 @@
                 app:showAsAction="always" />
 
             <item
+                android:id="@+id/action_appointments"
+                android:icon="@drawable/appointment_icon"
+                android:title="@string/actionBarAppointments"
+                app:showAsAction="always" />
+
+            <item
                 android:id="@+id/action_help"
                 android:icon="@android:drawable/ic_menu_help"
                 android:title="@string/actionBarHelp"

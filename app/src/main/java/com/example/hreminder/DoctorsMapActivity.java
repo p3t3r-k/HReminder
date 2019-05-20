@@ -3,7 +3,6 @@ package com.example.hreminder;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -34,9 +33,9 @@ public class DoctorsMapActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_back:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
+            //case R.id.action_back:
+             //   NavUtils.navigateUpFromSameTask(this);
+              //  return true;
             case R.id.action_settings:
                 gotToSettings();
                 return true;
@@ -45,6 +44,11 @@ public class DoctorsMapActivity extends AppCompatActivity {
                 return true;
             case R.id.action_home:
                 goToCalendar();
+            case android.R.id.home:
+                goToCalendar();
+                return true;
+            case R.id.action_appointments:
+                goToAppointments();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -59,6 +63,12 @@ public class DoctorsMapActivity extends AppCompatActivity {
 
     public void gotToSettings(){
         Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToAppointments() {
+        Intent intent = new Intent(this, LastAppointmentsActivity.class);
+        intent.putExtra("source", "DoctorsMapActivity");
         startActivity(intent);
     }
 

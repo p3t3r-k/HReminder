@@ -41,6 +41,11 @@ public class CalenderActivity extends AppCompatActivity {
             case R.id.action_changeProfile:
                 goToProfile();
                 return true;
+            case R.id.action_map:
+                goToMap();
+                return true;
+            case R.id.action_appointments:
+                goToAppointments();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -48,7 +53,7 @@ public class CalenderActivity extends AppCompatActivity {
 
     public void goToProfile() {
         Intent intent = new Intent(this, ChangeProfileActivity.class);
-        intent.putExtra("source","CalenderActivity");
+        intent.putExtra("source", "CalenderActivity");
         startActivity(intent);
     }
 
@@ -56,4 +61,18 @@ public class CalenderActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
+
+    public void goToMap() {
+        Intent intent = new Intent(this, DoctorsMapActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToAppointments() {
+        Intent intent = new Intent(this, LastAppointmentsActivity.class);
+        intent.putExtra("source", "CalenderActivity");
+        startActivity(intent);
+    }
+
 }
+
+
