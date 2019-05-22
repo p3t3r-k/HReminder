@@ -9,29 +9,31 @@ import android.widget.Toast;
 
 public class DatabaseHelp extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "User.db";
-    public static final String TABLE_NAME = "user_table";
-    public static final String COL_1 = "ID";
-    public static final String COL_2 = "Name";
-    public static final String COL_3 = "Password";
+    public static final String DATABASE_NAME = "HReminder.db";
+    public static final String TABLE_HReminder = "HReminder_table";
+    public static final String COL_ID = "ID";
+    public static final String COL_USERNAME = "name";
+    public static final String COL_PW = "password";
+
     private final Context context;
 
     public DatabaseHelp(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
-        this.context= context;
+        this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT,SURNAME TEXT,MARKS INTEGER)");
+        db.execSQL("create table " + TABLE_HReminder + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT(15) NOT NULL, password INTEGER(4) NOT NULL, fingerprint INTEGER(1) NOT NULL, gender INTEGER(1) NOT NULL, " +
+                "bday )");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HReminder);
         onCreate(db);
     }
-
+/*
     public boolean insertData(String name, String passwort) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -64,6 +66,6 @@ public class DatabaseHelp extends SQLiteOpenHelper {
     public Integer deleteData(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_NAME, "ID = ?", new String[]{id});
-    }
+    }*/
 
 }
