@@ -1,4 +1,4 @@
-package com.example.hreminder;
+package com.example.hreminder.Activities;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.example.hreminder.R;
 
 import static android.graphics.Color.parseColor;
 

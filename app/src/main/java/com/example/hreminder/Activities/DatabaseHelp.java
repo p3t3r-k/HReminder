@@ -1,4 +1,4 @@
-package com.example.hreminder;
+package com.example.hreminder.Activities;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 public class DatabaseHelp extends SQLiteOpenHelper {
+
 
     public static final String DATABASE_NAME = "HReminder.db";
     public static final String TABLE_HReminder = "HReminder_table";
@@ -66,6 +67,8 @@ public class DatabaseHelp extends SQLiteOpenHelper {
     public Integer deleteData(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_NAME, "ID = ?", new String[]{id});
-    }*/
+            }
+    */
+
 
 }

@@ -1,9 +1,11 @@
-package com.example.hreminder;
+package com.example.hreminder.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.hreminder.R;
 
 public class Fingerprint_login extends AppCompatActivity {
 
