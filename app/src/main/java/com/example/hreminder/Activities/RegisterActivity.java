@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.hreminder.Database.HRepository;
+import com.example.hreminder.Database.IDataSource;
 import com.example.hreminder.Local.CreateDatabase;
+import com.example.hreminder.Local.ReminderDAO;
 import com.example.hreminder.Local.ReminderDataSource;
 import com.example.hreminder.R;
 
@@ -19,7 +21,7 @@ public class RegisterActivity extends AppCompatActivity {
         private Button register;
 
         private CompositeDisposable compositeDisposable;
-        private HRepository repository;
+        private HRepository hRepository;
 
 
     @Override
@@ -31,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         //com.example.hreminder.Activities.Database
         CreateDatabase createDatabase = CreateDatabase.getInstance(this);
-        repository = HRepository.getInstance(ReminderDataSource.getInstance(createDatabase.ReminderDAO()));
+        hRepository = HRepository.getInstance(ReminderDataSource.getInstance(createDatabase.reminderDAO()));
 
     }
 

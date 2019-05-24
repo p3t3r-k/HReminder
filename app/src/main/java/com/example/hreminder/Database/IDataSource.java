@@ -15,5 +15,4 @@ public interface IDataSource {
     void deleteDB(Database... HReminder);
     void deleteAllDB();
 
-
 }
