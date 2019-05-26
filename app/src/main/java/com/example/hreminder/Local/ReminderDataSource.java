@@ -4,7 +4,7 @@ import com.example.hreminder.Activities.Database;
 
 import java.util.List;
 
-import com.example.hreminder.Activities.Database.IDataSource;
+import com.example.hreminder.Database.IDataSource;
 import io.reactivex.Flowable;
 
 public class ReminderDataSource implements IDataSource {

@@ -2,6 +2,7 @@ package com.example.hreminder.Activities;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.util.Date;
@@ -10,6 +11,7 @@ import io.reactivex.annotations.NonNull;
 
 @Entity(tableName = "HReminder")
 public class Database {
+
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
@@ -58,8 +60,23 @@ public class Database {
     @ColumnInfo(name = "allergy")
     private boolean allergy;
 
-    public Database() {
-
+    @Ignore
+    public Database(String username, int pin, boolean fingerprint, String gender, Date birthdate, float weight,
+                    boolean heart, boolean neuro, boolean ortho, boolean derma, boolean eyes, boolean ears, boolean smoke, boolean allergy) {
+        this.username = username;
+        this.pin = pin;
+        this.fingerprint = fingerprint;
+        this.gender = gender;
+        this.birthdate = birthdate;
+        this.weight = weight;
+        this.heart = heart;
+        this.neuro = neuro;
+        this.ortho = ortho;
+        this.derma = derma;
+        this.eyes = eyes;
+        this.ears = ears;
+        this.smoke = smoke;
+        this.allergy = allergy;
     }
 
     public int getId() {
