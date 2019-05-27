@@ -12,7 +12,7 @@ import io.reactivex.annotations.NonNull;
 
 @Entity(tableName = "HReminder")
 @TypeConverters(DateConverter.class)
-public class Database {
+public class HReminder {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -32,8 +32,6 @@ public class Database {
 
     @ColumnInfo(name = "pro_birthdate")
     private long birthdate;
-
-
 
     @ColumnInfo(name = "pro_weight")
     private float weight;
@@ -63,8 +61,8 @@ public class Database {
     private boolean allergy;
 
 
-    public Database(String username, int pin, boolean fingerprint, String gender, long birthdate, float weight,
-                    boolean heart, boolean neuro, boolean ortho, boolean derma, boolean eyes, boolean ears, boolean smoke, boolean allergy) {
+    public HReminder(String username, int pin, boolean fingerprint, String gender, long birthdate, float weight,
+                     boolean heart, boolean neuro, boolean ortho, boolean derma, boolean eyes, boolean ears, boolean smoke, boolean allergy) {
         this.username = username;
         this.pin = pin;
         this.fingerprint = fingerprint;

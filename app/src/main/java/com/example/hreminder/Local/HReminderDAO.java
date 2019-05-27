@@ -6,7 +6,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import com.example.hreminder.Activities.Database;
+import com.example.hreminder.Activities.HReminder;
 
 import java.util.List;
 
@@ -16,19 +16,19 @@ import io.reactivex.Flowable;
 public interface HReminderDAO {
 
     @Query("select * from HReminder where id=:userID")
-    Flowable<Database> getUserById(int userID);
+    Flowable<HReminder> getUserById(int userID);
 
     @Query("select * from HReminder")
-    Flowable<List<Database>> getAllUsers();
+    Flowable<List<HReminder>> getAllUsers();
 
     @Insert
-    void insertDB(Database... HReminder);
+    void insertDB(HReminder... HReminder);
 
     @Update
-    void updateDB(Database... HReminder);
+    void updateDB(HReminder... HReminder);
 
     @Delete
-    void deleteDB(Database... HReminder);
+    void deleteDB(HReminder... HReminder);
 
     @Query("delete from HReminder")
     void deleteAllDB();

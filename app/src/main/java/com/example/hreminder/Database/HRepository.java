@@ -1,6 +1,6 @@
 package com.example.hreminder.Database;
 
-import com.example.hreminder.Activities.Database;
+import com.example.hreminder.Activities.HReminder;
 
 import java.util.List;
 
@@ -24,27 +24,27 @@ public class HRepository implements IDataSource {
 
 
     @Override
-    public Flowable<Database> getUserById(int userID) {
+    public Flowable<HReminder> getUserById(int userID) {
         return mLocalDataSource.getUserById(userID);
     }
 
     @Override
-    public Flowable<List<Database>> getAllUsers() {
+    public Flowable<List<HReminder>> getAllUsers() {
         return mLocalDataSource.getAllUsers();
     }
 
     @Override
-    public void insertDB(Database... HReminder) {
+    public void insertDB(HReminder... HReminder) {
         mLocalDataSource.insertDB(HReminder);
     }
 
     @Override
-    public void updateDB(Database... HReminder) {
+    public void updateDB(HReminder... HReminder) {
         mLocalDataSource.updateDB(HReminder);
     }
 
     @Override
-    public void deleteDB(Database... HReminder) {
+    public void deleteDB(HReminder... HReminder) {
         mLocalDataSource.deleteDB(HReminder);
     }
 
