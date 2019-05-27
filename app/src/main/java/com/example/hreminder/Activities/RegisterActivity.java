@@ -7,13 +7,14 @@ import android.util.AndroidException;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.hreminder.Database.HRepository;
 import com.example.hreminder.Database.IDataSource;
 import com.example.hreminder.Local.CreateDatabase;
-import com.example.hreminder.Local.ReminderDAO;
+import com.example.hreminder.Local.HReminderDAO;
 import com.example.hreminder.Local.ReminderDataSource;
 import com.example.hreminder.R;
 
@@ -34,6 +35,12 @@ public class RegisterActivity extends AppCompatActivity {
 
     private ListView lst;
     private Button buttonRegister;
+    private EditText inputCreateUsername;
+    private EditText inputCreatePin;
+
+    String getcreatePin;
+    int createPin;
+    String createUsername;
 
     private CompositeDisposable compositeDisposable;
     private HRepository hRepository;
@@ -48,6 +55,12 @@ public class RegisterActivity extends AppCompatActivity {
 
         //lst = (ListView)findViewById(R.id.lst);
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
+        inputCreateUsername = (EditText) findViewById(R.id.inputCreateUsername);
+        createUsername = inputCreateUsername.getText().toString();
+        inputCreatePin = (EditText)findViewById(R.id.inputCreatePin);
+        getcreatePin = inputCreatePin.getText().toString();
+        createPin = Integer.parseInt(getcreatePin);
+
 
 
         compositeDisposable = new CompositeDisposable();
@@ -64,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Disposable disposable = Observable.create(new ObservableOnSubscribe<Object>() {
                     @Override
                     public void subscribe(ObservableEmitter<Object> e) throws Exception {
-                        Database database = new Database();
+                        Database database = new Database("name", 2312, true, "w", 10-10-2000 , 123,true, true, true, true, true,true, true, true);
                         hRepository.insertDB(database);
                         e.onComplete();
                     }

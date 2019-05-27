@@ -4,16 +4,16 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
 
 import java.util.Date;
 
 import io.reactivex.annotations.NonNull;
 
 @Entity(tableName = "HReminder")
+@TypeConverters(DateConverter.class)
 public class Database {
 
-
-    @NonNull
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int id;
@@ -31,7 +31,9 @@ public class Database {
     private String gender;
 
     @ColumnInfo(name = "pro_birthdate")
-    private Date birthdate;
+    private long birthdate;
+
+
 
     @ColumnInfo(name = "pro_weight")
     private float weight;
@@ -60,8 +62,8 @@ public class Database {
     @ColumnInfo(name = "allergy")
     private boolean allergy;
 
-    @Ignore
-    public Database(String username, int pin, boolean fingerprint, String gender, Date birthdate, float weight,
+
+    public Database(String username, int pin, boolean fingerprint, String gender, long birthdate, float weight,
                     boolean heart, boolean neuro, boolean ortho, boolean derma, boolean eyes, boolean ears, boolean smoke, boolean allergy) {
         this.username = username;
         this.pin = pin;
@@ -119,11 +121,11 @@ public class Database {
         this.gender = gender;
     }
 
-    public Date getBirthdate() {
+    public long getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(long birthdate) {
         this.birthdate = birthdate;
     }
 

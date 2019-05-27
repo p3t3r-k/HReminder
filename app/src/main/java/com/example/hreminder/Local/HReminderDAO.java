@@ -13,7 +13,7 @@ import java.util.List;
 import io.reactivex.Flowable;
 
 @Dao
-public interface ReminderDAO {
+public interface HReminderDAO {
 
     @Query("select * from HReminder where id=:userID")
     Flowable<Database> getUserById(int userID);
