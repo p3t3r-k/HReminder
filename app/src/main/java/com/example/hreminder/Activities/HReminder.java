@@ -1,18 +1,18 @@
 package com.example.hreminder.Activities;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.PrimaryKey;
-import android.arch.persistence.room.TypeConverters;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import io.reactivex.annotations.NonNull;
 
 @Entity(tableName = "HReminder")
-@TypeConverters(DateConverter.class)
-public class HReminder {
+
+public class HReminder implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -30,6 +30,7 @@ public class HReminder {
     @ColumnInfo(name = "pro_gender")
     private String gender;
 
+    @TypeConverters(DateConverter.class)
     @ColumnInfo(name = "pro_birthdate")
     private long birthdate;
 
