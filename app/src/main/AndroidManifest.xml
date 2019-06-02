@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -15,11 +17,11 @@
         android:theme="@style/Theme.AppCompat.Light">
 
 
-        <activity android:name=".ChangeProfileActivity">
+        <activity android:name=".Activities.ChangeProfileActivity">
             <!--
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.hreminder.CalenderActivity" />
+                android:value="com.example.hreminder.Activities.CalenderActivity" />
                 -->
         </activity>
 
@@ -31,40 +33,40 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".ChangePinActivity"
+            android:name=".Activities.ChangePinActivity"
             android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.hreminder.SettingsActivity" />
+                android:value="com.example.hreminder.Activities.SettingsActivity" />
         </activity>
 
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Activities.SettingsActivity"
             android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.hreminder.SettingsActivity" />
+                android:value="com.example.hreminder.Activities.SettingsActivity" />
         </activity>
 
         <activity
-            android:name=".CalenderActivity"
+            android:name=".Activities.CalenderActivity"
             android:exported="true" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Activities.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".DoctorsMapActivity"
+            android:name=".Activities.DoctorsMapActivity"
             android:exported="true" />
         <activity
-            android:name=".LastAppointmentsActivity"
+            android:name=".Activities.LastAppointmentsActivity"
             android:exported="true" />
         <activity
-            android:name=".UserProfilActivity"
+            android:name=".Activities.UserProfilActivity"
             android:exported="true" />
         <activity
-            android:name=".Fingerprint_login"
+            android:name=".Activities.Fingerprint_login"
             android:exported="true" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

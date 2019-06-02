@@ -1,39 +1,29 @@
-package com.example.hreminder;
+package com.example.hreminder.Activities;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
+
+import com.example.hreminder.R;
 
 import static android.graphics.Color.parseColor;
 
-public class ChangeProfileActivity extends AppCompatActivity {
-
-    private String callingActivity = "";
-
+public class DoctorsMapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_profile);
-
+        setContentView(R.layout.activity_doctors_map);
         ActionBar abar = getSupportActionBar();
         abar.setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            callingActivity = extras.getString("source");
-        } else{
-            //kein Extra
-        }
-
     }
 
     @Override
@@ -43,9 +33,13 @@ public class ChangeProfileActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_back:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
             case R.id.action_settings:
                 gotToSettings();
                 return true;
@@ -53,16 +47,9 @@ public class ChangeProfileActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Help icon is selected", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_home:
-                goToHome();
-                return true;
+                goToCalendar();
             case android.R.id.home:
-                System.out.println(callingActivity);
-                if(callingActivity.equals("SettingsActivity")){
-                    NavUtils.navigateUpTo(this, new Intent(this, SettingsActivity.class));
-                }else{
-                    //zu Calender zurück
-                    NavUtils.navigateUpTo(this,new Intent(this, CalenderActivity.class));
-                }
+                goToCalendar();
                 return true;
             case R.id.action_appointments:
                 goToAppointments();
@@ -72,24 +59,21 @@ public class ChangeProfileActivity extends AppCompatActivity {
         }
     }
 
-    public void gotToSettings() {
+
+    public void goToCalendar() {
+        Intent intent = new Intent(this, CalenderActivity.class);
+        startActivity(intent);
+    }
+
+    public void gotToSettings(){
         Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
-    }
-
-    public void goToHome(){
-        Intent intent = new Intent(this, CalenderActivity.class);
-        startActivity(intent);
-    }
-
-    public void onClickSwitchToHome(View view) {
-        Intent intent = new Intent(this, CalenderActivity.class);
         startActivity(intent);
     }
 
     public void goToAppointments() {
         Intent intent = new Intent(this, LastAppointmentsActivity.class);
-        intent.putExtra("source", "ChangeProfileActivity");
+        intent.putExtra("source", "DoctorsMapActivity");
         startActivity(intent);
     }
+
 }

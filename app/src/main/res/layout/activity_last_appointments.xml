@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="15dp"
     android:focusableInTouchMode="true"
-    tools:context=".LastAppointmentsActivity">
+    tools:context=".Activities.LastAppointmentsActivity">
 
     <ImageView
         android:id="@+id/calenderView"
