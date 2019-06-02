@@ -58,8 +58,6 @@ public class RegisterActivity extends AppCompatActivity {
         getcreatePin = inputCreatePin.getText().toString();
         createPin = Integer.parseInt(getcreatePin);
 
-
-
         compositeDisposable = new CompositeDisposable();
 
         //com.example.hreminder.Activities.HReminder

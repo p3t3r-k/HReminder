@@ -1,5 +1,6 @@
 package com.example.hreminder.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -7,12 +8,11 @@ import androidx.room.TypeConverters;
 
 import java.util.Date;
 
-import io.reactivex.annotations.NonNull;
-
 @Entity(tableName = "HReminder")
 @TypeConverters(DateConverter.class)
 public class HReminder {
 
+    @NonNull
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int id;
