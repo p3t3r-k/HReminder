@@ -10,7 +10,7 @@ import com.example.hreminder.Activities.HReminder;
 
 import static com.example.hreminder.Local.CreateDatabase.DATABASE_VERSION;
 
-@Database(entities = HReminder.class, version = DATABASE_VERSION)
+@Database(entities = HReminder.class, version = DATABASE_VERSION, exportSchema = false)
 public abstract class CreateDatabase extends RoomDatabase {
 
     public static final int DATABASE_VERSION = 1;

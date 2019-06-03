@@ -10,6 +10,12 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/action_map"
+        android:icon="@drawable/map"
+        android:title="@string/actionBarMap"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/action_options"
         android:icon="@drawable/baseline_more_vert_white_18dp"
         android:orderInCategory="101"
@@ -24,6 +30,12 @@
                 android:id="@+id/action_settings"
                 android:icon="@android:drawable/ic_menu_preferences"
                 android:title="@string/actionBarSettings"
+                app:showAsAction="always" />
+
+            <item
+                android:id="@+id/action_appointments"
+                android:icon="@drawable/appointment_icon"
+                android:title="@string/actionBarAppointments"
                 app:showAsAction="always" />
 
             <item
