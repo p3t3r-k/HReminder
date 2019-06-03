@@ -83,12 +83,12 @@ public class RegisterActivity extends AppCompatActivity {
                         .subscribe(new Consumer() {
                                        @Override
                                        public void accept(Object o) throws Exception {
-                                           Toast.makeText(RegisterActivity.this, "User added", Toast.LENGTH_SHORT).show();
+                                           Toast.makeText(RegisterActivity.this, "User added", Toast.LENGTH_LONG).show();
                                        }
                                    }, new Consumer<Throwable>() {
                                        @Override
                                        public void accept(Throwable throwable) throws Exception {
-                                           Toast.makeText(RegisterActivity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                                           Toast.makeText(RegisterActivity.this, "" + throwable.getMessage(), Toast.LENGTH_LONG).show();
                                        }
 
                                    }, new Action() {
