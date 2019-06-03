@@ -24,6 +24,15 @@ public class CalenderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calender);
         ActionBar abar = getSupportActionBar();
         abar.setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CalenderActivity.this, CalenderActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("EXIT", true);
+        startActivity(intent);
     }
 
     @Override
@@ -76,6 +85,7 @@ public class CalenderActivity extends AppCompatActivity {
         intent.putExtra("source", "CalenderActivity");
         startActivity(intent);
     }
+
 
 }
 

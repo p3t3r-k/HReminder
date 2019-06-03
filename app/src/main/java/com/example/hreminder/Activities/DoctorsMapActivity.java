@@ -62,6 +62,8 @@ public class DoctorsMapActivity extends AppCompatActivity {
 
     public void goToCalendar() {
         Intent intent = new Intent(this, CalenderActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("EXIT", true);
         startActivity(intent);
     }
 

@@ -46,7 +46,10 @@ public class LastAppointmentsActivity extends AppCompatActivity {
 
 
     public void onClickSwitchToCalenderAct(View view) {
-        Intent intent = new Intent(this, CalenderActivity.class); startActivity(intent);
+        Intent intent = new Intent(this, CalenderActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("EXIT", true);
+        startActivity(intent);
     }
 
     @Override

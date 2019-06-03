@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Disposable disposable = Observable.create(new ObservableOnSubscribe<Object>() {
                     @Override
                     public void subscribe(ObservableEmitter<Object> e) throws Exception {
-                        HReminder HReminder = new HReminder("name", 2312, true, "w", 10-10-2000 , 123,true, true, true, true, true,true, true, true);
+                        HReminder HReminder = new HReminder("name", 2312, true, "w", 0-2000 , 123,true, true, true, true, true,true, true, true);
                         hRepository.insertDB(HReminder);
                         e.onComplete();
                     }
@@ -104,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        //Use RxJava
+
         Disposable disposable = hRepository.getAllUsers()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
