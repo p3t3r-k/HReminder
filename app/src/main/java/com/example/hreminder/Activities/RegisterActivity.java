@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         createUsername = inputCreateUsername.getText().toString();
         inputCreatePin = (EditText)findViewById(R.id.inputCreatePin);
         getcreatePin = inputCreatePin.getText().toString();
-        createPin = Integer.parseInt(getcreatePin);
+//        createPin = Integer.parseInt(getcreatePin);
 
         compositeDisposable = new CompositeDisposable();
 
