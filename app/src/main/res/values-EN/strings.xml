@@ -16,8 +16,7 @@
 
     <!-- Fingerprint Activity -->
     <string name="fingerprintImage">"FingerprintImage"</string>
-    <string name="fingerprintQuestion1">"Wollen Sie den Fingerabrucksensor für"</string>
-    <string name="fingerprintQuestion2">"das Login verwenden?"</string>
+    <string name="fingerprintQuestion1">"Would you like to use your fingerprint for the log-in process?"</string>
     <string name="fingerprintButtonYes">"Yes"</string>
     <string name="fingerprintButtonSkip">"Skip"</string>
 

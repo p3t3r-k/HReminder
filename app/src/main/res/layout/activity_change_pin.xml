@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="15dp"
     tools:context=".Activities.ChangePinActivity">
 
     <LinearLayout
@@ -20,13 +21,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/changePINHeading"
-            android:textSize="35sp" />
+            android:textSize="35sp"
+            android:layout_marginBottom="50dp"/>
 
         <TextView
             android:id="@+id/textViewOldPIN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/changePINOld" />
+            android:text="@string/changePINOld"
+            android:layout_marginBottom="10dp"/>
 
         <EditText
             android:id="@+id/inputOldPin"
@@ -39,7 +42,8 @@
             android:id="@+id/textViewNewPin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/changePINNew" />
+            android:text="@string/changePINNew"
+            android:layout_marginBottom="10dp"/>
 
         <EditText
             android:id="@+id/inputNewPin"
@@ -52,18 +56,20 @@
             android:id="@+id/textViewValidatePIN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/changePINValidateNew" />
+            android:text="@string/changePINValidateNew"
+            android:layout_marginBottom="10dp"/>
 
         <EditText
             android:id="@+id/inputValidatePin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="numberPassword" />
+            android:inputType="numberPassword"
+            android:layout_marginBottom="40dp"/>
 
         <Button
             android:id="@+id/buttonChangePin"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/changePINCommitButton" />

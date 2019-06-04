@@ -4,21 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:focusableInTouchMode="true"
     tools:context=".Activities.CalenderActivity">
-
-    <TableLayout
-        android:id="@+id/tableLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
 
     <TextView
         android:id="@+id/textViewRecommendations"
@@ -27,56 +15,30 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/calenderHead"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tableLayout3"
-        app:layout_constraintTop_toTopOf="@+id/tableLayout3" />
-
-    <TextView
-        android:id="@+id/textViewOverview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="100dp"
-        android:text="@string/calenderOverview"
-        app:layout_constraintStart_toStartOf="@+id/tableLayout3"
-        app:layout_constraintTop_toTopOf="@+id/tableLayout3" />
-
-    <TextView
-        android:id="@+id/textViewAppointments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/calenderAppointments"
-        app:layout_constraintBottom_toTopOf="@+id/calendarView2"
-        app:layout_constraintStart_toStartOf="@+id/tableLayout3" />
-
-    <CalendarView
-        android:id="@+id/calendarView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="350dp"
-        android:layout_gravity="center"
-        app:layout_constraintStart_toStartOf="@+id/tableLayout3"
-        app:layout_constraintTop_toTopOf="@id/tableLayout3" />
+        android:textStyle="bold" />
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/textViewOverview"
+        android:layout_height="wrap_content"
         android:alwaysDrawnWithCache="true">
 
         <TableLayout
+            android:id="@+id/tableLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="100dp"
             android:orientation="horizontal"
             android:visibility="visible">
 
+            <TextView
+                android:id="@+id/textViewOverview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/calenderOverview" />
 
             <TableRow
                 android:id="@+id/row"
@@ -152,6 +114,23 @@
 
             </TableRow>
         </TableLayout>
+
     </ScrollView>
+
+    <TextView
+        android:id="@+id/textViewAppointments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/calendarView"
+        android:layout_alignStart="@id/textViewRecommendations"
+        android:layout_marginBottom="10dp"
+        android:text="@string/calenderAppointments" />
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp" />
+
 
 </RelativeLayout>
