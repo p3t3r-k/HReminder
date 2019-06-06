@@ -28,7 +28,7 @@ import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends BaseActitivty {
 
     private ListView lst;
     private Button buttonRegister;

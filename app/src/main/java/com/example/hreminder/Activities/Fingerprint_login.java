@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hreminder.R;
 
-public class Fingerprint_login extends AppCompatActivity {
+public class Fingerprint_login extends BaseActitivty {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

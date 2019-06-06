@@ -9,7 +9,7 @@
 
     <!-- Register Activity -->
     <string name="registerName">"Erstellen Sie einen Benutzernamen:"</string>
-    <string name="registerPIN">"Geben Sie einen PIN-Code ein:"</string>
+    <string name="registerPIN">"Geben Sie einen PIN-Code ein: (4-stellig)"</string>
     <string name="registerValidatePin">"Wiederholen Sie den Pin:"</string>
     <string name="registerButton">"Registrieren"</string>
 
@@ -84,6 +84,7 @@
     <string name="deleteProfil">"Profil löschen"</string>
     <string name="about">"Über"</string>
     <string name="changeProfile">"Profil ändern"</string>
+    <string name="changeLanguageDialog">"Wählen Sie die Sprache aus..."</string>
 
     <!-- Calender Activity -->
     <string name="calenderHead">"Termin-Empfehlungen"</string>
@@ -113,6 +114,7 @@
     <string name="ActionBarChangeProfil">"Profil ändern"</string>
     <string name="actionBarMap">"Google Maps Ansicht"</string>
     <string name="actionBarAppointments">"Vergangene Termine eintragen"</string>
+
 
 
 </resources>

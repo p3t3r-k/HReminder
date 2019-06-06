@@ -85,6 +85,7 @@
     <string name="deleteProfil">"Delete profil"</string>
     <string name="about">"About"</string>
     <string name="changeProfile">"Change Profile"</string>
+    <string name="changeLanguageDialog">"Choose Language..."</string>
 
     <!-- Calender Activity -->
     <string name="calenderHead">"Appointment-Recommendation"</string>

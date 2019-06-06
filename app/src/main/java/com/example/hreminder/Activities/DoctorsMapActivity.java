@@ -16,7 +16,7 @@ import com.example.hreminder.R;
 
 import static android.graphics.Color.parseColor;
 
-public class DoctorsMapActivity extends AppCompatActivity {
+public class DoctorsMapActivity extends BaseActitivty {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

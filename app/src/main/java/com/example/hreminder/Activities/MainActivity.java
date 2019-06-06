@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hreminder.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActitivty {
 
 
 

@@ -17,7 +17,7 @@ import com.example.hreminder.R;
 
 import static android.graphics.Color.parseColor;
 
-public class ChangeProfileActivity extends AppCompatActivity {
+public class ChangeProfileActivity extends BaseActitivty {
 
     private String callingActivity = "";
 
@@ -59,7 +59,6 @@ public class ChangeProfileActivity extends AppCompatActivity {
                 goToHome();
                 return true;
             case android.R.id.home:
-                System.out.println(callingActivity);
                 if(callingActivity.equals("SettingsActivity")){
                     NavUtils.navigateUpTo(this, new Intent(this, SettingsActivity.class));
                 }else{

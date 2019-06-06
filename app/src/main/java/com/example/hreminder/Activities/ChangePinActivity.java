@@ -12,7 +12,7 @@ import com.example.hreminder.R;
 
 import static android.graphics.Color.parseColor;
 
-public class ChangePinActivity extends AppCompatActivity {
+public class ChangePinActivity extends BaseActitivty {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

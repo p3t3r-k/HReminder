@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hreminder.R;
 
-public class UserProfilActivity extends AppCompatActivity {
+public class UserProfilActivity extends BaseActitivty {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

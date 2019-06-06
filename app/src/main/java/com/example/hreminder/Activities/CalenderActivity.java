@@ -11,12 +11,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 
 import com.example.hreminder.R;
 
 import static android.graphics.Color.parseColor;
 
-public class CalenderActivity extends AppCompatActivity {
+public class CalenderActivity extends BaseActitivty {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class CalenderActivity extends AppCompatActivity {
         menuinfl.inflate(R.menu.actionbar_calender, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -63,11 +65,13 @@ public class CalenderActivity extends AppCompatActivity {
 
     public void gotToSettings() {
         Intent intent = new Intent(this, SettingsActivity.class);
+        intent.putExtra("source", "CalenderActivity");
         startActivity(intent);
     }
 
     public void goToMap() {
         Intent intent = new Intent(this, DoctorsMapActivity.class);
+        intent.putExtra("source", "CalenderActivity");
         startActivity(intent);
     }
 
