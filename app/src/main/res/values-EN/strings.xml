@@ -13,6 +13,10 @@
     <string name="registerPIN">"Type in a PIN code:"</string>
     <string name="registerValidatePin">"Re-enter your PIN code:"</string>
     <string name="registerButton">"Register"</string>
+    <string name="ok">"Ok"</string>
+    <string name="createUsernameError">"Username can only consist of letters and digits!\nPlease do not use spaces."</string>
+    <string name="createPinError">"The PIN has to comprise of four digits."</string>
+    <string name="createPinMatchingError">"The two PINs have to match."</string>
 
     <!-- Fingerprint Activity -->
     <string name="fingerprintImage">"FingerprintImage"</string>

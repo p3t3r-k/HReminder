@@ -12,6 +12,10 @@
     <string name="registerPIN">"Geben Sie einen PIN-Code ein: (4-stellig)"</string>
     <string name="registerValidatePin">"Wiederholen Sie den Pin:"</string>
     <string name="registerButton">"Registrieren"</string>
+    <string name="ok">"Ok"</string>
+    <string name="createUsernameError">"Der Benutzername darf nur aus Buchstaben und Zahlen bestehen!\nBitte keine Leerzeichen verwenden."</string>
+    <string name="createPinError">"Der PIN muss aus vier Zahlen bestehen."</string>
+    <string name="createPinMatchingError">"Die beiden PINs müssen übereinstimmen."</string>
 
     <!-- Fingerprint Activity -->
     <string name="fingerprintImage">"FingerprintImage"</string>
@@ -114,6 +118,8 @@
     <string name="ActionBarChangeProfil">"Profil ändern"</string>
     <string name="actionBarMap">"Google Maps Ansicht"</string>
     <string name="actionBarAppointments">"Vergangene Termine eintragen"</string>
+
+
 
 
 

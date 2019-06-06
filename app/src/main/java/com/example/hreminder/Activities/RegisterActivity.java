@@ -1,5 +1,6 @@
 package com.example.hreminder.Activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hreminder.Database.HRepository;
@@ -16,7 +18,9 @@ import com.example.hreminder.Local.CreateDatabase;
 import com.example.hreminder.Local.ReminderDataSource;
 import com.example.hreminder.R;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -34,72 +38,56 @@ public class RegisterActivity extends BaseActitivty {
     private Button buttonRegister;
     private EditText inputCreateUsername;
     private EditText inputCreatePin;
+    private EditText inputValdiatePin;
 
-    String getcreatePin;
-    int createPin;
-    String createUsername;
+    private String getcreatePin;
+    private String getValidatePin;
+    private String getcreateUsername;
 
+    private boolean checkInput = false;
+
+    //Database
     private CompositeDisposable compositeDisposable;
     private HRepository hRepository;
 
-
+    //Adapter
     ArrayAdapter adapter;
+    List<HReminder> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        //lst = (ListView)findViewById(R.id.lst);
-        buttonRegister = (Button) findViewById(R.id.buttonRegister);
-        inputCreateUsername = (EditText) findViewById(R.id.inputCreateUsername);
-        createUsername = inputCreateUsername.getText().toString();
-        inputCreatePin = (EditText)findViewById(R.id.inputCreatePin);
-        getcreatePin = inputCreatePin.getText().toString();
-//        createPin = Integer.parseInt(getcreatePin);
 
+        //Init
         compositeDisposable = new CompositeDisposable();
 
-        //com.example.hreminder.Activities.HReminder
+        //Database
         CreateDatabase createDatabase = CreateDatabase.getInstance(this);
         hRepository = HRepository.getInstance(ReminderDataSource.getInstance(createDatabase.reminderDAO()));
 
-        loadData();
+        //Load all data from Database
+        //loadData();
 
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Disposable disposable = Observable.create(new ObservableOnSubscribe<Object>() {
-                    @Override
-                    public void subscribe(ObservableEmitter<Object> e) throws Exception {
-                        HReminder HReminder = new HReminder("name", 2312, true, "w", 10-10-2000 , 123,true, true, true, true, true,true, true, true);
-                        hRepository.insertDB(HReminder);
-                        e.onComplete();
-                    }
 
-                })
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeOn(Schedulers.io())
-                        .subscribe(new Consumer() {
-                                       @Override
-                                       public void accept(Object o) throws Exception {
-                                           Toast.makeText(RegisterActivity.this, "User added", Toast.LENGTH_LONG).show();
-                                       }
-                                   }, new Consumer<Throwable>() {
-                                       @Override
-                                       public void accept(Throwable throwable) throws Exception {
-                                           Toast.makeText(RegisterActivity.this, "" + throwable.getMessage(), Toast.LENGTH_LONG).show();
-                                       }
+    }
 
-                                   }, new Action() {
-                                       @Override
-                                       public void run() throws Exception {
-                                           loadData();
-                                       }
-                                   }
-                        );
-            }
-        });
+    private void saveData() {
+
+
+        Disposable disposable = Observable.create(emitter -> {
+            //getUserData();
+            HReminder hReminder = new HReminder(getcreateUsername, getcreatePin, false, "w", 10 - 10 - 2000, 123, false, false, false, false, false, false, false, false);
+
+            hRepository.insertDB(hReminder);
+            emitter.onComplete();
+        })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe((Consumer) o -> Toast.makeText(RegisterActivity.this, "user added", Toast.LENGTH_LONG).show(), throwable -> Toast.makeText(RegisterActivity.this, "" + throwable.getMessage(), Toast.LENGTH_LONG).show(), () -> loadData()
+
+                );
 
     }
 
@@ -108,30 +96,90 @@ public class RegisterActivity extends BaseActitivty {
         Disposable disposable = hRepository.getAllUsers()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Consumer<List<HReminder>>() {
-                    @Override
-                    public void accept(List<HReminder> databases) throws Exception {
-                        onGetAllUserSuccess(databases);
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        Toast.makeText(RegisterActivity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                .subscribe(databases -> onGetAllUserSuccess(databases), throwable -> Toast.makeText(RegisterActivity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show());
         compositeDisposable.add(disposable);
 
     }
 
-    private void onGetAllUserSuccess(List<HReminder> HReminders) {
+    private void getUserData() {
 
-        adapter.notifyDataSetChanged();
+        //get username
+        inputCreateUsername = (EditText) findViewById(R.id.inputCreateUsername);
+        getcreateUsername = inputCreateUsername.getText().toString();
+
+
+        //get PIN
+        inputCreatePin = (EditText) findViewById(R.id.inputCreatePin);
+        getcreatePin = inputCreatePin.getText().toString();
+
+        //get validate Pin
+        inputValdiatePin = (EditText) findViewById(R.id.inputValidatePin);
+        getValidatePin = inputValdiatePin.getText().toString();
+    }
+
+    private void onGetAllUserSuccess(List<HReminder> hReminders) {
+        //list.clear();
+        //list.addAll(hReminders);
+        //adapter.notifyDataSetChanged();
+    }
+
+    private void checkData() {
+
+        while (checkInput == false) {
+
+            final Pattern pattern = Pattern.compile("^[A-Za-z0-9]");
+            if (!pattern.matcher(getcreateUsername).matches()) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                builder.setMessage(R.string.createUsernameError);
+                builder.setPositiveButton(R.string.ok, (dialog, which) -> dialog.dismiss());
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+                //checkInput = false;
+            } else {
+                checkInput = true;
+
+            }
+
+
+            final Pattern pattern1 = Pattern.compile("[\\d]{4}");
+            if (!pattern1.matcher(getcreatePin).matches()) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                builder.setMessage(R.string.createPinError);
+                builder.setPositiveButton(R.string.ok, (dialog, which) -> dialog.dismiss());
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+                //checkInput = false;
+            } else if (getcreatePin.matches(getValidatePin)) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(RegisterActivity.this);
+                builder1.setMessage(R.string.createPinMatchingError);
+                builder1.setPositiveButton(R.string.ok, (dialog, which) -> dialog.dismiss());
+                AlertDialog alertDialog1 = builder1.create();
+                alertDialog1.show();
+                //checkInput = false;
+            } else {
+                checkInput = true;
+            }
+        }
 
     }
 
     public void onClickSwitchToFingerprint(View view) {
-        Intent intent = new Intent(this, Fingerprint_login.class);
-        startActivity(intent);
-        finish();
+
+        getUserData();
+        checkData();
+        if (checkInput) {
+            saveData();
+
+            Intent intent = new Intent(this, Fingerprint_login.class);
+            startActivity(intent);
+            finish();
+        } else {
+            while (!checkInput){
+                getUserData();
+                checkData();
+            }
+            //onClickSwitchToFingerprint(view);
+        }
+
     }
 }

@@ -21,7 +21,7 @@ public class HReminder {
     private String username;
 
     @ColumnInfo(name = "pin")
-    private int pin;
+    private String pin;
 
     @ColumnInfo(name = "fingerprint")
     private boolean fingerprint;
@@ -60,7 +60,7 @@ public class HReminder {
     private boolean allergy;
 
 
-    public HReminder(String username, int pin, boolean fingerprint, String gender, long birthdate, float weight,
+    public HReminder(String username, String pin, boolean fingerprint, String gender, long birthdate, float weight,
                      boolean heart, boolean neuro, boolean ortho, boolean derma, boolean eyes, boolean ears, boolean smoke, boolean allergy) {
         this.username = username;
         this.pin = pin;
@@ -94,11 +94,11 @@ public class HReminder {
         this.username = username;
     }
 
-    public int getPin() {
+    public String getPin() {
         return pin;
     }
 
-    public void setPin(int pin) {
+    public void setPin(String pin) {
         this.pin = pin;
     }
 
