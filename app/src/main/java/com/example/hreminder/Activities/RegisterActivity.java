@@ -3,6 +3,7 @@ package com.example.hreminder.Activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -45,6 +46,9 @@ public class RegisterActivity extends BaseActitivty {
     private String getcreateUsername;
 
     private boolean checkInput = false;
+    private boolean checkUsername = false;
+    private boolean checkPin = false;
+    private boolean checkPinMatch = false;
 
     //Database
     private CompositeDisposable compositeDisposable;
@@ -125,9 +129,7 @@ public class RegisterActivity extends BaseActitivty {
 
     private void checkData() {
 
-        while (checkInput == false) {
-
-            final Pattern pattern = Pattern.compile("^[A-Za-z0-9]");
+            final Pattern pattern = Pattern.compile("[A-Za-z0-9]*");
             if (!pattern.matcher(getcreateUsername).matches()) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                 builder.setMessage(R.string.createUsernameError);
@@ -136,7 +138,7 @@ public class RegisterActivity extends BaseActitivty {
                 alertDialog.show();
                 //checkInput = false;
             } else {
-                checkInput = true;
+                checkUsername = true;
 
             }
 
@@ -149,7 +151,10 @@ public class RegisterActivity extends BaseActitivty {
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
                 //checkInput = false;
-            } else if (getcreatePin.matches(getValidatePin)) {
+            } else {
+                checkPin = true;
+            }
+            if (!getcreatePin.matches(getValidatePin)) {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(RegisterActivity.this);
                 builder1.setMessage(R.string.createPinMatchingError);
                 builder1.setPositiveButton(R.string.ok, (dialog, which) -> dialog.dismiss());
@@ -157,11 +162,15 @@ public class RegisterActivity extends BaseActitivty {
                 alertDialog1.show();
                 //checkInput = false;
             } else {
+                checkPinMatch = true;
+            }
+            if (checkPinMatch && checkPin && checkUsername){
                 checkInput = true;
+            } else {
+                checkInput = false;
             }
         }
 
-    }
 
     public void onClickSwitchToFingerprint(View view) {
 
@@ -174,11 +183,8 @@ public class RegisterActivity extends BaseActitivty {
             startActivity(intent);
             finish();
         } else {
-            while (!checkInput){
-                getUserData();
-                checkData();
-            }
-            //onClickSwitchToFingerprint(view);
+            Log.e("ErrorRegister","Datenregisitrieung fehlgeschlagen.");
+            Toast.makeText(getApplicationContext(), "Registrierung fehlgeschlagen.", Toast.LENGTH_SHORT).show();
         }
 
     }
