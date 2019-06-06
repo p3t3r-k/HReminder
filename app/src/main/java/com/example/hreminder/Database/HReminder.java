@@ -1,4 +1,4 @@
-package com.example.hreminder.Activities;
+package com.example.hreminder.Database;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
-import java.util.Date;
+import com.example.hreminder.BehindTheScenes.DateConverter;
 
 @Entity(tableName = "HReminder")
 @TypeConverters(DateConverter.class)

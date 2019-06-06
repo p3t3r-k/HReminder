@@ -1,4 +1,4 @@
-package com.example.hreminder.Activities;
+package com.example.hreminder.BehindTheScenes;
 
 import android.content.Context;
 import android.content.SharedPreferences;

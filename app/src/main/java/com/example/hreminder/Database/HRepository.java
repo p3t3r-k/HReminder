@@ -1,7 +1,5 @@
 package com.example.hreminder.Database;
 
-import com.example.hreminder.Activities.HReminder;
-
 import java.util.List;
 
 import io.reactivex.Flowable;

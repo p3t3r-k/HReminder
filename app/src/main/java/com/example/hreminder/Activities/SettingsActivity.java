@@ -12,6 +12,9 @@ import android.widget.Button;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NavUtils;
+
+import com.example.hreminder.BehindTheScenes.BaseActitivty;
+import com.example.hreminder.BehindTheScenes.LocaleManager;
 import com.example.hreminder.R;
 import java.util.Locale;
 

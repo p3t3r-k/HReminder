@@ -1,6 +1,5 @@
 package com.example.hreminder.Activities;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,8 +11,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.hreminder.BehindTheScenes.BaseActitivty;
+import com.example.hreminder.Database.HReminder;
 import com.example.hreminder.Database.HRepository;
 import com.example.hreminder.Local.CreateDatabase;
 import com.example.hreminder.Local.ReminderDataSource;
@@ -24,12 +24,9 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 

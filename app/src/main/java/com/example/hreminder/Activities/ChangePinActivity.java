@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 
+import com.example.hreminder.BehindTheScenes.BaseActitivty;
 import com.example.hreminder.R;
 
 import static android.graphics.Color.parseColor;

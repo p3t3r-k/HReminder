@@ -4,8 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.hreminder.BehindTheScenes.BaseActitivty;
 import com.example.hreminder.R;
 
 public class Fingerprint_login extends BaseActitivty {

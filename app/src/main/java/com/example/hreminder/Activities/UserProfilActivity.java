@@ -4,8 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.hreminder.BehindTheScenes.BaseActitivty;
 import com.example.hreminder.R;
 
 public class UserProfilActivity extends BaseActitivty {
@@ -19,5 +18,7 @@ public class UserProfilActivity extends BaseActitivty {
     public void onClickSwitchToLastApp(View view) {
         Intent intent = new Intent(this, LastAppointmentsActivity.class); startActivity(intent);
     }
+
+
 
 }

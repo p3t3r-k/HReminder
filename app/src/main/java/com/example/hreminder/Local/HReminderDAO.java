@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.hreminder.Activities.HReminder;
+import com.example.hreminder.Database.HReminder;
 
 import java.util.List;
 

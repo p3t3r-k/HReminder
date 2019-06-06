@@ -1,6 +1,6 @@
 package com.example.hreminder.Local;
 
-import com.example.hreminder.Activities.HReminder;
+import com.example.hreminder.Database.HReminder;
 
 import java.util.List;
 
