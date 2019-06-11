@@ -82,7 +82,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewPIN"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:maxLength="4"/>
 
 
     <TextView
@@ -116,7 +117,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textviewValidatePin"
         app:layout_constraintVertical_bias="0.01999998"
         tools:layout_conversion_wrapHeight="118"
-        tools:layout_conversion_wrapWidth="560" />
+        tools:layout_conversion_wrapWidth="560"
+        android:maxLength="4"/>
 
     <Button
         android:id="@+id/buttonRegister"

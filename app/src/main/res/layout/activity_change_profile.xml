@@ -96,22 +96,15 @@
                 android:layout_toEndOf="@+id/birthdayText"
                 android:ems="6"
                 android:inputType="date"
+                android:focusable="false"
                 android:visibility="visible" />
-
-            <ImageButton
-                android:id="@+id/calenderButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radioGroup"
-                android:layout_toEndOf="@+id/dateEdit"
-                app:srcCompat="@drawable/calender" />
 
 
             <TextView
                 android:id="@+id/weightText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/calenderButton"
+                android:layout_below="@id/birthdayText"
                 android:padding="15dp"
                 android:text="@string/weightText" />
 
@@ -122,13 +115,13 @@
                 android:layout_below="@id/dateEdit"
                 android:layout_toEndOf="@id/birthdayText"
                 android:ems="3"
-                android:inputType="number" />
+                android:inputType="numberDecimal" />
 
             <TextView
                 android:id="@+id/weightUnit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/calenderButton"
+                android:layout_below="@id/birthdayText"
                 android:layout_toEndOf="@+id/weightEdit"
                 android:padding="15dp"
                 android:text="@string/weightUnit" />

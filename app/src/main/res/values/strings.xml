@@ -48,6 +48,7 @@
     <string name="allergies">"Allergien?"</string>
     <string name="yesRadio">Ja</string>
     <string name="noRadio">Nein</string>
+    <string name="inputError">"Alle Werte müssen ausgefüllt werden.</string>
 
     <!-- Change Profile Activity -->
     <string name="changeDataButton">"Daten ändern"</string>

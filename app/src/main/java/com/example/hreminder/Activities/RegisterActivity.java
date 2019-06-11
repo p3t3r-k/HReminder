@@ -11,11 +11,13 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.room.Room;
 
 import com.example.hreminder.BehindTheScenes.BaseActitivty;
 import com.example.hreminder.Database.HReminder;
 import com.example.hreminder.Database.HRepository;
 import com.example.hreminder.Local.CreateDatabase;
+import com.example.hreminder.Local.HReminderDAO;
 import com.example.hreminder.Local.ReminderDataSource;
 import com.example.hreminder.R;
 
@@ -63,10 +65,11 @@ public class RegisterActivity extends BaseActitivty {
 
         //Init
         compositeDisposable = new CompositeDisposable();
-
         //Database
         CreateDatabase createDatabase = CreateDatabase.getInstance(this);
         hRepository = HRepository.getInstance(ReminderDataSource.getInstance(createDatabase.reminderDAO()));
+
+
 
         //Load all data from Database
         //loadData();
@@ -80,7 +83,6 @@ public class RegisterActivity extends BaseActitivty {
         Disposable disposable = Observable.create(emitter -> {
             //getUserData();
             HReminder hReminder = new HReminder(getcreateUsername, getcreatePin, false, "w", 10 - 10 - 2000, 123, false, false, false, false, false, false, false, false);
-
             hRepository.insertDB(hReminder);
             emitter.onComplete();
         })
@@ -97,7 +99,7 @@ public class RegisterActivity extends BaseActitivty {
         Disposable disposable = hRepository.getAllUsers()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(databases -> onGetAllUserSuccess(databases), throwable -> Toast.makeText(RegisterActivity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show());
+                .subscribe(this::onGetAllUserSuccess, throwable -> Toast.makeText(RegisterActivity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show());
         compositeDisposable.add(disposable);
 
     }
@@ -133,7 +135,7 @@ public class RegisterActivity extends BaseActitivty {
                 builder.setPositiveButton(R.string.ok, (dialog, which) -> dialog.dismiss());
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
-                //checkInput = false;
+                checkUsername = false;
             } else {
                 checkUsername = true;
 
@@ -147,7 +149,7 @@ public class RegisterActivity extends BaseActitivty {
                 builder.setPositiveButton(R.string.ok, (dialog, which) -> dialog.dismiss());
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
-                //checkInput = false;
+                checkPin = false;
             } else {
                 checkPin = true;
             }
@@ -157,7 +159,7 @@ public class RegisterActivity extends BaseActitivty {
                 builder1.setPositiveButton(R.string.ok, (dialog, which) -> dialog.dismiss());
                 AlertDialog alertDialog1 = builder1.create();
                 alertDialog1.show();
-                //checkInput = false;
+                checkPinMatch = false;
             } else {
                 checkPinMatch = true;
             }
