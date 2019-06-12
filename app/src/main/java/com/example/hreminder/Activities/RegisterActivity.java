@@ -34,8 +34,6 @@ import io.reactivex.schedulers.Schedulers;
 
 public class RegisterActivity extends BaseActitivty {
 
-    private ListView lst;
-    private Button buttonRegister;
     private EditText inputCreateUsername;
     private EditText inputCreatePin;
     private EditText inputValdiatePin;
@@ -53,9 +51,9 @@ public class RegisterActivity extends BaseActitivty {
     private CompositeDisposable compositeDisposable;
     private HRepository hRepository;
 
-    //Adapter
-    ArrayAdapter adapter;
-    List<HReminder> list = new ArrayList<>();
+    //adapter
+    //ArrayAdapter adapter;
+    //List<HReminder> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +97,7 @@ public class RegisterActivity extends BaseActitivty {
         Disposable disposable = hRepository.getAllUsers()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(this::onGetAllUserSuccess, throwable -> Toast.makeText(RegisterActivity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show());
+                .subscribe(hReminders -> onGetAllUserSuccess(hReminders), throwable -> Toast.makeText(RegisterActivity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show());
         compositeDisposable.add(disposable);
 
     }
@@ -120,7 +118,7 @@ public class RegisterActivity extends BaseActitivty {
         getValidatePin = inputValdiatePin.getText().toString();
     }
 
-    private void onGetAllUserSuccess(List<HReminder> hReminders) {
+    private void onGetAllUserSuccess(HReminder hReminders) {
         //list.clear();
         //list.addAll(hReminders);
         //adapter.notifyDataSetChanged();

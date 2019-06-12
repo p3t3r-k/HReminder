@@ -29,7 +29,7 @@ public class ReminderDataSource implements IDataSource {
     }
 
     @Override
-    public Flowable<List<HReminder>> getAllUsers() {
+    public Flowable<HReminder> getAllUsers() {
         return remDAO.getAllUsers();
     }
 

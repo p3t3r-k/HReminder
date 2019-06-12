@@ -18,8 +18,11 @@ public interface HReminderDAO {
     @Query("select * from HReminder where id=:userID")
     Flowable<HReminder> getUserById(int userID);
 
+    @Query("select * from HReminder where username=:username")
+    Flowable<HReminder> getUserByName(String username);
+
     @Query("select * from HReminder")
-    Flowable<List<HReminder>> getAllUsers();
+    Flowable<HReminder> getAllUsers();
 
     @Insert
     void insertDB(HReminder... HReminder);

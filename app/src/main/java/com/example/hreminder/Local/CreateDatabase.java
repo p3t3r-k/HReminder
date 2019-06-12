@@ -13,9 +13,9 @@ import static com.example.hreminder.Local.CreateDatabase.DATABASE_VERSION;
 @Database(entities = HReminder.class, version = DATABASE_VERSION, exportSchema = false)
 public abstract class CreateDatabase extends RoomDatabase {
 
+
     public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "APP-com.example.hreminder.Database.HReminder-Room";
-
 
 
     private static CreateDatabase mInstance;

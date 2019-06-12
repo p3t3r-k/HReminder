@@ -20,13 +20,13 @@
 
     <!-- Fingerprint Activity -->
     <string name="fingerprintImage">"FingerprintImage"</string>
-    <string name="fingerprintQuestion1">"Would you like to use your fingerprint for the log-in process?"</string>
+    <string name="fingerprintQuestion1">"Would you like to use your fingerprint\nfor the log-in process?"</string>
     <string name="fingerprintButtonYes">"Yes"</string>
     <string name="fingerprintButtonSkip">"Skip"</string>
 
     <!--Strings fuer Userprofil-->
     <string name="app_name">HealthyReminder</string>
-    <string name="createProfile">"Create Userprofil:"</string>
+    <string name="createProfile">"Create Userprofile:"</string>
     <string name="instructionsProfile">"Put in your information."</string>
     <string name="femaleRadio">"female"</string>
     <string name="maleRadio">"male"</string>
@@ -43,7 +43,7 @@
     <string name="skinDiseases">"skin diseases"</string>
     <string name="hearingImpairment">"hearing impairment"</string>
     <string name="eyeDisease">"eye diseases"</string>
-    <string name="createProfileButton">"Create profil"</string>
+    <string name="createProfileButton">"Create profile"</string>
     <string name="instructionsPredispos">"Choose your (genetic) predispositions:"</string>
     <string name="smoking">"Smoking?"</string>
     <string name="allergies">"Allergies?"</string>

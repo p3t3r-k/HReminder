@@ -27,7 +27,7 @@ public class HRepository implements IDataSource {
     }
 
     @Override
-    public Flowable<List<HReminder>> getAllUsers() {
+    public Flowable<HReminder> getAllUsers() {
         return mLocalDataSource.getAllUsers();
     }
 

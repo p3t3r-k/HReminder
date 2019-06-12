@@ -17,7 +17,8 @@
     <string name="createPinError">"Der PIN muss aus vier Zahlen bestehen."</string>
     <string name="createPinMatchingError">"Die beiden PINs müssen übereinstimmen."</string>
 
-    <!-- Fingerprint Activity -->
+    <!-- Fingerprint Activi
+    ty -->
     <string name="fingerprintImage">"FingerprintImage"</string>
     <string name="fingerprintQuestion1">"Möchten Sie Ihren Fingerabdruck \nzum Einloggen verwenden?"</string>
     <string name="fingerprintButtonYes">"Ja"</string>

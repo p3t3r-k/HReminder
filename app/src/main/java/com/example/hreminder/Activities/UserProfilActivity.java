@@ -133,9 +133,9 @@ public class UserProfilActivity extends BaseActitivty {
         compositeDisposable.add(disposable);
     }
 
-    private void onGetAllUserSuccess(List<HReminder> hReminders) {
-        list.clear();
-        list.addAll(hReminders);
+    private void onGetAllUserSuccess(HReminder hReminders) {
+        //list.clear();
+        //list.addAll(hReminders);
         adapter.notifyDataSetChanged();
     }
 
