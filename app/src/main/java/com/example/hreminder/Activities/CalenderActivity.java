@@ -12,11 +12,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 
 import com.example.hreminder.BehindTheScenes.BaseActitivty;
+import com.example.hreminder.BehindTheScenes.Session;
 import com.example.hreminder.R;
 
 import static android.graphics.Color.parseColor;
 
 public class CalenderActivity extends BaseActitivty {
+
+    private Session session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,12 @@ public class CalenderActivity extends BaseActitivty {
         setContentView(R.layout.activity_calender);
         ActionBar abar = getSupportActionBar();
         abar.setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
+
+        session = new Session(this);
+        if(!session.loggedin()){
+            logout();
+        }
+
     }
 
     @Override
@@ -78,6 +87,12 @@ public class CalenderActivity extends BaseActitivty {
         Intent intent = new Intent(this, LastAppointmentsActivity.class);
         intent.putExtra("source", "CalenderActivity");
         startActivity(intent);
+    }
+
+    private void logout(){
+        session.setLoggedin(false);
+        finish();
+        startActivity(new Intent(CalenderActivity.this, MainActivity.class));
     }
 
 }

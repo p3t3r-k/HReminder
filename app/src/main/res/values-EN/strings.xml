@@ -7,6 +7,7 @@
     <string name="loginPIN">"Type in your PIN code"</string>
     <string name="loginButton">"Sign in"</string>
     <string name="registerNewButton">"New? Register now!"</string>
+    <string name="loginError">"Username or PIN is incorrect/not registered!"</string>
 
     <!-- Register Activity -->
     <string name="registerName">"Define an username:"</string>

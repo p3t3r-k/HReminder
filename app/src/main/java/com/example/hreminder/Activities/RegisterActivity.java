@@ -1,6 +1,7 @@
 package com.example.hreminder.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.room.Room;
 
 import com.example.hreminder.BehindTheScenes.BaseActitivty;
+import com.example.hreminder.Database.DbHelper;
 import com.example.hreminder.Database.HReminder;
 import com.example.hreminder.Database.HRepository;
 import com.example.hreminder.Local.CreateDatabase;
@@ -42,6 +44,8 @@ public class RegisterActivity extends BaseActitivty {
     private String getValidatePin;
     private String getcreateUsername;
 
+    //Button btnRegister = (Button) findViewById(R.id.buttonRegister);
+
     private boolean checkInput = false;
     private boolean checkUsername = false;
     private boolean checkPin = false;
@@ -50,6 +54,8 @@ public class RegisterActivity extends BaseActitivty {
     //Database
     private CompositeDisposable compositeDisposable;
     private HRepository hRepository;
+
+    private DbHelper db;
 
     //adapter
     //ArrayAdapter adapter;
@@ -60,13 +66,14 @@ public class RegisterActivity extends BaseActitivty {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        db = new DbHelper(this);
+
 
         //Init
-        compositeDisposable = new CompositeDisposable();
+        //compositeDisposable = new CompositeDisposable();
         //Database
         CreateDatabase createDatabase = CreateDatabase.getInstance(this);
         hRepository = HRepository.getInstance(ReminderDataSource.getInstance(createDatabase.reminderDAO()));
-
 
 
         //Load all data from Database
@@ -77,7 +84,7 @@ public class RegisterActivity extends BaseActitivty {
 
     private void saveData() {
 
-
+/*
         Disposable disposable = Observable.create(emitter -> {
             //getUserData();
             HReminder hReminder = new HReminder(getcreateUsername, getcreatePin, false, "w", 10 - 10 - 2000, 123, false, false, false, false, false, false, false, false);
@@ -89,9 +96,18 @@ public class RegisterActivity extends BaseActitivty {
                 .subscribe((Consumer) o -> Toast.makeText(RegisterActivity.this, "user added", Toast.LENGTH_LONG).show(), throwable -> Toast.makeText(RegisterActivity.this, "" + throwable.getMessage(), Toast.LENGTH_LONG).show(), () -> loadData()
 
                 );
+*/
+
+        SharedPreferences preferences = getSharedPreferences("MYPREFS", MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString(getcreateUsername + getcreatePin, getcreateUsername + getcreatePin);
+        editor.apply();
 
     }
 
+    /*
     private void loadData() {
         //Use RxJava
         Disposable disposable = hRepository.getAllUsers()
@@ -101,6 +117,7 @@ public class RegisterActivity extends BaseActitivty {
         compositeDisposable.add(disposable);
 
     }
+*/
 
     private void getUserData() {
 
@@ -116,6 +133,12 @@ public class RegisterActivity extends BaseActitivty {
         //get validate Pin
         inputValdiatePin = (EditText) findViewById(R.id.inputValidatePin);
         getValidatePin = inputValdiatePin.getText().toString();
+
+
+    }
+
+    private void displayToast(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     private void onGetAllUserSuccess(HReminder hReminders) {
@@ -125,6 +148,10 @@ public class RegisterActivity extends BaseActitivty {
     }
 
     private void checkData() {
+
+        if (getcreateUsername.isEmpty() && getcreatePin.isEmpty()) {
+            displayToast("Username/password field empty");
+        } else {
 
             final Pattern pattern = Pattern.compile("[A-Za-z0-9]*");
             if (!pattern.matcher(getcreateUsername).matches()) {
@@ -136,9 +163,7 @@ public class RegisterActivity extends BaseActitivty {
                 checkUsername = false;
             } else {
                 checkUsername = true;
-
             }
-
 
             final Pattern pattern1 = Pattern.compile("[\\d]{4}");
             if (!pattern1.matcher(getcreatePin).matches()) {
@@ -151,6 +176,7 @@ public class RegisterActivity extends BaseActitivty {
             } else {
                 checkPin = true;
             }
+
             if (!getcreatePin.matches(getValidatePin)) {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(RegisterActivity.this);
                 builder1.setMessage(R.string.createPinMatchingError);
@@ -161,12 +187,15 @@ public class RegisterActivity extends BaseActitivty {
             } else {
                 checkPinMatch = true;
             }
-            if (checkPinMatch && checkPin && checkUsername){
+
+            if (checkPinMatch && checkPin && checkUsername) {
                 checkInput = true;
             } else {
                 checkInput = false;
             }
         }
+
+    }
 
 
     public void onClickSwitchToFingerprint(View view) {
@@ -174,13 +203,16 @@ public class RegisterActivity extends BaseActitivty {
         getUserData();
         checkData();
         if (checkInput) {
-            saveData();
+
+            db.addUser(getcreateUsername, getcreatePin);
+
+            //saveData();
 
             Intent intent = new Intent(this, Fingerprint_login.class);
             startActivity(intent);
             finish();
         } else {
-            Log.e("ErrorRegister","Datenregisitrieung fehlgeschlagen.");
+            Log.e("ErrorRegister", "Datenregisitrieung fehlgeschlagen.");
             Toast.makeText(getApplicationContext(), "Registrierung fehlgeschlagen.", Toast.LENGTH_SHORT).show();
         }
 

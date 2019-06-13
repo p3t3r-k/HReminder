@@ -46,7 +46,8 @@ public class LastAppointmentsActivity extends BaseActitivty {
 
 
     public void onClickSwitchToCalenderAct(View view) {
-        Intent intent = new Intent(this, CalenderActivity.class); startActivity(intent);
+        Intent intent = new Intent(this, CalenderActivity.class);
+        startActivity(intent);
     }
 
     @Override

@@ -15,6 +15,7 @@ import androidx.core.app.NavUtils;
 
 import com.example.hreminder.BehindTheScenes.BaseActitivty;
 import com.example.hreminder.BehindTheScenes.LocaleManager;
+import com.example.hreminder.BehindTheScenes.Session;
 import com.example.hreminder.R;
 import java.util.Locale;
 
@@ -24,6 +25,8 @@ import static android.content.pm.PackageManager.GET_META_DATA;
 public class SettingsActivity extends BaseActitivty {
 
     String callingActivity;
+
+    private Session session;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class SettingsActivity extends BaseActitivty {
         abar.setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        session = new Session(this);
 
         onClickChangeLanguage();
 
@@ -44,6 +48,8 @@ public class SettingsActivity extends BaseActitivty {
         } else{
             //kein Extra
         }
+
+
     }
 
 
@@ -111,6 +117,16 @@ public class SettingsActivity extends BaseActitivty {
         Intent intent = new Intent(this, ChangeProfileActivity.class);
         intent.putExtra("source", "SettingsActivity");
         startActivity(intent);
+    }
+
+    public void onClickLogout(View view){
+        logout();
+    }
+
+    private void logout(){
+        session.setLoggedin(false);
+        finish();
+        startActivity(new Intent(SettingsActivity.this, MainActivity.class));
     }
 
 

@@ -6,6 +6,7 @@
     <string name="loginPIN">"Geben Sie Ihren PIN ein:"</string>
     <string name="loginButton">"Anmelden"</string>
     <string name="registerNewButton">"Neu hier? Jetzt registrieren!"</string>
+    <string name="loginError">"Username oder PIN sind falsch/nicht registriert!"</string>
 
     <!-- Register Activity -->
     <string name="registerName">"Erstellen Sie einen Benutzernamen:"</string>
@@ -17,8 +18,7 @@
     <string name="createPinError">"Der PIN muss aus vier Zahlen bestehen."</string>
     <string name="createPinMatchingError">"Die beiden PINs müssen übereinstimmen."</string>
 
-    <!-- Fingerprint Activi
-    ty -->
+    <!-- Fingerprint Activity -->
     <string name="fingerprintImage">"FingerprintImage"</string>
     <string name="fingerprintQuestion1">"Möchten Sie Ihren Fingerabdruck \nzum Einloggen verwenden?"</string>
     <string name="fingerprintButtonYes">"Ja"</string>
@@ -120,9 +120,6 @@
     <string name="ActionBarChangeProfil">"Profil ändern"</string>
     <string name="actionBarMap">"Google Maps Ansicht"</string>
     <string name="actionBarAppointments">"Vergangene Termine eintragen"</string>
-
-
-
 
 
 </resources>
