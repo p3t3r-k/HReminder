@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -31,6 +32,7 @@ public class MainActivity extends BaseActitivty {
 
     private DbHelper db;
     private Session session;
+    private ImageView fingerprintView;
 
 
     @Override
@@ -96,6 +98,12 @@ public class MainActivity extends BaseActitivty {
 
     public void onClickSwitchToRegister(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickPromptFingerprint(View view){
+        //Fingerprint Abfrage starten
+        Intent intent = new Intent(this,FingerprintPrActivity.class);
         startActivity(intent);
     }
 

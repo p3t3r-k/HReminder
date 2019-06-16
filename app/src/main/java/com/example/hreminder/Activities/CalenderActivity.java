@@ -28,10 +28,11 @@ public class CalenderActivity extends BaseActitivty {
         ActionBar abar = getSupportActionBar();
         abar.setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
 
-        session = new Session(this);
+     /*   session = new Session(this);
         if(!session.loggedin()){
             logout();
         }
+        */
 
     }
 

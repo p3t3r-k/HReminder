@@ -122,4 +122,19 @@
     <string name="actionBarMap">"Google Maps View"</string>
     <string name="actionBarAppointments">"Enter last appointments"</string>
 
+    <!-- Fingerprint Prompt Acitivity -->
+    <string name="fingerprintTitle">"Fingerprint Authentication"</string>
+    <string name="fingerprintInstruc">"Place your fingertip on the touch sensor\n to verify your identity."</string>
+    <string name="success">"Login successful."</string>
+    <string name="fail">"Login failed."</string>
+    <string name="failInstruc">"Make sure to cover the whole touch sensor."</string>
+    <string name="noHardware">Your device does not support fingerprint authentication</string>
+    <string name="noPermission">"Please enable the fingerprint permission"</string>
+    <string name="noFingerprint">"No fingerprint configured. Please register at least one fingerprint in your device's Settings"</string>
+    <string name="noLockscreen">"Please enable lockscreen security in your device's Settings"</string>
+    <string name="authentHelp">"Authentication Help:"</string>
+    <string name="notRegistered">"You are not registered yet!\nPlease do that before logging in."</string>
+
+
+
     </resources>

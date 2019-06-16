@@ -69,7 +69,24 @@ public class DbHelper extends SQLiteOpenHelper {
         // Move to first row
         cursor.moveToFirst();
         if (cursor.getCount() > 0) {
+            cursor.close();
+            db.close();
+            return true;
+        }
+        cursor.close();
+        db.close();
 
+        return false;
+    }
+
+    public boolean getAnyUser(){
+        String selectQuery = "SELECT * FROM " + USER_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery,null);
+        cursor.moveToFirst();
+        if (cursor.getCount() > 0){
+            cursor.close();
+            db.close();
             return true;
         }
         cursor.close();

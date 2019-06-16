@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:orientation="horizontal"
             android:visibility="visible">
 
@@ -117,6 +117,13 @@
 
     </ScrollView>
 
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scrollView"
+        android:layout_marginTop="20dp" />
+
     <TextView
         android:id="@+id/textViewAppointments"
         android:layout_width="wrap_content"
@@ -126,11 +133,7 @@
         android:layout_marginBottom="10dp"
         android:text="@string/calenderAppointments" />
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="350dp" />
+
 
 
 </RelativeLayout>

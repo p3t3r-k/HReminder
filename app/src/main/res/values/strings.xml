@@ -120,6 +120,19 @@
     <string name="ActionBarChangeProfil">"Profil ändern"</string>
     <string name="actionBarMap">"Google Maps Ansicht"</string>
     <string name="actionBarAppointments">"Vergangene Termine eintragen"</string>
+    
+    <!-- Fingerprint Prompt Acitivity -->
+    <string name="fingerprintTitle">"Fingerprint Authentifizierung"</string>
+    <string name="fingerprintInstruc">"Legen Sie den Finger auf den Touchsensor\n um das Login durchzuführen."</string>
+    <string name="success">"Login erfolgreich."</string>
+    <string name="fail">"Login fehlgeschlagen."</string>
+    <string name="failInstruc">"Legen Sie Ihren Finger zentral auf den Sensor."</string>
+    <string name="noHardware">Ihr Gerät besitzt keinen Fingerprint Sensor.</string>
+    <string name="noPermission">"Bitte erlauben Sie die Touchsensor Nutzung."</string>
+    <string name="noFingerprint">"Kein Finger eingespeichert. Sie müssen mindestens einen Fingerabdruck in den Einstellungen des Gerätes registrieren."</string>
+    <string name="noLockscreen">"Bitte aktivieren Sie eine Verschlüsselung für den Sperrbildschirm."</string>
+    <string name="authentHelp">"Authentifizierung Hilfe:"</string>
+    <string name="notRegistered">"Sie sind noch nicht registriert!\nBitte registrieren sie sich zuerst."</string>
 
 
 </resources>

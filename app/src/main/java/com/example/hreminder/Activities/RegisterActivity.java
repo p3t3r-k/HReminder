@@ -52,8 +52,8 @@ public class RegisterActivity extends BaseActitivty {
     private boolean checkPinMatch = false;
 
     //Database
-    private CompositeDisposable compositeDisposable;
-    private HRepository hRepository;
+    public CompositeDisposable compositeDisposable;
+    public HRepository hRepository;
 
     private DbHelper db;
 
