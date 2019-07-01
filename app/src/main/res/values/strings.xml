@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Login Activity -->
     <string name="logo">"Logo"</string>
@@ -6,7 +6,7 @@
     <string name="loginPIN">"Geben Sie Ihren PIN ein:"</string>
     <string name="loginButton">"Anmelden"</string>
     <string name="registerNewButton">"Neu hier? Jetzt registrieren!"</string>
-    <string name="loginError">"Username oder PIN sind falsch/nicht registriert!"</string>
+    <string name="loginError" tools:ignore="MissingTranslation">"Username oder PIN sind falsch/nicht registriert!"</string>
 
     <!-- Register Activity -->
     <string name="registerName">"Erstellen Sie einen Benutzernamen:"</string>

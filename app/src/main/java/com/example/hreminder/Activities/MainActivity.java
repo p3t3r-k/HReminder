@@ -24,9 +24,6 @@ public class MainActivity extends BaseActitivty {
 
     //private static CreateDatabase mDB;
 
-    private EditText getLoginUsername;
-    private EditText getLoginPin;
-
     private String checkLoginUsername;
     private String checkLoginPin;
 
@@ -58,10 +55,10 @@ public class MainActivity extends BaseActitivty {
 
     private void login() {
 
-        getLoginUsername = findViewById(R.id.inputUsername);
+        EditText getLoginUsername = findViewById(R.id.inputUsername);
         checkLoginUsername = getLoginUsername.getText().toString();
 
-        getLoginPin = findViewById(R.id.inputPin);
+        EditText getLoginPin = findViewById(R.id.inputPin);
         checkLoginPin = getLoginPin.getText().toString();
 
 
