@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 
 import com.example.hreminder.BehindTheScenes.BaseActitivty;
+import com.example.hreminder.BehindTheScenes.LastUser;
 import com.example.hreminder.BehindTheScenes.Session;
 import com.example.hreminder.Database.DbHelper;
 import com.example.hreminder.Database.HReminder;
@@ -21,15 +22,18 @@ import io.reactivex.Flowable;
 
 public class MainActivity extends BaseActitivty {
 
+    private EditText getLoginUsername;
+    private EditText getLoginPin;
 
-    //private static CreateDatabase mDB;
+    private EditText userNameField;
 
     private String checkLoginUsername;
     private String checkLoginPin;
 
+    private String lastUserID;
+
     private DbHelper db;
     private Session session;
-    private ImageView fingerprintView;
 
 
     @Override
@@ -40,18 +44,19 @@ public class MainActivity extends BaseActitivty {
         db = new DbHelper(this);
         session = new Session(this);
 
-        if(session.loggedin()){
+        if (session.loggedin()) {
             startActivity(new Intent(MainActivity.this, CalenderActivity.class));
             finish();
         }
+
+
+   /*   if (db.getLastUserID() != null){
+            lastUserID = db.getLastUserID();
+            userNameField = findViewById(R.id.inputUsername);
+            userNameField.setText(db.getUsernameByID(idTest));
+        }*/
+
     }
-
-    //private void fetchData() {
-
-    //Flowable loginUser = mDB.reminderDAO().getAllUsers();
-
-
-    //}
 
     private void login() {
 
@@ -61,24 +66,23 @@ public class MainActivity extends BaseActitivty {
         EditText getLoginPin = findViewById(R.id.inputPin);
         checkLoginPin = getLoginPin.getText().toString();
 
-
-
-/*
-        SharedPreferences preferences = getSharedPreferences("MYPREFS", MODE_PRIVATE);
-
-        String userDetails = preferences.getString(checkLoginUsername + checkLoginPin, "incorrect");
-
-        SharedPreferences.Editor editor = preferences.edit();
-*/
     }
+
 
 
     public void onClickSwitchToCalender(View view) {
 
         login();
-        //fetchData();
-
         if (db.getUser(checkLoginUsername, checkLoginPin)) {
+
+            //get & set UserID for further Activities
+            long id = db.getUserIDByName(checkLoginUsername);
+            String lastUserID = Long.toString(id);
+            if (lastUserID != null) {
+                LastUser.setLastUserID(lastUserID);
+                db.setLastUserID(lastUserID);
+            }
+
             session.setLoggedin(true);
             Intent intent = new Intent(this, CalenderActivity.class);
             startActivity(intent);
@@ -98,9 +102,9 @@ public class MainActivity extends BaseActitivty {
         startActivity(intent);
     }
 
-    public void onClickPromptFingerprint(View view){
+    public void onClickPromptFingerprint(View view) {
         //Fingerprint Abfrage starten
-        Intent intent = new Intent(this,FingerprintPrActivity.class);
+        Intent intent = new Intent(this, FingerprintPrActivity.class);
         startActivity(intent);
     }
 

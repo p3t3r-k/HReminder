@@ -13,6 +13,8 @@ import androidx.appcompat.app.ActionBar;
 
 import com.example.hreminder.BehindTheScenes.BaseActitivty;
 import com.example.hreminder.BehindTheScenes.Session;
+import com.example.hreminder.BehindTheScenes.LastUser;
+import com.example.hreminder.Database.DbHelper;
 import com.example.hreminder.R;
 
 import static android.graphics.Color.parseColor;
@@ -20,6 +22,10 @@ import static android.graphics.Color.parseColor;
 public class CalenderActivity extends BaseActitivty {
 
     private Session session;
+    private DbHelper db;
+    private String lastUserID;
+
+   // private String loggedUserID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,22 @@ public class CalenderActivity extends BaseActitivty {
         }
         */
 
+        db = new DbHelper(this);
+
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+        //    loggedUserID = extras.getString("idUser");
+        } else{
+            //kein Extra
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        lastUserID = db.getLastUserID();
+        LastUser.setLastUserID(lastUserID);
     }
 
     @Override
@@ -87,6 +109,7 @@ public class CalenderActivity extends BaseActitivty {
     public void goToAppointments() {
         Intent intent = new Intent(this, LastAppointmentsActivity.class);
         intent.putExtra("source", "CalenderActivity");
+      //  intent.putExtra("idUser",loggedUserID);
         startActivity(intent);
     }
 

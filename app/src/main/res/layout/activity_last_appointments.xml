@@ -69,6 +69,7 @@
         android:layout_alignStart="@id/pickDocText"
         android:layout_marginTop="20dp"
         android:ems="6"
+        android:focusable="false"
         android:inputType="date" />
 
     <TextView
@@ -79,14 +80,6 @@
         android:layout_alignStart="@id/dateEditlastApp"
         android:text="@string/lastApp" />
 
-    <ImageButton
-        android:id="@+id/calenderButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/dateEditlastApp"
-        android:layout_toEndOf="@id/dateEditlastApp"
-        app:srcCompat="@drawable/calender" />
-
     <Button
         android:id="@+id/getDateButton"
         android:layout_width="wrap_content"
@@ -94,6 +87,7 @@
         android:layout_below="@id/lastApp"
         android:layout_alignStart="@id/lastApp"
         android:layout_marginTop="30dp"
+        android:onClick="onClickAddAppointment"
         android:text="@string/getDate" />
 
     <View
@@ -123,87 +117,89 @@
         android:alwaysDrawnWithCache="true">
 
         <TableLayout
+
+            android:id="@+id/tableLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:visibility="visible">
 
+            <!--
+                        <TableRow
+                            android:id="@+id/row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-            <TableRow
-                android:id="@+id/row"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                            <TextView
+                                android:id="@+id/exampleDoc"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/border"
+                                android:gravity="center"
+                                android:paddingLeft="4dp"
+                                android:paddingRight="4dp"
+                                android:text="@string/exampleDoc" />
 
-                <TextView
-                    android:id="@+id/exampleDoc"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/border"
-                    android:gravity="center"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp"
-                    android:text="@string/exampleDoc" />
+                            <TextView
+                                android:id="@+id/exampleDate"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/border"
+                                android:gravity="center"
+                                android:paddingLeft="4dp"
+                                android:paddingRight="4dp"
+                                android:text="@string/exampleDate" />
 
-                <TextView
-                    android:id="@+id/exampleDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/border"
-                    android:gravity="center"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp"
-                    android:text="@string/exampleDate" />
-
-                <Button
-                    android:id="@+id/deleteAppButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:contextClickable="true"
-                    android:cursorVisible="false"
-                    android:focusable="auto"
-                    android:linksClickable="false"
-                    android:longClickable="false"
-                    android:text="@string/deleteApp" />
+                            <Button
+                                android:id="@+id/deleteAppButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:clickable="true"
+                                android:contextClickable="true"
+                                android:cursorVisible="false"
+                                android:focusable="auto"
+                                android:linksClickable="false"
+                                android:longClickable="false"
+                                android:text="@string/deleteApp" />
 
 
 
-            </TableRow>
+                        </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/exampleDoc2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/border"
-                    android:gravity="center"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp"
-                    android:text="@string/exampleDoc" />
+                            <TextView
+                                android:id="@+id/exampleDoc2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/border"
+                                android:gravity="center"
+                                android:paddingLeft="4dp"
+                                android:paddingRight="4dp"
+                                android:text="@string/exampleDoc" />
 
-                <TextView
-                    android:id="@+id/exampleDate2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/border"
-                    android:gravity="center"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp"
-                    android:text="@string/exampleDate" />
+                            <TextView
+                                android:id="@+id/exampleDate2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/border"
+                                android:gravity="center"
+                                android:paddingLeft="4dp"
+                                android:paddingRight="4dp"
+                                android:text="@string/exampleDate" />
 
-                <Button
-                    android:id="@+id/deleteAppButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:focusable="auto"
-                    android:text="@string/deleteApp" />
+                            <Button
+                                android:id="@+id/deleteAppButton2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:clickable="true"
+                                android:focusable="auto"
+                                android:text="@string/deleteApp" />
 
-            </TableRow>
+                        </TableRow> -->
         </TableLayout>
     </ScrollView>
 
@@ -211,9 +207,9 @@
         android:id="@+id/buttonFinished"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/finished"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:onClick="onClickSwitchToCalenderAct"/>
+        android:layout_alignParentBottom="true"
+        android:onClick="onClickSwitchToCalenderAct"
+        android:text="@string/finished" />
 
 </RelativeLayout>

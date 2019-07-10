@@ -47,7 +47,6 @@ public class FingerprintPrActivity extends BaseActitivty {
     private boolean allRequirements = true;
 
     private DbHelper db;
-    SQLiteDatabase sqlDb;
 
 
 
