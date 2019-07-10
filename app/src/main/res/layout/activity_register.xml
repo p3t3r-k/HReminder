@@ -124,7 +124,7 @@
         android:id="@+id/buttonRegister"
         android:layout_width="236dp"
         android:layout_height="wrap_content"
-        android:onClick="onClickSwitchToFingerprint"
+        android:onClick="onClickSwitchToProfileCreate"
         android:text="@string/registerButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
