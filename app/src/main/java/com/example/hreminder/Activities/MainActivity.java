@@ -50,11 +50,11 @@ public class MainActivity extends BaseActitivty {
         }
 
 
-   /*   if (db.getLastUserID() != null){
+      if (db.getLastUserID() != null){
             lastUserID = db.getLastUserID();
             userNameField = findViewById(R.id.inputUsername);
             userNameField.setText(db.getUsernameByID(idTest));
-        }*/
+        }
 
     }
 

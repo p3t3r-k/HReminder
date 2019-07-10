@@ -25,7 +25,7 @@ public class CalenderActivity extends BaseActitivty {
     private DbHelper db;
     private String lastUserID;
 
-   // private String loggedUserID;
+    // private String loggedUserID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +45,8 @@ public class CalenderActivity extends BaseActitivty {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-        //    loggedUserID = extras.getString("idUser");
-        } else{
+               lastUserID = extras.getString("idUser");
+        } else {
             //kein Extra
         }
     }
@@ -109,11 +109,11 @@ public class CalenderActivity extends BaseActitivty {
     public void goToAppointments() {
         Intent intent = new Intent(this, LastAppointmentsActivity.class);
         intent.putExtra("source", "CalenderActivity");
-      //  intent.putExtra("idUser",loggedUserID);
+        //  intent.putExtra("idUser",loggedUserID);
         startActivity(intent);
     }
 
-    private void logout(){
+    private void logout() {
         session.setLoggedin(false);
         finish();
         startActivity(new Intent(CalenderActivity.this, MainActivity.class));
