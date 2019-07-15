@@ -80,6 +80,11 @@ public class LastAppointmentsActivity extends BaseActitivty {
         buildDatePickerDialog();
 
 
+
+
+
+
+
     }
 
     @Override
@@ -90,6 +95,19 @@ public class LastAppointmentsActivity extends BaseActitivty {
         if (db.getAppointmentsByID(iDUser)) {
             rebuildTableLayout();
         }
+
+        Button.OnClickListener btnclick = new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                row = (TableRow) v.getParent();
+                tableLayout.removeView(row);
+
+
+            }
+
+        };
+//        deleteRowButton.setOnClickListener(btnclick);
     }
 
     private void rebuildTableLayout() {
@@ -111,9 +129,22 @@ public class LastAppointmentsActivity extends BaseActitivty {
                 }
             }
 
+        Button.OnClickListener btnclick = new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                row = (TableRow) v.getParent();
+                tableLayout.removeView(row);
+
+
+            }
+
+        };
+
 
 
     }
+
 
     private void buildDatePickerDialog() {
         myCalendar = Calendar.getInstance();
@@ -153,9 +184,13 @@ public class LastAppointmentsActivity extends BaseActitivty {
 
             addRow();
             if (tableLayout.getChildCount() > 0) {
-                deleteRowButton.setOnClickListener(v -> {
-                    row = (TableRow) v.getParent();
-                    tableLayout.removeView(row);
+                deleteRowButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        row = (TableRow) v.getParent();
+                        tableLayout.removeView(row);
+
+                    }
                 });
             }
         }
@@ -212,7 +247,6 @@ public class LastAppointmentsActivity extends BaseActitivty {
         row.addView(space);
         row.addView(deleteRowButton);
         tableLayout.addView(row);
-
 
     }
 

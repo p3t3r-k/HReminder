@@ -129,7 +129,7 @@ public class RegisterActivity extends BaseActitivty {
             String lastUserID = Long.toString(id);
             if (lastUserID != null) {
                 LastUser.setLastUserID(lastUserID);
-                db.setLastUserID(lastUserID);
+                db.setLastUserID(LastUser.getLastUserID());
             }
 
             Intent intent = new Intent(this, UserProfilActivity.class);

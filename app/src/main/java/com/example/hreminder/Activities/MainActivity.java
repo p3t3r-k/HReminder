@@ -49,21 +49,22 @@ public class MainActivity extends BaseActitivty {
             finish();
         }
 
-
-      if (db.getLastUserID() != null){
-            lastUserID = db.getLastUserID();
-            userNameField = findViewById(R.id.inputUsername);
-            userNameField.setText(db.getUsernameByID(idTest));
+        if (db.checkIfLogExists()) {
+            if (db.getLastUserID() != null) {
+                lastUserID = db.getLastUserID();
+                userNameField = findViewById(R.id.inputUsername);
+                userNameField.setText(db.getUsernameByID(lastUserID));
+            }
         }
 
     }
 
     private void login() {
 
-        EditText getLoginUsername = findViewById(R.id.inputUsername);
+        getLoginUsername = findViewById(R.id.inputUsername);
         checkLoginUsername = getLoginUsername.getText().toString();
 
-        EditText getLoginPin = findViewById(R.id.inputPin);
+        getLoginPin = findViewById(R.id.inputPin);
         checkLoginPin = getLoginPin.getText().toString();
 
     }

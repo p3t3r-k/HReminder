@@ -294,6 +294,18 @@ public class DbHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public boolean deleteAppByID(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String where = COLUMN_ID_AP + " = " + id;
+
+        if (db.delete(APPOINTMENTS_TABLE,where,null) > 0){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     //LOG TABLE ACTIONS
 
     public void setLastUserID(String lastUserID) {
@@ -317,6 +329,21 @@ public class DbHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return lastUserID;
+    }
+
+    public boolean checkIfLogExists() {
+        String selectQuery = "SELECT * FROM " + LOG_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        cursor.moveToFirst();
+        if (cursor.getCount() > 0) {
+            cursor.close();
+            db.close();
+            return true;
+        }
+        cursor.close();
+        db.close();
+        return false;
     }
 
 

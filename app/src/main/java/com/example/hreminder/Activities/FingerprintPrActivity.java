@@ -70,18 +70,22 @@ public class FingerprintPrActivity extends BaseActitivty {
             allRequirements = false;
         }
 
+
+
         //Check whether the device has a fingerprint sensor
         if (!fingerprintManager.isHardwareDetected()) {
             // If a fingerprint sensor isn’t available, then inform the user that they’ll be unable to use your app’s fingerprint functionality
             textView.append("\n\n"+getApplicationContext().getResources().getString(R.string.noHardware));
             allRequirements = false;
         }
+
         //Check whether the user has granted your app the USE_FINGERPRINT permission
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
             // If your app doesn't have this permission, then display the following text//
             textView.append("\n\n"+getApplicationContext().getResources().getString(R.string.noPermission));
             allRequirements = false;
         }
+
 
         //Check that the user has registered at least one fingerprint
         if (!fingerprintManager.hasEnrolledFingerprints()) {
