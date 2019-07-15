@@ -132,7 +132,7 @@
     <string name="noFingerprint">"Kein Finger eingespeichert. Sie müssen mindestens einen Fingerabdruck in den Einstellungen des Gerätes registrieren."</string>
     <string name="noLockscreen">"Bitte aktivieren Sie eine Verschlüsselung für den Sperrbildschirm."</string>
     <string name="authentHelp">"Authentifizierung Hilfe:"</string>
-    <string name="notRegistered">"Sie sind noch nicht registriert!\nBitte registrieren sie sich zuerst."</string>
+    <string name="notRegistered">"Sie sind noch nicht registriert!\nBitte registrieren Sie sich zuerst."</string>
 
 
 </resources>

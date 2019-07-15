@@ -294,9 +294,9 @@ public class DbHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public boolean deleteAppByID(String id){
+    public boolean deleteAppByID(String idUser, String doc,String date){
         SQLiteDatabase db = this.getWritableDatabase();
-        String where = COLUMN_ID_AP + " = " + id;
+        String where = COLUMN_ID_User + " = " + idUser + " AND " + COLUMN_DOC + " = '" + doc + "' AND " + COLUMN_DATE + " = '" + date + "'";;
 
         if (db.delete(APPOINTMENTS_TABLE,where,null) > 0){
             return true;

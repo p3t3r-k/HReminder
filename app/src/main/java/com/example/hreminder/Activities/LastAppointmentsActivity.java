@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
@@ -50,6 +51,8 @@ public class LastAppointmentsActivity extends BaseActitivty {
 
     private String iDUser;
 
+    private int rowCount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,18 +74,13 @@ public class LastAppointmentsActivity extends BaseActitivty {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             callingActivity = extras.getString("source");
-           // loggedUserID = extras.getString("idUser");
+            // loggedUserID = extras.getString("idUser");
         } else {
             //kein Extra
         }
 
         db = new DbHelper(this);
         buildDatePickerDialog();
-
-
-
-
-
 
 
     }
@@ -95,19 +93,6 @@ public class LastAppointmentsActivity extends BaseActitivty {
         if (db.getAppointmentsByID(iDUser)) {
             rebuildTableLayout();
         }
-
-        Button.OnClickListener btnclick = new Button.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                row = (TableRow) v.getParent();
-                tableLayout.removeView(row);
-
-
-            }
-
-        };
-//        deleteRowButton.setOnClickListener(btnclick);
     }
 
     private void rebuildTableLayout() {
@@ -118,31 +103,16 @@ public class LastAppointmentsActivity extends BaseActitivty {
         cursorDate.moveToFirst();
         for (int i = 1; i <= cursorDoc.getCount(); i++) {
 
-                selectedPhysician = cursorDoc.getString(0);
-                selectedDate = cursorDate.getString(0);
+            selectedPhysician = cursorDoc.getString(0);
+            selectedDate = cursorDate.getString(0);
 
-                addRow();
-                if (cursorDoc.moveToNext()) {
-                    cursorDate.moveToNext();
-                } else {
-                    break;
-                }
+            addRow();
+            if (cursorDoc.moveToNext()) {
+                cursorDate.moveToNext();
+            } else {
+                break;
             }
-
-        Button.OnClickListener btnclick = new Button.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                row = (TableRow) v.getParent();
-                tableLayout.removeView(row);
-
-
-            }
-
-        };
-
-
-
+        }
     }
 
 
@@ -178,21 +148,9 @@ public class LastAppointmentsActivity extends BaseActitivty {
 
     public void onClickAddAppointment(View view) {
         if (getData()) {
-            db.addAppointment(LastUser.getLastUserID(), selectedPhysician, selectedDate);
-            //String appointmentsInfo = db.getAppointmentsByID(loggedUserID);
-            //Toast.makeText(this,appointmentsInfo,Toast.LENGTH_LONG).show();
+            db.addAppointment(iDUser, selectedPhysician, selectedDate);
 
             addRow();
-            if (tableLayout.getChildCount() > 0) {
-                deleteRowButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        row = (TableRow) v.getParent();
-                        tableLayout.removeView(row);
-
-                    }
-                });
-            }
         }
     }
 
@@ -242,11 +200,45 @@ public class LastAppointmentsActivity extends BaseActitivty {
         TableRow.LayoutParams lpButton = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
         deleteRowButton.setLayoutParams(lpButton);
 
+
+        rowCount = tableLayout.getChildCount();
+        if (rowCount == 0) {
+            row.setTag(rowCount);
+        } else {
+            row.setTag(rowCount + 1);
+        }
+
         row.addView(physician);
         row.addView(date);
         row.addView(space);
         row.addView(deleteRowButton);
         tableLayout.addView(row);
+
+
+        deleteRowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                row = (TableRow) v.getParent();
+                int rowID = (Integer) row.getTag();
+
+
+                String txVDoc;
+                String txVDate;
+                View vDoc = row.getChildAt(0);
+                txVDoc = ((TextView) vDoc).getText().toString();
+
+                View vDate = row.getChildAt(1);
+                txVDate = ((TextView) vDate).getText().toString();
+
+                if (db.deleteAppByID(iDUser, txVDoc, txVDate)) {
+                    Toast.makeText(getApplicationContext(), "Termin gelöscht: " + txVDoc + " " + txVDate, Toast.LENGTH_SHORT).show();
+                    tableLayout.removeView(row);
+                } else {
+
+                }
+
+            }
+        });
 
     }
 
