@@ -30,7 +30,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String COLUMN_HEIGHT = "height";
     private static final String COLUMN_HEART = "heart";
     private static final String COLUMN_NEURO = "neuro";
-    private static final String COLUMN_ORTHO = "orhto";
+    private static final String COLUMN_ORTHO = "ortho";
     private static final String COLUMN_DERMA = "derma";
     private static final String COLUMN_EYES = "eyes";
     private static final String COLUMN_EARS = "ears";
@@ -234,6 +234,38 @@ public class DbHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return userprofileInfo;
+    }
+
+    public Cursor getProfileByID(String id){
+        String selectQuery = "SELECT gender,birthdate,weight,height,heart,neuro,ortho,derma,eyes,ears,smoke,allergy FROM " + USERPROFILE_TABLE + " where " +
+                COLUMN_ID_Pr + " = " + "'" + id + "'";;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        return cursor;
+    }
+
+    public boolean updateProfile(String id, String gender, String birthdate, String weight, String height, int heart, int neuro, int ortho, int derma,
+                                 int eyes, int ears, int smoke, int allergy) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues args = new ContentValues();
+
+        args.put(COLUMN_ID_Pr, id);
+        args.put(COLUMN_GENDER, gender);
+        args.put(COLUMN_BIRTHDATE, birthdate);
+        args.put(COLUMN_WEIGHT, weight);
+        args.put(COLUMN_HEIGHT, height);
+        args.put(COLUMN_HEART, heart);
+        args.put(COLUMN_NEURO, neuro);
+        args.put(COLUMN_ORTHO, ortho);
+        args.put(COLUMN_DERMA, derma);
+        args.put(COLUMN_EYES, eyes);
+        args.put(COLUMN_EARS, ears);
+        args.put(COLUMN_SMOKE, smoke);
+        args.put(COLUMN_ALLERGY, allergy);
+
+        return db.update(USERPROFILE_TABLE, args, COLUMN_ID_Pr + "=" + id, null) > 0;
     }
 
     //APPOINTMENTS_TABLE ACTIONS

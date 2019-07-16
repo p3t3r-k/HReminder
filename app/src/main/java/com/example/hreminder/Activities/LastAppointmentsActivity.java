@@ -95,6 +95,13 @@ public class LastAppointmentsActivity extends BaseActitivty {
         }
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        db.close();
+    }
+
     private void rebuildTableLayout() {
         cursorDoc = db.getDocByID(LastUser.getLastUserID());
         cursorDate = db.getDateByID(LastUser.getLastUserID());
