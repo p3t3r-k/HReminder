@@ -14,7 +14,7 @@
     <string name="registerPIN">"Type in a PIN code:"</string>
     <string name="registerValidatePin">"Re-enter your PIN code:"</string>
     <string name="registerButton">"Register"</string>
-    <string name="ok">"Ok"</string>
+    <string name="ok">"OK"</string>
     <string name="createUsernameError">"Username can only consist of letters and digits!\nPlease do not use spaces."</string>
     <string name="createPinError">"The PIN has to comprise of four digits."</string>
     <string name="createPinMatchingError">"The two PINs have to match."</string>
@@ -78,6 +78,7 @@
     <string name="exampleDate">"Beispiel: 10.12.2018"</string>
     <string name="deleteApp">"x"</string>
     <string name="finished">"Finished"</string>
+    <string name="appointDeleted">"Appointment deleted: "</string>
 
     <!-- DocsAround Activity -->
     <string name="docsAroundTitle">"Doctors in your area"</string>
@@ -91,7 +92,7 @@
     <string name="deleteProfil">"Delete profil"</string>
     <string name="about">"About"</string>
     <string name="changeProfile">"Change Profile"</string>
-    <string name="changeLanguageDialog">"Choose Language..."</string>
+    <string name="changeLanguageDialog">"Choose Language…"</string>
 
     <!-- Calender Activity -->
     <string name="calenderHead">"Appointment-Recommendation"</string>
@@ -111,6 +112,12 @@
     <string name="changePINNew">"Type in your new PIN code:"</string>
     <string name="changePINValidateNew">"Re-enter your new PIN code:"</string>
     <string name="changePINCommitButton">"Change PIN code"</string>
+    <string name="changePINWrongPIN">"Wrong PIN entered."</string>
+    <string name="changePINNotMatching">"New PIN codes aren't matching \nor are empty."</string>
+    <string name="changePINSuccess">"PIN successfully changed"</string>
+    <string name="changePINFail">"Update failed, please try again."</string>
+    <string name="changePINTooShort">"PIN is too short."</string>
+    <string name="hint">"1234"</string>
 
     <!-- Actionbar -->
     <string name="actionBarSettings">"Settings"</string>

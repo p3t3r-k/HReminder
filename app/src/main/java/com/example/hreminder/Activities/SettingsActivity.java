@@ -18,6 +18,7 @@ import com.example.hreminder.BehindTheScenes.LocaleManager;
 import com.example.hreminder.BehindTheScenes.Session;
 import com.example.hreminder.R;
 import java.util.Locale;
+import java.util.Objects;
 
 import static android.graphics.Color.parseColor;
 import static android.content.pm.PackageManager.GET_META_DATA;
@@ -34,9 +35,9 @@ public class SettingsActivity extends BaseActitivty {
         resetTitles();
         setContentView(R.layout.activity_settings);
         ActionBar abar = getSupportActionBar();
-        abar.setTitle(getResources().getString(R.string.app_name));
+        Objects.requireNonNull(abar).setTitle(getResources().getString(R.string.app_name));
         abar.setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         session = new Session(this);
 
@@ -45,8 +46,6 @@ public class SettingsActivity extends BaseActitivty {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             callingActivity = extras.getString("source");
-        } else{
-            //kein Extra
         }
 
 
@@ -83,12 +82,7 @@ public class SettingsActivity extends BaseActitivty {
 
     public void onClickChangeLanguage(){
         Button changeLang = findViewById(R.id.btnLanguage);
-        changeLang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showChangeLanguageDialog();
-            }
-        });
+        changeLang.setOnClickListener(v -> showChangeLanguageDialog());
     }
 
 
@@ -132,22 +126,21 @@ public class SettingsActivity extends BaseActitivty {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                if (callingActivity.equals("CalenderActivity")){
-                        NavUtils.navigateUpTo(this, new Intent(this, CalenderActivity.class));
-                    }else if (callingActivity.equals("ChangeProfileActivity")){
-                        NavUtils.navigateUpTo(this,new Intent(this, ChangeProfileActivity.class));
-                    } else if (callingActivity.equals("LastAppointmentsActivity")){
-                    NavUtils.navigateUpTo(this,new Intent(this, LastAppointmentsActivity.class));
-                } else if (callingActivity.equals("DoctorsMapActivity")){
-                    NavUtils.navigateUpTo(this,new Intent(this, DoctorsMapActivity.class));
-                } else {
-                    NavUtils.navigateUpFromSameTask(this);
-                } return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            if (callingActivity != null && callingActivity.equals("CalenderActivity")) {
+                NavUtils.navigateUpTo(this, new Intent(this, CalenderActivity.class));
+            } else if (callingActivity != null && callingActivity.equals("ChangeProfileActivity")) {
+                NavUtils.navigateUpTo(this, new Intent(this, ChangeProfileActivity.class));
+            } else if (callingActivity != null && callingActivity.equals("LastAppointmentsActivity")) {
+                NavUtils.navigateUpTo(this, new Intent(this, LastAppointmentsActivity.class));
+            } else if (callingActivity != null && callingActivity.equals("DoctorsMapActivity")) {
+                NavUtils.navigateUpTo(this, new Intent(this, DoctorsMapActivity.class));
+            } else {
+                NavUtils.navigateUpFromSameTask(this);
+            }
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -29,6 +29,7 @@ import com.example.hreminder.R;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 import static android.graphics.Color.parseColor;
 
@@ -67,16 +68,14 @@ public class LastAppointmentsActivity extends BaseActitivty {
 
         //init ActionBar
         ActionBar abar = getSupportActionBar();
-        abar.setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(abar).setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         //get IntentExtras
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             callingActivity = extras.getString("source");
             // loggedUserID = extras.getString("idUser");
-        } else {
-            //kein Extra
         }
 
         db = new DbHelper(this);
@@ -98,7 +97,6 @@ public class LastAppointmentsActivity extends BaseActitivty {
     @Override
     protected void onStop() {
         super.onStop();
-
         db.close();
     }
 
@@ -126,7 +124,7 @@ public class LastAppointmentsActivity extends BaseActitivty {
     private void buildDatePickerDialog() {
         myCalendar = Calendar.getInstance();
 
-        myCalendar.set(2019, 01, 01);
+        myCalendar.set(2019, 1, 1);
         dateEdit = findViewById(R.id.dateEditlastApp);
         DatePickerDialog.OnDateSetListener date = (view, year, monthOfYear, dayOfMonth) -> {
             myCalendar.set(Calendar.YEAR, year);
@@ -149,7 +147,6 @@ public class LastAppointmentsActivity extends BaseActitivty {
 
     public void onClickSwitchToCalenderAct(View view) {
         Intent intent = new Intent(this, CalenderActivity.class);
-        //intent.putExtra("idUser", loggedUserID);
         startActivity(intent);
     }
 
@@ -222,53 +219,46 @@ public class LastAppointmentsActivity extends BaseActitivty {
         tableLayout.addView(row);
 
 
-        deleteRowButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                row = (TableRow) v.getParent();
-                int rowID = (Integer) row.getTag();
+        deleteRowButton.setOnClickListener(v -> {
+            row = (TableRow) v.getParent();
+            int rowID = (Integer) row.getTag();
 
 
-                String txVDoc;
-                String txVDate;
-                View vDoc = row.getChildAt(0);
-                txVDoc = ((TextView) vDoc).getText().toString();
+            String txVDoc;
+            String txVDate;
+            View vDoc = row.getChildAt(0);
+            txVDoc = ((TextView) vDoc).getText().toString();
 
-                View vDate = row.getChildAt(1);
-                txVDate = ((TextView) vDate).getText().toString();
+            View vDate = row.getChildAt(1);
+            txVDate = ((TextView) vDate).getText().toString();
 
-                if (db.deleteAppByID(iDUser, txVDoc, txVDate)) {
-                    Toast.makeText(getApplicationContext(), "Termin gelöscht: " + txVDoc + " " + txVDate, Toast.LENGTH_SHORT).show();
-                    tableLayout.removeView(row);
-                } else {
-
-                }
-
+            if (db.deleteAppByID(iDUser, txVDoc, txVDate)) {
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.appointDeleted) + txVDoc + " " + txVDate, Toast.LENGTH_SHORT).show();
+                tableLayout.removeView(row);
             }
+
         });
 
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                System.out.println(callingActivity);
-                if (callingActivity.equals("SettingsActivity")) {
-                    NavUtils.navigateUpTo(this, new Intent(this, SettingsActivity.class));
-                }
-                if (callingActivity.equals("DoctorsMapActivity")) {
-                    NavUtils.navigateUpTo(this, new Intent(this, DoctorsMapActivity.class));
-                }
-                if (callingActivity.equals("ChangeProfileActivity")) {
-                    NavUtils.navigateUpTo(this, new Intent(this, ChangeProfileActivity.class));
-                } else {
-                    //zu Calender zurück
-                    NavUtils.navigateUpTo(this, new Intent(this, CalenderActivity.class));
-                }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            System.out.println(callingActivity);
+            if (callingActivity.equals("SettingsActivity")) {
+                NavUtils.navigateUpTo(this, new Intent(this, SettingsActivity.class));
+            }
+            if (callingActivity.equals("DoctorsMapActivity")) {
+                NavUtils.navigateUpTo(this, new Intent(this, DoctorsMapActivity.class));
+            }
+            if (callingActivity.equals("ChangeProfileActivity")) {
+                NavUtils.navigateUpTo(this, new Intent(this, ChangeProfileActivity.class));
+            } else {
+                //zu Calender zurück
+                NavUtils.navigateUpTo(this, new Intent(this, CalenderActivity.class));
+            }
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 }

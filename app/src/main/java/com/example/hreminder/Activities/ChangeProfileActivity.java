@@ -28,6 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 import static android.graphics.Color.parseColor;
 
@@ -86,14 +87,12 @@ public class ChangeProfileActivity extends BaseActitivty {
         setContentView(R.layout.activity_change_profile);
 
         ActionBar abar = getSupportActionBar();
-        abar.setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
+        Objects.requireNonNull(abar).setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             callingActivity = extras.getString("source");
-        } else {
-            //kein Extra
         }
 
         buildDatePickerDialog();
@@ -110,11 +109,11 @@ public class ChangeProfileActivity extends BaseActitivty {
 
         //Datenbankabfrage
         cursorProfile = db.getProfileByID(iDUser);
-        insertData(cursorProfile);
+        getDataFromDB(cursorProfile);
 
     }
 
-    public void insertData(Cursor cursor) {
+    public void getDataFromDB(Cursor cursor) {
         cursor.moveToFirst();
 
         //gender, birthdate, weight, height, heart, neuro, ortho, derma, eyes, ears, smoke, allergy
@@ -316,11 +315,7 @@ public class ChangeProfileActivity extends BaseActitivty {
             allergiesFilled = false;
         }
 
-        if (sexFilled && smokeFilled && allergiesFilled && dateFilled && weightFilled && heightFilled) {
-            allFilled = true;
-        } else {
-            allFilled = false;
-        }
+        allFilled = sexFilled && smokeFilled && allergiesFilled && dateFilled && weightFilled && heightFilled;
 
     }
 
@@ -363,7 +358,7 @@ public class ChangeProfileActivity extends BaseActitivty {
     private void buildDatePickerDialog() {
         myCalendar = Calendar.getInstance();
 
-        myCalendar.set(2000, 01, 01);
+        myCalendar.set(2000, 1, 1);
         dateEdit = findViewById(R.id.dateEdit);
         DatePickerDialog.OnDateSetListener date = (view, year, monthOfYear, dayOfMonth) -> {
             myCalendar.set(Calendar.YEAR, year);
@@ -372,15 +367,9 @@ public class ChangeProfileActivity extends BaseActitivty {
             updateLabel();
         };
 
-        dateEdit.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                new DatePickerDialog(ChangeProfileActivity.this, date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
+        dateEdit.setOnClickListener(v -> new DatePickerDialog(ChangeProfileActivity.this, date, myCalendar
+                .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DAY_OF_MONTH)).show());
     }
 
     private void updateLabel() {
@@ -411,6 +400,7 @@ public class ChangeProfileActivity extends BaseActitivty {
             Toast.makeText(this, db.getUserProfileByID(idString), Toast.LENGTH_LONG).show();
 
             Intent intent = new Intent(this, CalenderActivity.class);
+            intent.putExtra("source", "ChangeProfileActivity");
             startActivity(intent);
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(ChangeProfileActivity.this);
@@ -419,11 +409,6 @@ public class ChangeProfileActivity extends BaseActitivty {
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
         }
-
-
-
-        Intent intent = new Intent(this, CalenderActivity.class);
-        startActivity(intent);
     }
 
     public void goToAppointments() {

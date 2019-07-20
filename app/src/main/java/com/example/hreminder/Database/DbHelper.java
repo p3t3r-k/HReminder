@@ -121,7 +121,6 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public boolean getUser(String username, String pin) {
-        //HashMap<String, String> user = new HashMap<String, String>();
         String selectQuery = "select * from  " + USER_TABLE + " where " +
                 COLUMN_NAME + " = " + "'" + username + "'" + " and " + COLUMN_PIN + " = " + "'" + pin + "'";
 
@@ -130,14 +129,30 @@ public class DbHelper extends SQLiteOpenHelper {
         // Move to first row
         cursor.moveToFirst();
         if (cursor.getCount() > 0) {
-            id_PK = cursor.getColumnIndex(COLUMN_ID);
             cursor.close();
             db.close();
             return true;
         }
         cursor.close();
         db.close();
+        return false;
+    }
 
+    public boolean checkPinByID(String id, String pin){
+        String selectQuery = "select * from  " + USER_TABLE + " where " +
+                COLUMN_ID + " = " + "'" + id + "'" + " and " + COLUMN_PIN + " = " + "'" + pin + "'";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // Move to first row
+        cursor.moveToFirst();
+        if (cursor.getCount() > 0) {
+            cursor.close();
+            db.close();
+            return true;
+        }
+        cursor.close();
+        db.close();
         return false;
     }
 
@@ -193,7 +208,16 @@ public class DbHelper extends SQLiteOpenHelper {
         return null;
     }
 
+    public boolean updatePIN(String id, String pin) {
 
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues args = new ContentValues();
+
+        args.put(COLUMN_ID, id);
+        args.put(COLUMN_PIN, pin);
+
+        return db.update(USER_TABLE, args, COLUMN_ID + "=" + id, null) > 0;
+    }
 
     //USERPROFILE_TABLE ACTIONS
 
@@ -223,7 +247,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public String getUserProfileByID(String id) {
         String selectQuery = "SELECT * FROM " + USERPROFILE_TABLE + " where " +
-                COLUMN_ID_Pr + " = " + "'" + id + "'";;
+                COLUMN_ID_Pr + " = " + "'" + id + "'";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         cursor.moveToFirst();
@@ -238,11 +262,10 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public Cursor getProfileByID(String id){
         String selectQuery = "SELECT gender,birthdate,weight,height,heart,neuro,ortho,derma,eyes,ears,smoke,allergy FROM " + USERPROFILE_TABLE + " where " +
-                COLUMN_ID_Pr + " = " + "'" + id + "'";;
+                COLUMN_ID_Pr + " = " + "'" + id + "'";
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery(selectQuery, null);
-        return cursor;
+        return db.rawQuery(selectQuery, null);
     }
 
     public boolean updateProfile(String id, String gender, String birthdate, String weight, String height, int heart, int neuro, int ortho, int derma,
@@ -284,7 +307,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public boolean getAppointmentsByID(String id) {
         String selectQuery = "SELECT * FROM " + APPOINTMENTS_TABLE + " where " +
-                COLUMN_ID_User + " = " + "'" + id + "'";;
+                COLUMN_ID_User + " = " + "'" + id + "'";
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -302,39 +325,33 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public Cursor getDocByID(String id){
         String selectQuery = "SELECT physician FROM " + APPOINTMENTS_TABLE + " where " +
-                COLUMN_ID_User + " = " + "'" + id + "'";;
+                COLUMN_ID_User + " = " + "'" + id + "'";
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery(selectQuery, null);
-       /* cursor.moveToFirst();
+        /* cursor.moveToFirst();
         String doc = cursor.getString(1);
         cursor.close();*/
        // db.close();
-        return cursor;
+        return db.rawQuery(selectQuery, null);
     }
 
     public Cursor getDateByID(String id){
         String selectQuery = "SELECT lastAppoint FROM " + APPOINTMENTS_TABLE + " where " +
-                COLUMN_ID_User + " = " + "'" + id + "'";;
+                COLUMN_ID_User + " = " + "'" + id + "'";
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery(selectQuery, null);
-       /* cursor.moveToFirst();
+        /* cursor.moveToFirst();
         String date = cursor.getString(2);
         cursor.close(); */
        // db.close();
-        return cursor;
+        return db.rawQuery(selectQuery, null);
     }
 
     public boolean deleteAppByID(String idUser, String doc,String date){
         SQLiteDatabase db = this.getWritableDatabase();
-        String where = COLUMN_ID_User + " = " + idUser + " AND " + COLUMN_DOC + " = '" + doc + "' AND " + COLUMN_DATE + " = '" + date + "'";;
+        String where = COLUMN_ID_User + " = " + idUser + " AND " + COLUMN_DOC + " = '" + doc + "' AND " + COLUMN_DATE + " = '" + date + "'";
 
-        if (db.delete(APPOINTMENTS_TABLE,where,null) > 0){
-            return true;
-        } else {
-            return false;
-        }
+        return db.delete(APPOINTMENTS_TABLE, where, null) > 0;
 
     }
 
@@ -352,7 +369,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public String getLastUserID(){
         String selectQuery = "SELECT * FROM " + LOG_TABLE + " ORDER BY " +
-                COLUMN_ID_LOG + " DESC LIMIT 1";;
+                COLUMN_ID_LOG + " DESC LIMIT 1";
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(selectQuery, null);

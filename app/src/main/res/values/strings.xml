@@ -13,7 +13,7 @@
     <string name="registerPIN">"Geben Sie einen PIN-Code ein: (4-stellig)"</string>
     <string name="registerValidatePin">"Wiederholen Sie den Pin:"</string>
     <string name="registerButton">"Registrieren"</string>
-    <string name="ok">"Ok"</string>
+    <string name="ok">"OK"</string>
     <string name="createUsernameError">"Der Benutzername darf nur aus Buchstaben und Zahlen bestehen!\nBitte keine Leerzeichen verwenden."</string>
     <string name="createPinError">"Der PIN muss aus vier Zahlen bestehen."</string>
     <string name="createPinMatchingError">"Die beiden PINs müssen übereinstimmen."</string>
@@ -77,6 +77,7 @@
     <string name="exampleDate">"Beispiel: 10.12.2018"</string>
     <string name="deleteApp">"x"</string>
     <string name="finished">"Fertig"</string>
+    <string name="appointDeleted">"Termin gelöscht: "</string>
 
     <!-- DocsAround Activity -->
     <string name="docsAroundTitle">"Ärzte in Ihrer Nähe"</string>
@@ -90,7 +91,7 @@
     <string name="deleteProfil">"Profil löschen"</string>
     <string name="about">"Über"</string>
     <string name="changeProfile">"Profil ändern"</string>
-    <string name="changeLanguageDialog">"Wählen Sie die Sprache aus..."</string>
+    <string name="changeLanguageDialog">"Wählen Sie die Sprache aus…"</string>
 
     <!-- Calender Activity -->
     <string name="calenderHead">"Termin-Empfehlungen"</string>
@@ -110,6 +111,12 @@
     <string name="changePINNew">"Geben Sie den neuen PIN ein:"</string>
     <string name="changePINValidateNew">"Wiederholen Sie den neuen PIN:"</string>
     <string name="changePINCommitButton">"PIN ändern"</string>
+    <string name="changePINWrongPIN">"Falscher PIN eingegben."</string>
+    <string name="changePINNotMatching">"Neue PINs stimmen nicht überein \noder sind leer."</string>
+    <string name="changePINSuccess">"PIN erfolgreich geändert"</string>
+    <string name="changePINFail">"Ein Fehler ist aufgetreten, bitte versuchen Sie es erneut."</string>
+    <string name="changePINTooShort">"PIN ist zu kurz."</string>
+    <string name="hint">"1234"</string>
 
     <!-- Actionbar -->
     <string name="actionBarSettings">"Einstellungen"</string>
