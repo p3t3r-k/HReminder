@@ -1,4 +1,4 @@
-package com.example.hreminder.Activities;
+package com.example.hreminder.activities;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -12,16 +12,16 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NavUtils;
 
-import com.example.hreminder.BehindTheScenes.BaseActitivty;
-import com.example.hreminder.BehindTheScenes.LastUser;
-import com.example.hreminder.Database.DbHelper;
+import com.example.hreminder.behindTheScenes.BaseActivity;
+import com.example.hreminder.behindTheScenes.LastUser;
+import com.example.hreminder.database.DbHelper;
 import com.example.hreminder.R;
 
 import java.util.Objects;
 
 import static android.graphics.Color.parseColor;
 
-public class ChangePinActivity extends BaseActitivty {
+public class ChangePinActivity extends BaseActivity {
 
     private DbHelper db;
     private String iDUser;

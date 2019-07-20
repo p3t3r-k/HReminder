@@ -1,4 +1,4 @@
-package com.example.hreminder.Activities;
+package com.example.hreminder.activities;
 
 import android.Manifest;
 import android.content.Intent;
@@ -16,7 +16,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.example.hreminder.BehindTheScenes.BaseActivity;
+import com.example.hreminder.behindTheScenes.BaseActivity;
 import com.example.hreminder.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -25,7 +25,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import java.util.Objects;
@@ -82,13 +81,14 @@ public class DoctorsMapActivity extends BaseActivity implements OnMapReadyCallba
             if (mLocationPermissionsGranted) {
 
                 final Task location = mFusedLocationProviderClient.getLastLocation();
+                //noinspection unchecked
                 location.addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         //Log.d(TAG, "onComplete: found location!");
                         Location currentLocation = (Location) task.getResult();
 
-                        moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
-                                DEFAULT_ZOOM);
+                        moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude())
+                        );
 
                     } else {
                         //Log.d(TAG, "onComplete: current location is null");
@@ -101,9 +101,9 @@ public class DoctorsMapActivity extends BaseActivity implements OnMapReadyCallba
         }
     }
 
-    private void moveCamera(LatLng latLng, float zoom) {
+    private void moveCamera(LatLng latLng) {
         //Log.d(TAG, "moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, DoctorsMapActivity.DEFAULT_ZOOM));
     }
 
 

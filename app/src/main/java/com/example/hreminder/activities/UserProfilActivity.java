@@ -1,4 +1,4 @@
-package com.example.hreminder.Activities;
+package com.example.hreminder.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -12,16 +12,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.example.hreminder.BehindTheScenes.BaseActitivty;
-import com.example.hreminder.BehindTheScenes.LastUser;
-import com.example.hreminder.Database.DbHelper;
+import com.example.hreminder.behindTheScenes.BaseActivity;
+import com.example.hreminder.behindTheScenes.LastUser;
+import com.example.hreminder.database.DbHelper;
 import com.example.hreminder.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class UserProfilActivity extends BaseActitivty {
+public class UserProfilActivity extends BaseActivity {
 
     private String sex;
     private EditText dateEdit;

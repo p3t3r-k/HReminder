@@ -1,4 +1,4 @@
-package com.example.hreminder.Activities;
+package com.example.hreminder.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,17 +13,17 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NavUtils;
 
-import com.example.hreminder.BehindTheScenes.BaseActitivty;
-import com.example.hreminder.BehindTheScenes.LocaleManager;
-import com.example.hreminder.BehindTheScenes.Session;
+import com.example.hreminder.behindTheScenes.BaseActivity;
+import com.example.hreminder.behindTheScenes.LocaleManager;
+import com.example.hreminder.behindTheScenes.Session;
 import com.example.hreminder.R;
-import java.util.Locale;
+
 import java.util.Objects;
 
 import static android.graphics.Color.parseColor;
 import static android.content.pm.PackageManager.GET_META_DATA;
 
-public class SettingsActivity extends BaseActitivty {
+public class SettingsActivity extends BaseActivity {
 
     private String callingActivity;
 

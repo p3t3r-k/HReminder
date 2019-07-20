@@ -1,4 +1,4 @@
-package com.example.hreminder.BehindTheScenes;
+package com.example.hreminder.behindTheScenes;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -31,9 +31,9 @@ public class LocaleManager {
      * @param mLocaleKey LocaleKey
      * @return updated Resources
      */
-    public static Context setNewLocale(Context mContext, String mLocaleKey) {
+    public static void setNewLocale(Context mContext, String mLocaleKey) {
         setLanguagePref(mContext, mLocaleKey);
-        return updateResources(mContext, mLocaleKey);
+        updateResources(mContext, mLocaleKey);
     }
 
     /**
