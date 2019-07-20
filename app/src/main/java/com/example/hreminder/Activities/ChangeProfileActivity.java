@@ -37,46 +37,29 @@ public class ChangeProfileActivity extends BaseActitivty {
     private String callingActivity = "";
     private Calendar myCalendar;
     private EditText dateEdit;
-    private String iDUser;
     private DbHelper db;
-    private Cursor cursorProfile;
 
-    //Layout
-    private RadioGroup radioGroupSex;
     private RadioButton radioButtonSex;
     private String sex;
-    // private EditText dateEdit;
-    private long dateLong;
-    private Date date;
     private String birthdateStr;
     private EditText weightEdit;
-    private float weight;
     private String weightS;
     private EditText heightEdit;
-    private float height;
     private String heightS;
     private CheckBox cardiac;
     private int cardiacInt;
-    private boolean cardiacChecked = false;
     private CheckBox neuro;
     private int neuroInt;
-    private boolean neuroChecked = false;
     private CheckBox ortho;
     private int orthoInt;
-    private boolean orthoChecked = false;
     private CheckBox skin;
     private int skinInt;
-    private boolean skinChecked = false;
     private CheckBox eye;
     private int eyeInt;
-    private boolean eyeChecked = false;
     private CheckBox hearing;
     private int hearingInt;
-    private boolean hearingChecked = false;
-    private RadioGroup radioGroupSmoke;
     private RadioButton radioButtonSmoke;
     private int smokeInt;
-    private RadioGroup radioGroupAllergies;
     private RadioButton radioButtonAllergies;
     private int allergiesInt;
     private boolean allFilled = false;
@@ -105,15 +88,15 @@ public class ChangeProfileActivity extends BaseActitivty {
     protected void onStart() {
         super.onStart();
 
-        iDUser = LastUser.getLastUserID();
+        String iDUser = LastUser.getLastUserID();
 
         //Datenbankabfrage
-        cursorProfile = db.getProfileByID(iDUser);
+        Cursor cursorProfile = db.getProfileByID(iDUser);
         getDataFromDB(cursorProfile);
 
     }
 
-    public void getDataFromDB(Cursor cursor) {
+    private void getDataFromDB(Cursor cursor) {
         cursor.moveToFirst();
 
         //gender, birthdate, weight, height, heart, neuro, ortho, derma, eyes, ears, smoke, allergy
@@ -198,7 +181,8 @@ public class ChangeProfileActivity extends BaseActitivty {
 
 
         //get sex
-        radioGroupSex = findViewById(R.id.radioGroup);
+        //Layout
+        RadioGroup radioGroupSex = findViewById(R.id.radioGroup);
         // get selected radio button from radioGroup
         int selectedId = radioGroupSex.getCheckedRadioButtonId();
         if (selectedId != -1) {
@@ -239,42 +223,42 @@ public class ChangeProfileActivity extends BaseActitivty {
         }
 
         //get predispositions
-        cardiacChecked = cardiac.isChecked();
+        boolean cardiacChecked = cardiac.isChecked();
         if (cardiacChecked) {
             cardiacInt = 1;
         } else {
             cardiacInt = 0;
         }
 
-        neuroChecked = neuro.isChecked();
+        boolean neuroChecked = neuro.isChecked();
         if (neuroChecked) {
             neuroInt = 1;
         } else {
             neuroInt = 0;
         }
 
-        orthoChecked = ortho.isChecked();
+        boolean orthoChecked = ortho.isChecked();
         if (orthoChecked) {
             orthoInt = 1;
         } else {
             orthoInt = 0;
         }
 
-        skinChecked = skin.isChecked();
+        boolean skinChecked = skin.isChecked();
         if (skinChecked) {
             skinInt = 1;
         } else {
             skinInt = 0;
         }
 
-        eyeChecked = eye.isChecked();
+        boolean eyeChecked = eye.isChecked();
         if (eyeChecked) {
             eyeInt = 1;
         } else {
             eyeInt = 0;
         }
 
-        hearingChecked = hearing.isChecked();
+        boolean hearingChecked = hearing.isChecked();
         if (hearingChecked) {
             hearingInt = 1;
         } else {
@@ -282,7 +266,7 @@ public class ChangeProfileActivity extends BaseActitivty {
         }
 
         //get smoking
-        radioGroupSmoke = findViewById(R.id.radioGroupSmoke);
+        RadioGroup radioGroupSmoke = findViewById(R.id.radioGroupSmoke);
         // get selected radio button from radioGroup
         int selectedIdSmoke = radioGroupSmoke.getCheckedRadioButtonId();
         if (selectedIdSmoke != -1) {
@@ -299,7 +283,7 @@ public class ChangeProfileActivity extends BaseActitivty {
         }
 
         //get allergies
-        radioGroupAllergies = findViewById(R.id.radioGroupAllergies);
+        RadioGroup radioGroupAllergies = findViewById(R.id.radioGroupAllergies);
         // get selected radio button from radioGroup
         int selectedIdAllergies = radioGroupAllergies.getCheckedRadioButtonId();
         if (selectedIdAllergies != -1) {
@@ -379,12 +363,12 @@ public class ChangeProfileActivity extends BaseActitivty {
         dateEdit.setText(sdf.format(myCalendar.getTime()));
     }
 
-    public void gotToSettings() {
+    private void gotToSettings() {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 
-    public void goToHome() {
+    private void goToHome() {
         Intent intent = new Intent(this, CalenderActivity.class);
         startActivity(intent);
     }
@@ -411,7 +395,7 @@ public class ChangeProfileActivity extends BaseActitivty {
         }
     }
 
-    public void goToAppointments() {
+    private void goToAppointments() {
         Intent intent = new Intent(this, LastAppointmentsActivity.class);
         intent.putExtra("source", "ChangeProfileActivity");
         startActivity(intent);

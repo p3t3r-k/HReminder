@@ -1,12 +1,9 @@
 package com.example.hreminder.Activities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
@@ -14,23 +11,13 @@ import com.example.hreminder.BehindTheScenes.BaseActitivty;
 import com.example.hreminder.BehindTheScenes.LastUser;
 import com.example.hreminder.BehindTheScenes.Session;
 import com.example.hreminder.Database.DbHelper;
-import com.example.hreminder.Database.HReminder;
-import com.example.hreminder.Local.CreateDatabase;
 import com.example.hreminder.R;
 
-import io.reactivex.Flowable;
 
 public class MainActivity extends BaseActitivty {
 
-    private EditText getLoginUsername;
-    private EditText getLoginPin;
-
-    private EditText userNameField;
-
     private String checkLoginUsername;
     private String checkLoginPin;
-
-    private String lastUserID;
 
     private DbHelper db;
     private Session session;
@@ -51,8 +38,8 @@ public class MainActivity extends BaseActitivty {
 
         if (db.checkIfLogExists()) {
             if (db.getLastUserID() != null) {
-                lastUserID = db.getLastUserID();
-                userNameField = findViewById(R.id.inputUsername);
+                String lastUserID = db.getLastUserID();
+                EditText userNameField = findViewById(R.id.inputUsername);
                 userNameField.setText(db.getUsernameByID(lastUserID));
             }
         }
@@ -61,10 +48,10 @@ public class MainActivity extends BaseActitivty {
 
     private void login() {
 
-        getLoginUsername = findViewById(R.id.inputUsername);
+        EditText getLoginUsername = findViewById(R.id.inputUsername);
         checkLoginUsername = getLoginUsername.getText().toString();
 
-        getLoginPin = findViewById(R.id.inputPin);
+        EditText getLoginPin = findViewById(R.id.inputPin);
         checkLoginPin = getLoginPin.getText().toString();
 
     }
@@ -79,10 +66,9 @@ public class MainActivity extends BaseActitivty {
             //get & set UserID for further Activities
             long id = db.getUserIDByName(checkLoginUsername);
             String lastUserID = Long.toString(id);
-            if (lastUserID != null) {
                 LastUser.setLastUserID(lastUserID);
                 db.setLastUserID(lastUserID);
-            }
+
 
             session.setLoggedin(true);
             Intent intent = new Intent(this, CalenderActivity.class);

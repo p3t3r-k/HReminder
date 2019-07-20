@@ -17,11 +17,13 @@ import com.example.hreminder.BehindTheScenes.LastUser;
 import com.example.hreminder.Database.DbHelper;
 import com.example.hreminder.R;
 
+import java.util.Objects;
+
 import static android.graphics.Color.parseColor;
 
 public class CalenderActivity extends BaseActitivty {
 
-    private Session session;
+   // private Session session;
     private DbHelper db;
     private String lastUserID;
 
@@ -32,7 +34,7 @@ public class CalenderActivity extends BaseActitivty {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calender);
         ActionBar abar = getSupportActionBar();
-        abar.setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
+        Objects.requireNonNull(abar).setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
 
      /*   session = new Session(this);
         if(!session.loggedin()){
@@ -46,8 +48,6 @@ public class CalenderActivity extends BaseActitivty {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
                lastUserID = extras.getString("idUser");
-        } else {
-            //kein Extra
         }
     }
 
@@ -88,36 +88,36 @@ public class CalenderActivity extends BaseActitivty {
         }
     }
 
-    public void goToProfile() {
+    private void goToProfile() {
         Intent intent = new Intent(this, ChangeProfileActivity.class);
         intent.putExtra("source", "CalenderActivity");
         startActivity(intent);
     }
 
-    public void gotToSettings() {
+    private void gotToSettings() {
         Intent intent = new Intent(this, SettingsActivity.class);
         intent.putExtra("source", "CalenderActivity");
         startActivity(intent);
     }
 
-    public void goToMap() {
+    private void goToMap() {
         Intent intent = new Intent(this, DoctorsMapActivity.class);
         intent.putExtra("source", "CalenderActivity");
         startActivity(intent);
     }
 
-    public void goToAppointments() {
+    private void goToAppointments() {
         Intent intent = new Intent(this, LastAppointmentsActivity.class);
         intent.putExtra("source", "CalenderActivity");
         //  intent.putExtra("idUser",loggedUserID);
         startActivity(intent);
     }
 
-    private void logout() {
+  /*  private void logout() {
         session.setLoggedin(false);
         finish();
         startActivity(new Intent(CalenderActivity.this, MainActivity.class));
-    }
+    } */
 
 }
 

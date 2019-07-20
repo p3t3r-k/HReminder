@@ -18,11 +18,6 @@
     <string name="createPinError">"Der PIN muss aus vier Zahlen bestehen."</string>
     <string name="createPinMatchingError">"Die beiden PINs müssen übereinstimmen."</string>
 
-    <!-- Fingerprint Activity -->
-    <string name="fingerprintImage">"FingerprintImage"</string>
-    <string name="fingerprintQuestion1">"Möchten Sie Ihren Fingerabdruck \nzum Einloggen verwenden?"</string>
-    <string name="fingerprintButtonYes">"Ja"</string>
-    <string name="fingerprintButtonSkip">"Überspringen"</string>
 
     <!--Strings fuer Userprofil-->
     <string name="app_name">HealthyReminder</string>
@@ -31,12 +26,10 @@
     <string name="femaleRadio">"weiblich"</string>
     <string name="maleRadio">"männlich"</string>
     <string name="birthdayText">"Geburtsdatum:"</string>
-    <string name="birthdayInput">"__.__.____"</string>
     <string name="weightText">"Gewicht:"</string>
     <string name="weightUnit">"kg"</string>
     <string name="heightText">"Größe:"</string>
     <string name="heightUnit">"cm"</string>
-    <string name="predispos">"(erbliche) Vorerkrankungen"</string>
     <string name="cardiacDiseases">"Herzerkrankungen"</string>
     <string name="neurologicalDiseases">"neurologische Erkrankungen"</string>
     <string name="orthopaedicDiseases">"orthopädische Erkrankungen"</string>
@@ -79,8 +72,6 @@
     <string name="finished">"Fertig"</string>
     <string name="appointDeleted">"Termin gelöscht: "</string>
 
-    <!-- DocsAround Activity -->
-    <string name="docsAroundTitle">"Ärzte in Ihrer Nähe"</string>
 
     <!-- Settings Activity -->
     <string name="settingsTitle">"Einstellungen"</string>
@@ -98,12 +89,6 @@
     <string name="calenderOverview">"Überblick:"</string>
     <string name="calenderAppointments">"Arzttermine eintragen:"</string>
 
-    <!-- NavigationDrawer Activity -->
-    <string name="titleMenu">"Menü"</string>
-    <string name="editProfilItem">"Benutzerprofil ändern"</string>
-    <string name="viewCalenderItem">"Kalender anzeigen"</string>
-    <string name="settingsItem">"Einstellungen"</string>
-    <string name="helpItem">"Hilfe"</string>
 
     <!-- Change PIN Activity -->
     <string name="changePINHeading">"PIN ändern"</string>
@@ -123,7 +108,6 @@
     <string name="actionBarHelp">"Hilfe"</string>
     <string name="actionBarOptions">"Optionen"</string>
     <string name="actionBarHome">"Kalenderansicht"</string>
-    <string name="actionBarBack">"Zurück"</string>
     <string name="ActionBarChangeProfil">"Profil ändern"</string>
     <string name="actionBarMap">"Google Maps Ansicht"</string>
     <string name="actionBarAppointments">"Vergangene Termine eintragen"</string>
@@ -133,7 +117,6 @@
     <string name="fingerprintInstruc">"Legen Sie den Finger auf den Touchsensor\n um das Login durchzuführen."</string>
     <string name="success">"Login erfolgreich."</string>
     <string name="fail">"Login fehlgeschlagen."</string>
-    <string name="failInstruc">"Legen Sie Ihren Finger zentral auf den Sensor."</string>
     <string name="noHardware">Ihr Gerät besitzt keinen Fingerprint Sensor.</string>
     <string name="noPermission">"Bitte erlauben Sie die Touchsensor Nutzung."</string>
     <string name="noFingerprint">"Kein Finger eingespeichert. Sie müssen mindestens einen Fingerabdruck in den Einstellungen des Gerätes registrieren."</string>

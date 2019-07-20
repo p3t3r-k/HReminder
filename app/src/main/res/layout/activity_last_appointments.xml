@@ -12,7 +12,8 @@
         android:id="@+id/calenderView"
         android:layout_width="99dp"
         android:layout_height="93dp"
-        app:srcCompat="@drawable/calenderappointment" />
+        app:srcCompat="@drawable/calenderappointment"
+        tools:ignore="ContentDescription"/>
 
     <TextView
         android:id="@+id/lastAppointmentsText"
@@ -70,7 +71,8 @@
         android:layout_marginTop="20dp"
         android:ems="6"
         android:focusable="false"
-        android:inputType="date" />
+        android:inputType="date"
+        tools:ignore="Autofill,LabelFor"/>
 
     <TextView
         android:id="@+id/lastApp"
@@ -133,7 +135,7 @@
         android:id="@+id/buttonFinished"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:onClick="onClickSwitchToCalenderAct"
         android:text="@string/finished" />

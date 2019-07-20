@@ -9,10 +9,10 @@ import io.reactivex.Flowable;
 
 public class ReminderDataSource implements IDataSource {
 
-    private HReminderDAO remDAO;
+    private final HReminderDAO remDAO;
     private static ReminderDataSource mInstance;
 
-    public ReminderDataSource(HReminderDAO remDAO) {
+    private ReminderDataSource(HReminderDAO remDAO) {
         this.remDAO = remDAO;
     }
 

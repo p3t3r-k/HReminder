@@ -40,19 +40,12 @@ public class LastAppointmentsActivity extends BaseActitivty {
     private DbHelper db;
     private Calendar myCalendar;
     private EditText dateEdit;
-    private Button getDateButton;
-    private Spinner spinnerDocs;
     private String selectedPhysician;
     private String selectedDate;
     private TableLayout tableLayout;
     private TableRow row;
-    private Button deleteRowButton;
-    private Cursor cursorDoc;
-    private Cursor cursorDate;
 
     private String iDUser;
-
-    private int rowCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,8 +94,8 @@ public class LastAppointmentsActivity extends BaseActitivty {
     }
 
     private void rebuildTableLayout() {
-        cursorDoc = db.getDocByID(LastUser.getLastUserID());
-        cursorDate = db.getDateByID(LastUser.getLastUserID());
+        Cursor cursorDoc = db.getDocByID(LastUser.getLastUserID());
+        Cursor cursorDate = db.getDateByID(LastUser.getLastUserID());
 
         cursorDoc.moveToFirst();
         cursorDate.moveToFirst();
@@ -158,8 +151,8 @@ public class LastAppointmentsActivity extends BaseActitivty {
         }
     }
 
-    public boolean getData() {
-        spinnerDocs = findViewById(R.id.spinnerDoc);
+    private boolean getData() {
+        Spinner spinnerDocs = findViewById(R.id.spinnerDoc);
         selectedPhysician = spinnerDocs.getSelectedItem().toString();
         if (dateEdit.getText().toString().equals("")) {
             AlertDialog.Builder builder = new AlertDialog.Builder(LastAppointmentsActivity.this);
@@ -174,7 +167,7 @@ public class LastAppointmentsActivity extends BaseActitivty {
         }
     }
 
-    public void addRow() {
+    private void addRow() {
         tableLayout = findViewById(R.id.tableLayout);
         row = new TableRow(this);
         TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
@@ -184,7 +177,7 @@ public class LastAppointmentsActivity extends BaseActitivty {
         TextView physician = new TextView(this);
         TextView date = new TextView(this);
         TextView space = new TextView(this);
-        deleteRowButton = new Button(this);
+        Button deleteRowButton = new Button(this);
 
         physician.setText(selectedPhysician);
         physician.setBackgroundResource(R.drawable.border);
@@ -205,7 +198,7 @@ public class LastAppointmentsActivity extends BaseActitivty {
         deleteRowButton.setLayoutParams(lpButton);
 
 
-        rowCount = tableLayout.getChildCount();
+        int rowCount = tableLayout.getChildCount();
         if (rowCount == 0) {
             row.setTag(rowCount);
         } else {

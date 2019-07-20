@@ -4,16 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 
 import com.example.hreminder.BehindTheScenes.DateConverter;
+
+import org.jetbrains.annotations.NotNull;
 
 @Entity(tableName = "HReminder")
 @TypeConverters(DateConverter.class)
 public class HReminder {
 
-    @NonNull
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int id;
@@ -91,117 +91,63 @@ public class HReminder {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getPin() {
         return pin;
-    }
-
-    public void setPin(String pin) {
-        this.pin = pin;
     }
 
     public boolean isFingerprint() {
         return fingerprint;
     }
 
-    public void setFingerprint(boolean fingerprint) {
-        this.fingerprint = fingerprint;
-    }
-
     public String getGender() {
         return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public long getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(long birthdate) {
-        this.birthdate = birthdate;
-    }
-
     public float getWeight() {
         return weight;
-    }
-
-    public void setWeight(float weight) {
-        this.weight = weight;
     }
 
     public boolean isHeart() {
         return heart;
     }
 
-    public void setHeart(boolean heart) {
-        this.heart = heart;
-    }
-
     public boolean isNeuro() {
         return neuro;
-    }
-
-    public void setNeuro(boolean neuro) {
-        this.neuro = neuro;
     }
 
     public boolean isOrtho() {
         return ortho;
     }
 
-    public void setOrtho(boolean ortho) {
-        this.ortho = ortho;
-    }
-
     public boolean isDerma() {
         return derma;
-    }
-
-    public void setDerma(boolean derma) {
-        this.derma = derma;
     }
 
     public boolean isEyes() {
         return eyes;
     }
 
-    public void setEyes(boolean eyes) {
-        this.eyes = eyes;
-    }
-
     public boolean isEars() {
         return ears;
-    }
-
-    public void setEars(boolean ears) {
-        this.ears = ears;
     }
 
     public boolean isSmoke() {
         return smoke;
     }
 
-    public void setSmoke(boolean smoke) {
-        this.smoke = smoke;
-    }
-
     public boolean isAllergy() {
         return allergy;
     }
 
-    public void setAllergy(boolean allergy) {
-        this.allergy = allergy;
-    }
 
 
+    @NotNull
     @Override
     public String toString() {
-        return new StringBuilder(username).append("\n").append(pin).toString();
+        return username + "\n" + pin;
     }
 }

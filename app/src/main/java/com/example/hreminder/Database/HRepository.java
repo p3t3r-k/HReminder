@@ -1,15 +1,13 @@
 package com.example.hreminder.Database;
 
-import java.util.List;
-
 import io.reactivex.Flowable;
 
 public class HRepository implements IDataSource {
 
-    private IDataSource mLocalDataSource;
+    private final IDataSource mLocalDataSource;
     private static HRepository mInstance;
 
-    public HRepository(IDataSource mLocalDataSource) {
+    private HRepository(IDataSource mLocalDataSource) {
         this.mLocalDataSource = mLocalDataSource;
     }
 

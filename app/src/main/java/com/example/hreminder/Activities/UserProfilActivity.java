@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -16,72 +15,31 @@ import androidx.appcompat.app.AlertDialog;
 import com.example.hreminder.BehindTheScenes.BaseActitivty;
 import com.example.hreminder.BehindTheScenes.LastUser;
 import com.example.hreminder.Database.DbHelper;
-import com.example.hreminder.Database.HReminder;
-import com.example.hreminder.Database.HRepository;
 import com.example.hreminder.R;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 import java.util.Locale;
-
-import io.reactivex.disposables.CompositeDisposable;
 
 public class UserProfilActivity extends BaseActitivty {
 
-    private RadioGroup radioGroupSex;
-    private RadioButton radioButtonSex;
     private String sex;
     private EditText dateEdit;
-    private long dateLong;
-    private Date date;
     private String birthdateStr;
-    private EditText weightEdit;
-    private float weight;
     private String weightS;
-    private EditText heightEdit;
-    private float height;
     private String heightS;
-    private CheckBox cardiac;
     private int cardiacInt;
-    private boolean cardiacChecked = false;
-    private CheckBox neuro;
     private int neuroInt;
-    private boolean neuroChecked = false;
-    private CheckBox ortho;
     private int orthoInt;
-    private boolean orthoChecked = false;
-    private CheckBox skin;
     private int skinInt;
-    private boolean skinChecked = false;
-    private CheckBox eye;
     private int eyeInt;
-    private boolean eyeChecked = false;
-    private CheckBox hearing;
     private int hearingInt;
-    private boolean hearingChecked = false;
-    private RadioGroup radioGroupSmoke;
-    private RadioButton radioButtonSmoke;
     private int smokeInt;
-    private RadioGroup radioGroupAllergies;
-    private RadioButton radioButtonAllergies;
     private int allergiesInt;
     private boolean allFilled = false;
     private Calendar myCalendar;
 
-    private String loggedUsername;
-
     private DbHelper db;
-
-    //Database
-    private CompositeDisposable compositeDisposable;
-    private HRepository hRepository;
-
-    //Adapter
-    ArrayAdapter adapter;
-    List<HReminder> list = new ArrayList<>();
 
 
     @Override
@@ -92,9 +50,7 @@ public class UserProfilActivity extends BaseActitivty {
         //get Username of logged-in User for Database Query
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            loggedUsername = extras.getString("loggedUser");
-        } else {
-            //kein Extra
+            String loggedUsername = extras.getString("loggedUser");
         }
 
         db = new DbHelper(this);
@@ -108,7 +64,7 @@ public class UserProfilActivity extends BaseActitivty {
     private void buildDatePickerDialog() {
         myCalendar = Calendar.getInstance();
 
-        myCalendar.set(2000, 01, 01);
+        myCalendar.set(2000, 1, 1);
         dateEdit = findViewById(R.id.dateEdit);
         DatePickerDialog.OnDateSetListener date = (view, year, monthOfYear, dayOfMonth) -> {
             myCalendar.set(Calendar.YEAR, year);
@@ -139,12 +95,12 @@ public class UserProfilActivity extends BaseActitivty {
 
 
         //get sex
-        radioGroupSex = findViewById(R.id.radioGroupSex);
+        RadioGroup radioGroupSex = findViewById(R.id.radioGroupSex);
         // get selected radio button from radioGroup
         int selectedId = radioGroupSex.getCheckedRadioButtonId();
         if (selectedId != -1) {
             // find the radiobutton by returned id
-            radioButtonSex = findViewById(selectedId);
+            RadioButton radioButtonSex = findViewById(selectedId);
             if (radioButtonSex.getText().equals(getString(R.string.femaleRadio))) {
                 sex = "w";
             } else {
@@ -165,7 +121,7 @@ public class UserProfilActivity extends BaseActitivty {
         }
 
         //get weight
-        weightEdit = findViewById(R.id.weightEdit);
+        EditText weightEdit = findViewById(R.id.weightEdit);
         if (weightEdit.getText().toString().equals("")) {
             weightFilled = false;
         } else {
@@ -174,7 +130,7 @@ public class UserProfilActivity extends BaseActitivty {
         }
 
         //get height
-        heightEdit = findViewById(R.id.heightEdit);
+        EditText heightEdit = findViewById(R.id.heightEdit);
         if (heightEdit.getText().toString().equals("")) {
             heightFilled = false;
         } else {
@@ -183,48 +139,48 @@ public class UserProfilActivity extends BaseActitivty {
         }
 
         //get predispositions
-        cardiac = findViewById(R.id.cardiac);
-        cardiacChecked = cardiac.isChecked();
+        CheckBox cardiac = findViewById(R.id.cardiac);
+        boolean cardiacChecked = cardiac.isChecked();
         if (cardiacChecked) {
             cardiacInt = 1;
         } else {
             cardiacInt = 0;
         }
 
-        neuro = findViewById(R.id.neuro);
-        neuroChecked = neuro.isChecked();
+        CheckBox neuro = findViewById(R.id.neuro);
+        boolean neuroChecked = neuro.isChecked();
         if (neuroChecked) {
             neuroInt = 1;
         } else {
             neuroInt = 0;
         }
 
-        ortho = findViewById(R.id.ortho);
-        orthoChecked = ortho.isChecked();
+        CheckBox ortho = findViewById(R.id.ortho);
+        boolean orthoChecked = ortho.isChecked();
         if (orthoChecked) {
             orthoInt = 1;
         } else {
             orthoInt = 0;
         }
 
-        skin = findViewById(R.id.skin);
-        skinChecked = skin.isChecked();
+        CheckBox skin = findViewById(R.id.skin);
+        boolean skinChecked = skin.isChecked();
         if (skinChecked) {
             skinInt = 1;
         } else {
             skinInt = 0;
         }
 
-        eye = findViewById(R.id.eye);
-        eyeChecked = eye.isChecked();
+        CheckBox eye = findViewById(R.id.eye);
+        boolean eyeChecked = eye.isChecked();
         if (eyeChecked) {
             eyeInt = 1;
         } else {
             eyeInt = 0;
         }
 
-        hearing = findViewById(R.id.hearing);
-        hearingChecked = hearing.isChecked();
+        CheckBox hearing = findViewById(R.id.hearing);
+        boolean hearingChecked = hearing.isChecked();
         if (hearingChecked) {
             hearingInt = 1;
         } else {
@@ -232,12 +188,12 @@ public class UserProfilActivity extends BaseActitivty {
         }
 
         //get smoking
-        radioGroupSmoke = findViewById(R.id.radioGroupSmoke);
+        RadioGroup radioGroupSmoke = findViewById(R.id.radioGroupSmoke);
         // get selected radio button from radioGroup
         int selectedIdSmoke = radioGroupSmoke.getCheckedRadioButtonId();
         if (selectedIdSmoke != -1) {
             // find the radiobutton by returned id
-            radioButtonSmoke = findViewById(selectedIdSmoke);
+            RadioButton radioButtonSmoke = findViewById(selectedIdSmoke);
             if (radioButtonSmoke.getText().equals(getString(R.string.yesRadio))) {
                 smokeInt = 1;
             } else {
@@ -249,12 +205,12 @@ public class UserProfilActivity extends BaseActitivty {
         }
 
         //get allergies
-        radioGroupAllergies = findViewById(R.id.radioGroupAllergies);
+        RadioGroup radioGroupAllergies = findViewById(R.id.radioGroupAllergies);
         // get selected radio button from radioGroup
         int selectedIdAllergies = radioGroupAllergies.getCheckedRadioButtonId();
         if (selectedIdAllergies != -1) {
             // find the radiobutton by returned id
-            radioButtonAllergies = findViewById(selectedIdAllergies);
+            RadioButton radioButtonAllergies = findViewById(selectedIdAllergies);
             if (radioButtonAllergies.getText().equals(getString(R.string.yesRadio))) {
                 allergiesInt = 1;
             } else {
@@ -265,11 +221,7 @@ public class UserProfilActivity extends BaseActitivty {
             allergiesFilled = false;
         }
 
-        if (sexFilled && smokeFilled && allergiesFilled && dateFilled && weightFilled && heightFilled) {
-            allFilled = true;
-        } else {
-            allFilled = false;
-        }
+        allFilled = sexFilled && smokeFilled && allergiesFilled && dateFilled && weightFilled && heightFilled;
 
     }
 

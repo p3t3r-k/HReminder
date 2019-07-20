@@ -3,8 +3,6 @@ package com.example.hreminder.Activities;
 import android.Manifest;
 import android.app.KeyguardManager;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
 import android.security.keystore.KeyGenParameterSpec;
@@ -39,15 +37,7 @@ public class FingerprintPrActivity extends BaseActitivty {
     private static final String KEY_NAME = "yourKey";
     private Cipher cipher;
     private KeyStore keyStore;
-    private KeyGenerator keyGenerator;
-    private TextView textView;
-    private FingerprintManager.CryptoObject cryptoObject;
-    private FingerprintManager fingerprintManager;
-    private KeyguardManager keyguardManager;
     private boolean allRequirements = true;
-
-    private DbHelper db;
-
 
 
     @Override
@@ -56,15 +46,13 @@ public class FingerprintPrActivity extends BaseActitivty {
         setContentView(R.layout.activity_fingerprint_pr);
 
         //Get an instance of KeyguardManager and FingerprintManager
-        keyguardManager =
-                (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
-        fingerprintManager =
-                (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
+        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+        FingerprintManager fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
 
-        textView = (TextView) findViewById(R.id.textViewInfo);
+        TextView textView = findViewById(R.id.textViewInfo);
 
 
-        db = new DbHelper(this);
+        DbHelper db = new DbHelper(this);
         if(!db.getAnyUser()){
             textView.setText(R.string.notRegistered);
             allRequirements = false;
@@ -107,7 +95,7 @@ public class FingerprintPrActivity extends BaseActitivty {
                 e.printStackTrace();
             }if (initCipher()) {
                 //If the cipher is initialized successfully, then create a CryptoObject instance
-                cryptoObject = new FingerprintManager.CryptoObject(cipher);
+                FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
 
                 FingerprintHandler helper = new FingerprintHandler(this);
                 helper.startAuth(fingerprintManager, cryptoObject);
@@ -123,7 +111,7 @@ public class FingerprintPrActivity extends BaseActitivty {
             keyStore = KeyStore.getInstance("AndroidKeyStore");
 
             //Generate the key//
-            keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
+            KeyGenerator keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
 
             //Initialize an empty KeyStore//
             keyStore.load(null);
@@ -158,7 +146,7 @@ public class FingerprintPrActivity extends BaseActitivty {
     }
 
     //Create a new method that we’ll use to initialize our cipher//
-    public boolean initCipher() {
+    private boolean initCipher() {
         try {
             //Obtain a cipher instance and configure it with the properties required for fingerprint authentication//
             cipher = Cipher.getInstance(
@@ -189,7 +177,7 @@ public class FingerprintPrActivity extends BaseActitivty {
     }
 
     private class FingerprintException extends Exception {
-        public FingerprintException(Exception e) {
+        FingerprintException(Exception e) {
             super(e);
         }
     }

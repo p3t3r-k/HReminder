@@ -25,7 +25,7 @@ import static android.content.pm.PackageManager.GET_META_DATA;
 
 public class SettingsActivity extends BaseActitivty {
 
-    String callingActivity;
+    private String callingActivity;
 
     private Session session;
 
@@ -57,7 +57,6 @@ public class SettingsActivity extends BaseActitivty {
     private void showChangeLanguageDialog() {
         final String [] languageList = {"English", "Deutsch"};
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(SettingsActivity.this);
-        String selectedLang = Locale.getDefault().getDisplayLanguage();
 
 
         mBuilder.setTitle(R.string.changeLanguageDialog);
@@ -80,7 +79,7 @@ public class SettingsActivity extends BaseActitivty {
 
     }
 
-    public void onClickChangeLanguage(){
+    private void onClickChangeLanguage(){
         Button changeLang = findViewById(R.id.btnLanguage);
         changeLang.setOnClickListener(v -> showChangeLanguageDialog());
     }
@@ -91,7 +90,7 @@ public class SettingsActivity extends BaseActitivty {
         super.attachBaseContext(LocaleManager.setLocale(base));
     }
 
-    protected void resetTitles() {
+    private void resetTitles() {
         try {
             ActivityInfo info = getPackageManager().getActivityInfo(getComponentName(), GET_META_DATA);
             if (info.labelRes != 0) {

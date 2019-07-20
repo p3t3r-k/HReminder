@@ -14,14 +14,11 @@ public class LocaleManager {
     public static final String LANGUAGE_KEY_ENGLISH = "en";
     public static final String LANGUAGE_KEY_DEUTSCH = "de";
     private static final String LANGUAGE_KEY = "language_key";
-    /**
-     *  SharedPreferences Key
-     */
 
     /**
      * set current pref locale
-     * @param mContext
-     * @return
+     * @param mContext Context
+     * @return updatedResources
      */
     public static Context setLocale(Context mContext) {
         return updateResources(mContext, getLanguagePref(mContext));
@@ -29,10 +26,10 @@ public class LocaleManager {
 
     /**
      * Set new Locale with context
-     * @param mContext
+     * @param mContext Context
      *
-     * @param mLocaleKey
-     * @return
+     * @param mLocaleKey LocaleKey
+     * @return updated Resources
      */
     public static Context setNewLocale(Context mContext, String mLocaleKey) {
         setLanguagePref(mContext, mLocaleKey);
@@ -44,26 +41,26 @@ public class LocaleManager {
      * @param mContext current context
      * @return current locale key by default return german locale
      */
-    public static String getLanguagePref(Context mContext) {
+    private static String getLanguagePref(Context mContext) {
         SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
         return mPreferences.getString(LANGUAGE_KEY, LANGUAGE_KEY_DEUTSCH);
     }
 
     /**
      *  set pref key
-     * @param mContext
-     * @param localeKey
+     * @param mContext Context
+     * @param localeKey LocaleKey
      */
     private static void setLanguagePref(Context mContext, String localeKey) {
         SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
-        mPreferences.edit().putString(LANGUAGE_KEY, localeKey).commit();
+        mPreferences.edit().putString(LANGUAGE_KEY, localeKey).apply();
     }
 
     /**
      * update resource
-     * @param context
-     * @param language
-     * @return
+     * @param context Context
+     * @param language Language
+     * @return Context
      */
     private static Context updateResources(Context context, String language) {
         Locale locale = new Locale(language);
@@ -82,8 +79,8 @@ public class LocaleManager {
 
     /**
      * get current locale
-     * @param res
-     * @return
+     * @param res Resources
+     * @return Locale Config
      */
     public static Locale getLocale(Resources res) {
         Configuration config = res.getConfiguration();

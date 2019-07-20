@@ -24,7 +24,8 @@
         android:id="@+id/imageView"
         android:layout_below="@+id/textTitle"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp" />
+        android:layout_marginTop="36dp"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:layout_width="wrap_content"

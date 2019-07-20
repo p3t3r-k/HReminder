@@ -8,8 +8,6 @@ import androidx.room.Update;
 
 import com.example.hreminder.Database.HReminder;
 
-import java.util.List;
-
 import io.reactivex.Flowable;
 
 @Dao

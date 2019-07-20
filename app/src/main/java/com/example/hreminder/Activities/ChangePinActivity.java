@@ -5,7 +5,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -25,12 +24,8 @@ import static android.graphics.Color.parseColor;
 public class ChangePinActivity extends BaseActitivty {
 
     private DbHelper db;
-    private EditText oldPin;
-    private EditText newPin;
-    private EditText reNewPin;
     private String iDUser;
     private String newPinS;
-    private String reNewPinS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,17 +45,17 @@ public class ChangePinActivity extends BaseActitivty {
     }
 
 
-    public boolean getData(){
+    private boolean getData(){
         //check if UserID and Pin match
-        oldPin = findViewById(R.id.inputOldPin);
+        EditText oldPin = findViewById(R.id.inputOldPin);
         String oldPinS = oldPin.getText().toString();
 
         if (db.checkPinByID(iDUser,oldPinS)){
-            newPin = findViewById(R.id.inputNewPin);
+            EditText newPin = findViewById(R.id.inputNewPin);
             //PIN for DB-Update
             newPinS = newPin.getText().toString();
-            reNewPin = findViewById(R.id.inputValidatePin);
-            reNewPinS = reNewPin.getText().toString();
+            EditText reNewPin = findViewById(R.id.inputValidatePin);
+            String reNewPinS = reNewPin.getText().toString();
 
             if (!newPinS.equals(reNewPinS) || newPinS.equals("")){
                 AlertDialog.Builder builder = new AlertDialog.Builder(ChangePinActivity.this);
