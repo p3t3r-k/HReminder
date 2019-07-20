@@ -1,4 +1,4 @@
-package com.example.hreminder.Activities;
+package com.example.hreminder.activities;
 
 import android.Manifest;
 import android.app.KeyguardManager;
@@ -12,9 +12,9 @@ import android.widget.TextView;
 
 import androidx.core.app.ActivityCompat;
 
-import com.example.hreminder.BehindTheScenes.BaseActitivty;
-import com.example.hreminder.BehindTheScenes.FingerprintHandler;
-import com.example.hreminder.Database.DbHelper;
+import com.example.hreminder.behindTheScenes.BaseActivity;
+import com.example.hreminder.behindTheScenes.FingerprintHandler;
+import com.example.hreminder.database.DbHelper;
 import com.example.hreminder.R;
 
 import java.io.IOException;
@@ -32,7 +32,7 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
-public class FingerprintPrActivity extends BaseActitivty {
+public class FingerprintPrActivity extends BaseActivity {
     // Declare a string variable for the key we’re going to use in our fingerprint authentication
     private static final String KEY_NAME = "yourKey";
     private Cipher cipher;

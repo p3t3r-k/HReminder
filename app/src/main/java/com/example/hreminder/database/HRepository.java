@@ -1,4 +1,4 @@
-package com.example.hreminder.Database;
+package com.example.hreminder.database;
 
 import io.reactivex.Flowable;
 

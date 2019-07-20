@@ -1,7 +1,7 @@
-package com.example.hreminder.BehindTheScenes;
+package com.example.hreminder.behindTheScenes;
 
 public class LastUser {
-    public static String  lastUserID;
+    private static String  lastUserID;
 
 
     public static String getLastUserID() {

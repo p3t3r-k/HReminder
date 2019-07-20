@@ -1,4 +1,4 @@
-package com.example.hreminder.Activities;
+package com.example.hreminder.activities;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -11,17 +11,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 
-import com.example.hreminder.BehindTheScenes.BaseActitivty;
-import com.example.hreminder.BehindTheScenes.Session;
-import com.example.hreminder.BehindTheScenes.LastUser;
-import com.example.hreminder.Database.DbHelper;
+import com.example.hreminder.behindTheScenes.BaseActivity;
+import com.example.hreminder.behindTheScenes.LastUser;
+import com.example.hreminder.database.DbHelper;
 import com.example.hreminder.R;
 
 import java.util.Objects;
 
 import static android.graphics.Color.parseColor;
 
-public class CalenderActivity extends BaseActitivty {
+public class CalenderActivity extends BaseActivity {
 
    // private Session session;
     private DbHelper db;

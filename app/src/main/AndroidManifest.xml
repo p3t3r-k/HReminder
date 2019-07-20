@@ -27,9 +27,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".Activities.FingerprintPrActivity"
+        <activity android:name=".activities.FingerprintPrActivity"
             tools:ignore="InnerclassSeparator" />
-        <activity android:name=".Activities.ChangeProfileActivity"
+        <activity android:name=".activities.ChangeProfileActivity"
             tools:ignore="InnerclassSeparator" />
 
         <meta-data
@@ -40,42 +40,42 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".Activities.ChangePinActivity"
+            android:name=".activities.ChangePinActivity"
             android:exported="true"
             tools:ignore="InnerclassSeparator">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.hreminder.Activities.SettingsActivity" />
+                android:value="com.example.hreminder.activities.SettingsActivity" />
         </activity>
         <activity
-            android:name=".Activities.SettingsActivity"
+            android:name=".activities.SettingsActivity"
             android:exported="true"
             tools:ignore="InnerclassSeparator">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.hreminder.Activities.SettingsActivity" />
+                android:value="com.example.hreminder.activities.SettingsActivity" />
         </activity>
         <activity
-            android:name=".Activities.CalenderActivity"
+            android:name=".activities.CalenderActivity"
             android:exported="true"
             tools:ignore="InnerclassSeparator" />
         <activity
-            android:name=".Activities.RegisterActivity"
+            android:name=".activities.RegisterActivity"
             android:exported="true"
             tools:ignore="InnerclassSeparator" />
         <activity
-            android:name=".Activities.DoctorsMapActivity"
+            android:name=".activities.DoctorsMapActivity"
             android:exported="true"
             tools:ignore="InnerclassSeparator" />
         <activity
-            android:name=".Activities.LastAppointmentsActivity"
+            android:name=".activities.LastAppointmentsActivity"
             android:exported="true"
             tools:ignore="InnerclassSeparator" />
         <activity
-            android:name=".Activities.UserProfilActivity"
+            android:name=".activities.UserProfilActivity"
             android:exported="true"
             tools:ignore="InnerclassSeparator" />
-        <activity android:name=".Activities.MainActivity"
+        <activity android:name=".activities.MainActivity"
             tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -83,8 +83,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BehindTheScenes.BaseActitivty"
+        <activity android:name=".behindTheScenes.BaseActitivty"
             tools:ignore="InnerclassSeparator" />
+        <receiver android:name=".AlarmNotificationReciever"/>
     </application>
 
 </manifest>

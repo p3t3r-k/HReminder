@@ -1,4 +1,4 @@
-package com.example.hreminder.BehindTheScenes;
+package com.example.hreminder.behindTheScenes;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,11 +7,9 @@ import android.content.SharedPreferences;
 public class Session {
     private final SharedPreferences prefs;
     private final SharedPreferences.Editor editor;
-    private final Context ctx;
 
     @SuppressLint("CommitPrefEdits")
     public Session(Context ctx) {
-        this.ctx = ctx;
         prefs = ctx.getSharedPreferences("login", Context.MODE_PRIVATE);
         editor = prefs.edit();
     }

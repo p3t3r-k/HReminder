@@ -1,4 +1,4 @@
-package com.example.hreminder.Database;
+package com.example.hreminder.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -268,8 +268,8 @@ public class DbHelper extends SQLiteOpenHelper {
         return db.rawQuery(selectQuery, null);
     }
 
-    public boolean updateProfile(String id, String gender, String birthdate, String weight, String height, int heart, int neuro, int ortho, int derma,
-                                 int eyes, int ears, int smoke, int allergy) {
+    public void updateProfile(String id, String gender, String birthdate, String weight, String height, int heart, int neuro, int ortho, int derma,
+                              int eyes, int ears, int smoke, int allergy) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues args = new ContentValues();
@@ -288,7 +288,7 @@ public class DbHelper extends SQLiteOpenHelper {
         args.put(COLUMN_SMOKE, smoke);
         args.put(COLUMN_ALLERGY, allergy);
 
-        return db.update(USERPROFILE_TABLE, args, COLUMN_ID_Pr + "=" + id, null) > 0;
+        db.update(USERPROFILE_TABLE, args, COLUMN_ID_Pr + "=" + id, null);
     }
 
     //APPOINTMENTS_TABLE ACTIONS
@@ -394,8 +394,6 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
-
-
 
 
 }

@@ -1,4 +1,4 @@
-package com.example.hreminder.Activities;
+package com.example.hreminder.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,14 +7,14 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.example.hreminder.BehindTheScenes.BaseActitivty;
-import com.example.hreminder.BehindTheScenes.LastUser;
-import com.example.hreminder.BehindTheScenes.Session;
-import com.example.hreminder.Database.DbHelper;
+import com.example.hreminder.behindTheScenes.BaseActivity;
+import com.example.hreminder.behindTheScenes.LastUser;
+import com.example.hreminder.behindTheScenes.Session;
+import com.example.hreminder.database.DbHelper;
 import com.example.hreminder.R;
 
 
-public class MainActivity extends BaseActitivty {
+public class MainActivity extends BaseActivity {
 
     private String checkLoginUsername;
     private String checkLoginPin;

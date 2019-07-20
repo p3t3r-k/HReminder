@@ -1,4 +1,4 @@
-package com.example.hreminder.Activities;
+package com.example.hreminder.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -21,9 +21,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NavUtils;
 
-import com.example.hreminder.BehindTheScenes.BaseActitivty;
-import com.example.hreminder.BehindTheScenes.LastUser;
-import com.example.hreminder.Database.DbHelper;
+import com.example.hreminder.behindTheScenes.BaseActivity;
+import com.example.hreminder.behindTheScenes.LastUser;
+import com.example.hreminder.database.DbHelper;
 import com.example.hreminder.R;
 
 import java.text.SimpleDateFormat;
@@ -33,7 +33,7 @@ import java.util.Objects;
 
 import static android.graphics.Color.parseColor;
 
-public class LastAppointmentsActivity extends BaseActitivty {
+public class LastAppointmentsActivity extends BaseActivity {
 
     private String callingActivity = "";
     //private String loggedUserID;

@@ -1,10 +1,8 @@
-package com.example.hreminder.Local;
+package com.example.hreminder.local;
 
-import com.example.hreminder.Database.HReminder;
+import com.example.hreminder.database.HReminder;
+import com.example.hreminder.database.IDataSource;
 
-import java.util.List;
-
-import com.example.hreminder.Database.IDataSource;
 import io.reactivex.Flowable;
 
 public class ReminderDataSource implements IDataSource {

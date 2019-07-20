@@ -1,12 +1,11 @@
-package com.example.hreminder.Database;
+package com.example.hreminder.database;
 
-import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
-import com.example.hreminder.BehindTheScenes.DateConverter;
+import com.example.hreminder.behindTheScenes.DateConverter;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -19,46 +18,46 @@ public class HReminder {
     private int id;
 
     @ColumnInfo(name = "username")
-    private String username;
+    private final String username;
 
     @ColumnInfo(name = "pin")
-    private String pin;
+    private final String pin;
 
     @ColumnInfo(name = "fingerprint")
-    private boolean fingerprint;
+    private final boolean fingerprint;
 
     @ColumnInfo(name = "pro_gender")
-    private String gender;
+    private final String gender;
 
     @ColumnInfo(name = "pro_birthdate")
-    private long birthdate;
+    private final long birthdate;
 
     @ColumnInfo(name = "pro_weight")
-    private float weight;
+    private final float weight;
 
     @ColumnInfo(name = "heart")
-    private boolean heart;
+    private final boolean heart;
 
     @ColumnInfo(name = "neuro")
-    private boolean neuro;
+    private final boolean neuro;
 
     @ColumnInfo(name = "ortho")
-    private boolean ortho;
+    private final boolean ortho;
 
     @ColumnInfo(name = "derma")
-    private boolean derma;
+    private final boolean derma;
 
     @ColumnInfo(name = "eyes")
-    private boolean eyes;
+    private final boolean eyes;
 
     @ColumnInfo(name = "ears")
-    private boolean ears;
+    private final boolean ears;
 
     @ColumnInfo(name = "smoke")
-    private boolean smoke;
+    private final boolean smoke;
 
     @ColumnInfo(name = "allergy")
-    private boolean allergy;
+    private final boolean allergy;
 
 
     public HReminder(String username, String pin, boolean fingerprint, String gender, long birthdate, float weight,

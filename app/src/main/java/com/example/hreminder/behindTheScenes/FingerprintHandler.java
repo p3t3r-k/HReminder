@@ -1,4 +1,4 @@
-package com.example.hreminder.BehindTheScenes;
+package com.example.hreminder.behindTheScenes;
 
 import android.Manifest;
 import android.content.Context;
@@ -10,11 +10,8 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
-import com.example.hreminder.Activities.CalenderActivity;
-import com.example.hreminder.Activities.DoctorsMapActivity;
+import com.example.hreminder.activities.CalenderActivity;
 import com.example.hreminder.R;
-
-import java.util.Calendar;
 
 public class FingerprintHandler extends FingerprintManager.AuthenticationCallback {
 
@@ -26,7 +23,6 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     public FingerprintHandler(Context mContext) {
         context = mContext;
     }
-
 
 
     //Implement the startAuth method, which is responsible for starting the fingerprint authentication process
@@ -45,7 +41,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
         //I’m going to display the results of fingerprint authentication as a series of toasts.
         //Here, I’m creating the message that’ll be displayed if an error occurs
-        Toast.makeText(context, context.getResources().getString(R.string.fail)+"\n" + errString, Toast.LENGTH_LONG).show();
+        Toast.makeText(context, context.getResources().getString(R.string.fail) + "\n" + errString, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -60,8 +56,10 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     //onAuthenticationHelp is called when a non-fatal error has occurred. This method provides additional information about the error,
     //so to provide the user with as much feedback as possible I’m incorporating this information into my toast
     public void onAuthenticationHelp(int helpMsgId, CharSequence helpString) {
-        Toast.makeText(context, context.getResources().getString(R.string.authentHelp)+"\n" + helpString, Toast.LENGTH_LONG).show();
-    }@Override
+        Toast.makeText(context, context.getResources().getString(R.string.authentHelp) + "\n" + helpString, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
 
     //onAuthenticationSucceeded is called when a fingerprint has been successfully matched to one of the fingerprints stored on the user’s device
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {

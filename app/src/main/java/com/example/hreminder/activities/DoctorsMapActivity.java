@@ -16,7 +16,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.example.hreminder.BehindTheScenes.BaseActitivty;
+import com.example.hreminder.BehindTheScenes.BaseActivity;
 import com.example.hreminder.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -32,7 +32,7 @@ import java.util.Objects;
 
 import static android.graphics.Color.parseColor;
 
-public class DoctorsMapActivity extends BaseActitivty implements OnMapReadyCallback {
+public class DoctorsMapActivity extends BaseActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Boolean mLocationPermissionsGranted = false;
