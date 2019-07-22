@@ -394,6 +394,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
+    
 
     public static void dropUserProfile(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
