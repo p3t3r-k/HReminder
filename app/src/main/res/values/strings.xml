@@ -83,6 +83,8 @@
     <string name="about">"Über"</string>
     <string name="changeProfile">"Profil ändern"</string>
     <string name="changeLanguageDialog">"Wählen Sie die Sprache aus…"</string>
+    <string name="deleteProfileDialog">Profil löschen</string>
+    <string name="deleteProfileDialogMsg">Wollen Sie Ihr Profil wirklich löschen?</string>
 
     <!-- Calender Activity -->
     <string name="calenderHead">"Termin-Empfehlungen"</string>

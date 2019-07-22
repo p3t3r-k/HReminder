@@ -1,6 +1,7 @@
 package com.example.hreminder.activities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NavUtils;
@@ -17,6 +19,7 @@ import com.example.hreminder.behindTheScenes.BaseActivity;
 import com.example.hreminder.behindTheScenes.LocaleManager;
 import com.example.hreminder.behindTheScenes.Session;
 import com.example.hreminder.R;
+import com.example.hreminder.database.DbHelper;
 
 import java.util.Objects;
 
@@ -26,7 +29,6 @@ import static android.content.pm.PackageManager.GET_META_DATA;
 public class SettingsActivity extends BaseActivity {
 
     private String callingActivity;
-
     private Session session;
 
     @Override
@@ -52,20 +54,17 @@ public class SettingsActivity extends BaseActivity {
     }
 
 
-
-
     private void showChangeLanguageDialog() {
-        final String [] languageList = {"English", "Deutsch"};
+        final String[] languageList = {"English", "Deutsch"};
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(SettingsActivity.this);
 
 
         mBuilder.setTitle(R.string.changeLanguageDialog);
         mBuilder.setSingleChoiceItems(languageList, -1, (dialog, i) -> {
-            if (i == 0){
+            if (i == 0) {
                 LocaleManager.setNewLocale(getBaseContext(), LocaleManager.LANGUAGE_KEY_ENGLISH);
                 recreate();
-            }
-            else {
+            } else {
                 LocaleManager.setNewLocale(getBaseContext(), LocaleManager.LANGUAGE_KEY_DEUTSCH);
 
                 recreate();
@@ -79,7 +78,7 @@ public class SettingsActivity extends BaseActivity {
 
     }
 
-    private void onClickChangeLanguage(){
+    private void onClickChangeLanguage() {
         Button changeLang = findViewById(R.id.btnLanguage);
         changeLang.setOnClickListener(v -> showChangeLanguageDialog());
     }
@@ -112,14 +111,32 @@ public class SettingsActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    public void onClickLogout(View view){
+    public void onClickLogout(View view) {
         logout();
     }
 
-    private void logout(){
+    private void logout() {
         session.setLoggedin(false);
         finish();
         startActivity(new Intent(SettingsActivity.this, MainActivity.class));
+    }
+
+    public void onClickDeleteProfile(View view) {
+
+        new AlertDialog.Builder(SettingsActivity.this)
+                .setTitle(R.string.deleteProfileDialog)
+                .setMessage(R.string.deleteProfileDialogMsg)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //DbHelper.dropUserProfile();
+                        logout();
+                    }
+                })
+
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+
     }
 
 

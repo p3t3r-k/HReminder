@@ -25,8 +25,8 @@ public class AlarmNotificationReceiver extends BroadcastReceiver {
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setWhen(System.currentTimeMillis())
                 .setSmallIcon(R.drawable.logo)
-                .setContentTitle("Alarm active!")
-                .setContentText("THIS IS MY ALARM")
+                .setContentTitle("test erinnerung")
+                .setContentText("das ist ein test")
                 .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_SOUND)
                 .setContentInfo("Info");
 
