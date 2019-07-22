@@ -245,20 +245,23 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public String getUserProfileByID(String id) {
-        String selectQuery = "SELECT * FROM " + USERPROFILE_TABLE + " where " +
-                COLUMN_ID_Pr + " = " + "'" + id + "'";
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-        cursor.moveToFirst();
-        String userprofileInfo = cursor.getString(1) + "\n" + cursor.getString(2) + "\n" + cursor.getString(3)
-                + "\n" + cursor.getString(4) + "\n" + cursor.getString(5) + "\n" + cursor.getInt(6) + "\n" + cursor.getInt(7) + "\n" + cursor.getInt(8)
-                + "\n" + cursor.getInt(9) + "\n" + cursor.getInt(10) + "\n" + cursor.getInt(11) + "\n" + cursor.getInt(12) + "\n";
 
-        cursor.close();
-        db.close();
-        return userprofileInfo;
-    }
+//    //für Testzwecke
+//    public String getUserProfileByID(String id) {
+//        String selectQuery = "SELECT * FROM " + USERPROFILE_TABLE + " where " +
+//                COLUMN_ID_Pr + " = " + "'" + id + "'";
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor cursor = db.rawQuery(selectQuery, null);
+//        cursor.moveToFirst();
+//        String userprofileInfo = cursor.getString(1) + "\n" + cursor.getString(2) + "\n" + cursor.getString(3)
+//                + "\n" + cursor.getString(4) + "\n" + cursor.getString(5) + "\n" + cursor.getInt(6) + "\n" + cursor.getInt(7) + "\n" + cursor.getInt(8)
+//                + "\n" + cursor.getInt(9) + "\n" + cursor.getInt(10) + "\n" + cursor.getInt(11) + "\n" + cursor.getInt(12) + "\n";
+//
+//        cursor.close();
+//        db.close();
+//        return userprofileInfo;
+//    }
+
 
     public Cursor getProfileByID(String id) {
         String selectQuery = "SELECT gender,birthdate,weight,height,heart,neuro,ortho,derma,eyes,ears,smoke,allergy FROM " + USERPROFILE_TABLE + " where " +
@@ -266,6 +269,23 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         return db.rawQuery(selectQuery, null);
+    }
+
+    public boolean checkIfProfileExists(String id){
+        String selectQuery = "SELECT * FROM " + USERPROFILE_TABLE + " where " +
+                COLUMN_ID_Pr + " = " + "'" + id + "'";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(selectQuery,null);
+        if (cursor.getCount() > 0){
+            cursor.close();
+            db.close();
+            return true;
+        } else {
+            cursor.close();
+            db.close();
+            return false;
+        }
     }
 
     public void updateProfile(String id, String gender, String birthdate, String weight, String height, int heart, int neuro, int ortho, int derma,
@@ -397,9 +417,11 @@ public class DbHelper extends SQLiteOpenHelper {
 
     
 
-    public static void dropUserProfile(String id) {
+    public  void dropUserProfile(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(USERPROFILE_TABLE, COLUMN_LASTUSER_ID + "=" + id, null);
+        db.delete(USERPROFILE_TABLE, COLUMN_ID_Pr + "=" + id, null);
+        db.delete(USER_TABLE,COLUMN_ID + "="+id,null);
+        db.delete(APPOINTMENTS_TABLE,COLUMN_ID_User + "="+id,null);
     }
 
 

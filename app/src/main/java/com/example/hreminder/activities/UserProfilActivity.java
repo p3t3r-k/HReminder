@@ -8,14 +8,12 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
 
+import com.example.hreminder.R;
 import com.example.hreminder.behindTheScenes.BaseActivity;
 import com.example.hreminder.behindTheScenes.LastUser;
 import com.example.hreminder.database.DbHelper;
-import com.example.hreminder.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -46,12 +44,6 @@ public class UserProfilActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profil);
-
-        //get Username of logged-in User for Database Query
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String loggedUsername = extras.getString("loggedUser");
-        }
 
         db = new DbHelper(this);
 
@@ -233,8 +225,6 @@ public class UserProfilActivity extends BaseActivity {
 
             String idString = LastUser.getLastUserID();
             db.addUserProfile(idString, sex, birthdateStr, weightS, heightS, cardiacInt, neuroInt, orthoInt, skinInt, eyeInt, hearingInt, smokeInt, allergiesInt);
-
-            Toast.makeText(this, db.getUserProfileByID(idString), Toast.LENGTH_LONG).show();
 
             Intent intent = new Intent(this, LastAppointmentsActivity.class);
             intent.putExtra("idUser",idString);

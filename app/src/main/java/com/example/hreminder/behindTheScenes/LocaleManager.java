@@ -29,7 +29,6 @@ public class LocaleManager {
      * @param mContext Context
      *
      * @param mLocaleKey LocaleKey
-     * @return updated Resources
      */
     public static void setNewLocale(Context mContext, String mLocaleKey) {
         setLanguagePref(mContext, mLocaleKey);

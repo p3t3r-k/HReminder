@@ -380,8 +380,6 @@ public class ChangeProfileActivity extends BaseActivity {
 
             db.updateProfile(idString, sex, birthdateStr, weightS, heightS, cardiacInt, neuroInt, orthoInt, skinInt, eyeInt, hearingInt, smokeInt, allergiesInt);
 
-            Toast.makeText(this, db.getUserProfileByID(idString), Toast.LENGTH_LONG).show();
-
             Intent intent = new Intent(this, CalenderActivity.class);
             intent.putExtra("source", "ChangeProfileActivity");
             startActivity(intent);

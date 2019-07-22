@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NavUtils;
 
 import com.example.hreminder.behindTheScenes.BaseActivity;
+import com.example.hreminder.behindTheScenes.LastUser;
 import com.example.hreminder.behindTheScenes.LocaleManager;
 import com.example.hreminder.behindTheScenes.Session;
 import com.example.hreminder.R;
@@ -30,6 +31,8 @@ public class SettingsActivity extends BaseActivity {
 
     private String callingActivity;
     private Session session;
+    private DbHelper db;
+    private String lastUserID;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,9 +53,15 @@ public class SettingsActivity extends BaseActivity {
             callingActivity = extras.getString("source");
         }
 
-
+        db = new DbHelper(this);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        lastUserID = db.getLastUserID();
+        LastUser.setLastUserID(lastUserID);
+    }
 
     private void showChangeLanguageDialog() {
         final String[] languageList = {"English", "Deutsch"};
@@ -126,11 +135,9 @@ public class SettingsActivity extends BaseActivity {
         new AlertDialog.Builder(SettingsActivity.this)
                 .setTitle(R.string.deleteProfileDialog)
                 .setMessage(R.string.deleteProfileDialogMsg)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        //DbHelper.dropUserProfile();
-                        logout();
-                    }
+                .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                    db.dropUserProfile(lastUserID);
+                    logout();
                 })
 
                 .setNegativeButton(android.R.string.no, null)

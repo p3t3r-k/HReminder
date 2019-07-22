@@ -18,8 +18,7 @@ public class AlarmNotificationReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        //noinspection deprecation,deprecation
-        @SuppressWarnings("deprecation") NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
 
         builder.setAutoCancel(true)
                 .setDefaults(Notification.DEFAULT_ALL)

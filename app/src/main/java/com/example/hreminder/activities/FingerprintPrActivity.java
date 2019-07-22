@@ -54,8 +54,18 @@ public class FingerprintPrActivity extends BaseActivity {
 
         DbHelper db = new DbHelper(this);
         if(!db.getAnyUser()){
-            textView.setText(R.string.notRegistered);
-            allRequirements = false;
+                textView.setText(R.string.notRegistered);
+                allRequirements = false;
+
+        }
+
+        if (db.checkIfLogExists()){
+            String lastUser = db.getLastUserID();
+            if (!db.checkIfProfileExists(lastUser)) {
+                textView.setText(R.string.notRegistered);
+                allRequirements = false;
+            }
+
         }
 
 
