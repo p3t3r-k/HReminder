@@ -132,7 +132,9 @@
     <string name="noLockscreen">"Please enable lockscreen security in your device's Settings"</string>
     <string name="authentHelp">"Authentication Help:"</string>
     <string name="notRegistered">"You are not registered yet!\nPlease do that before logging in."</string>
+    <string name="searchIcon">searchIcon</string>
+    <string name="mapsSearchHint">Enter doctor</string>
+    <string name="myLocationIcon">myLocationIcon</string>
 
 
-
-    </resources>
+</resources>
