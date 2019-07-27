@@ -63,7 +63,19 @@
         <item>cardiologist</item>
         <item>neurologist</item>
         <item>orthopedist</item>
+        <item>pulmonologist</item>
     </string-array>
+    <string name ="physician">"physician"</string>
+    <string name ="dentist">"dentist"</string>
+    <string name ="gynaecologist">"gynaecologist"</string>
+    <string name ="dermatologist">"dermatologist"</string>
+    <string name ="ophthalmologist">"ophthalmologist"</string>
+    <string name ="ENTspecialist">"ENT specialist"</string>
+    <string name ="cardiologist">"cardiologist"</string>
+    <string name ="neurologist">"neurologist"</string>
+    <string name ="orthopedist">"orthopedist"</string>
+    <string name ="pulmonologist">"pulmonologist"</string>
+
     <string name="lastApp">"Last Appointment"</string>
     <string name="getDate">"Register appointment"</string>
     <string name="savedDates">"Erfasste Termine:"</string>
