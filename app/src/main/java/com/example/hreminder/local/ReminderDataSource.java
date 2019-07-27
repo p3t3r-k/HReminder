@@ -1,5 +1,5 @@
 package com.example.hreminder.local;
-
+/*
 import com.example.hreminder.database.HReminder;
 import com.example.hreminder.database.IDataSource;
 
@@ -51,3 +51,4 @@ public class ReminderDataSource implements IDataSource {
         remDAO.deleteAllDB();
     }
 }
+*/

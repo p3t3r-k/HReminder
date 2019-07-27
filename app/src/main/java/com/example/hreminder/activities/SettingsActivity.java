@@ -26,6 +26,9 @@ import java.util.Objects;
 import static android.content.pm.PackageManager.GET_META_DATA;
 import static android.graphics.Color.parseColor;
 
+/**
+ * Activity to make some changes
+ */
 public class SettingsActivity extends BaseActivity {
 
     private String callingActivity;
@@ -33,6 +36,10 @@ public class SettingsActivity extends BaseActivity {
     private DbHelper db;
     private String lastUserID;
 
+    /**
+     * build layout, action bar, and get instance of database
+     * @param savedInstanceState savedInstance
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +62,9 @@ public class SettingsActivity extends BaseActivity {
         db = new DbHelper(this);
     }
 
+    /**
+     * get last logged user ID
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -62,6 +72,9 @@ public class SettingsActivity extends BaseActivity {
         LastUser.setLastUserID(lastUserID);
     }
 
+    /**
+     * build dialog to let user change Language
+     */
     private void showChangeLanguageDialog() {
         final String[] languageList = {"English", "Deutsch"};
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(SettingsActivity.this);
@@ -86,17 +99,27 @@ public class SettingsActivity extends BaseActivity {
 
     }
 
+    /**
+     * onClickListener for change language
+     */
     private void onClickChangeLanguage() {
         Button changeLang = findViewById(R.id.btnLanguage);
         changeLang.setOnClickListener(v -> showChangeLanguageDialog());
     }
 
 
+    /**
+     * get Local
+     * @param base context
+     */
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(LocaleManager.setLocale(base));
     }
 
+    /**
+     * reset layout
+     */
     private void resetTitles() {
         try {
             ActivityInfo info = getPackageManager().getActivityInfo(getComponentName(), GET_META_DATA);
@@ -108,27 +131,46 @@ public class SettingsActivity extends BaseActivity {
         }
     }
 
+    /**
+     * go to ChangePinActivity
+     * @param view Button
+     */
     public void onClickSwitchToPin(View view) {
         Intent intent = new Intent(this, ChangePinActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * go to ChangeProfileActivity
+     * @param view Button
+     */
     public void onClickSwitchToChangeProfile(View view) {
         Intent intent = new Intent(this, ChangeProfileActivity.class);
         intent.putExtra("source", "SettingsActivity");
         startActivity(intent);
     }
 
+    /**
+     * logout current user
+     * @param view Button
+     */
     public void onClickLogout(View view) {
         logout();
     }
 
+    /**
+     * logout user - go to MainActivity
+     */
     private void logout() {
         session.setLoggedin(false);
         finish();
         startActivity(new Intent(SettingsActivity.this, MainActivity.class));
     }
 
+    /**
+     * delete Profile and delete all database entries
+     * @param view Button
+     */
     public void onClickDeleteProfile(View view) {
 
         new AlertDialog.Builder(SettingsActivity.this)
@@ -145,7 +187,11 @@ public class SettingsActivity extends BaseActivity {
 
     }
 
-
+    /**
+     * onClick on Actionbar menu change to respective Activities
+     * @param item MenuItem
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

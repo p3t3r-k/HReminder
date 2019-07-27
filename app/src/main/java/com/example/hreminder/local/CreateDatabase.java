@@ -1,6 +1,6 @@
 package com.example.hreminder.local;
 
-import android.content.Context;
+/*import android.content.Context;
 
 import androidx.room.Database;
 import androidx.room.Room;
@@ -9,8 +9,8 @@ import androidx.room.RoomDatabase;
 import com.example.hreminder.database.HReminder;
 
 import static com.example.hreminder.local.CreateDatabase.DATABASE_VERSION;
-
-@Database(entities = HReminder.class, version = DATABASE_VERSION, exportSchema = false)
+*/
+/*@Database(entities = HReminder.class, version = DATABASE_VERSION, exportSchema = false)
 public abstract class CreateDatabase extends RoomDatabase {
 
 
@@ -33,3 +33,4 @@ public abstract class CreateDatabase extends RoomDatabase {
     public abstract HReminderDAO reminderDAO();
 
 }
+*/

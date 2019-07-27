@@ -21,12 +21,19 @@ import java.util.Objects;
 
 import static android.graphics.Color.parseColor;
 
+/**
+ * Activity to let the user change is Log-in PIN
+ */
 public class ChangePinActivity extends BaseActivity {
 
     private DbHelper db;
     private String iDUser;
     private String newPinS;
 
+    /**
+     * set Layout, Actionbar and get instance of DBHelper for database interactions
+     * @param savedInstanceState savedInstances
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,13 +45,20 @@ public class ChangePinActivity extends BaseActivity {
         db = new DbHelper(this);
     }
 
+    /**
+     * set iDUser to last logged User ID
+     */
     @Override
     protected void onStart() {
         super.onStart();
         iDUser = LastUser.getLastUserID();
     }
 
-
+    /**
+     * get Input data of User
+     * check whether oldPIN is true and newPIN fulfills Requirements
+     * @return true/false depending on accurate input
+     */
     private boolean getData(){
         //check if UserID and Pin match
         EditText oldPin = findViewById(R.id.inputOldPin);
@@ -87,6 +101,11 @@ public class ChangePinActivity extends BaseActivity {
 
     }
 
+    /**
+     * go back to last opened Activity
+     * @param item MenuItem
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -96,6 +115,11 @@ public class ChangePinActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Update Query for Database UserTable and go back to CalenderActivity
+     * if UserInput is wrong - AlertDialog shows up
+     * @param view Button
+     */
     public void onClickChangePin(View view) {
         if (getData()){
         if (db.updatePIN(iDUser,newPinS)){

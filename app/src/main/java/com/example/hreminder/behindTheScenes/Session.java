@@ -4,6 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+/**
+ * Class for Login with Shared Preferences
+ */
 public class Session {
     private final SharedPreferences prefs;
     private final SharedPreferences.Editor editor;

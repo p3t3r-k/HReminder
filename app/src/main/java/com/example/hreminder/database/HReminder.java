@@ -1,16 +1,6 @@
 package com.example.hreminder.database;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-import androidx.room.TypeConverters;
-
-import com.example.hreminder.behindTheScenes.DateConverter;
-
-import org.jetbrains.annotations.NotNull;
-
-@Entity(tableName = "HReminder")
-@TypeConverters(DateConverter.class)
+/*@Entity(tableName = "HReminder")
 public class HReminder {
 
     @PrimaryKey(autoGenerate = true)
@@ -150,3 +140,4 @@ public class HReminder {
         return username + "\n" + pin;
     }
 }
+*/

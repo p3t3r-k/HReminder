@@ -1,10 +1,7 @@
 package com.example.hreminder.behindTheScenes;
 
 
-import androidx.room.TypeConverter;
-
-import java.util.Date;
-
+/*
 public class DateConverter {
     @TypeConverter
     public static Date toDate(Long dateLong) {
@@ -16,3 +13,4 @@ public class DateConverter {
         return date == null ? null : date.getTime();
     }
 }
+*/

@@ -1,8 +1,6 @@
 package com.example.hreminder.database;
 
-import io.reactivex.Flowable;
-
-public class HRepository implements IDataSource {
+/*public class HRepository implements IDataSource {
 
     private final IDataSource mLocalDataSource;
     private static HRepository mInstance;
@@ -49,3 +47,4 @@ public class HRepository implements IDataSource {
         mLocalDataSource.deleteAllDB();
     }
 }
+*/

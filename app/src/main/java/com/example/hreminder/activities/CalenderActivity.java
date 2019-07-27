@@ -30,6 +30,10 @@ import java.util.Objects;
 
 import static android.graphics.Color.parseColor;
 
+/**
+ * CalendarActivity is the main/home screen of App
+ * responsible for Reminder-Date-Calculation
+ */
 public class CalenderActivity extends BaseActivity {
 
     // private Session session;
@@ -70,6 +74,11 @@ public class CalenderActivity extends BaseActivity {
     private Date appDortho;
     private Date appDpul;
 
+    /**
+     * set Layout, Actionbar and get instance of DBHelper for database interactions
+     * set last logged User ID
+     * @param savedInstanceState savedInstances
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,24 +86,22 @@ public class CalenderActivity extends BaseActivity {
         ActionBar abar = getSupportActionBar();
         Objects.requireNonNull(abar).setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
 
-
      /*   session = new Session(this);
         if(!session.loggedin()){
             logout();
         }
         */
-
         db = new DbHelper(this);
-
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             lastUserID = extras.getString("idUser");
         }
-
     }
 
-
+    /**
+     * get ID of last logged user and get relevant information of User for further calculations
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -106,8 +113,6 @@ public class CalenderActivity extends BaseActivity {
         cursor.moveToFirst();
         sex = cursor.getString(0);
         String birthdateStr = cursor.getString(1);
-        String weightS = cursor.getString(2);
-        String heightS = cursor.getString(3);
         cardiacInt = cursor.getInt(4);
         neuroInt = cursor.getInt(5);
         orthoInt = cursor.getInt(6);
@@ -135,6 +140,19 @@ public class CalenderActivity extends BaseActivity {
         buildTable();
     }
 
+    /**
+     * release Database
+     */
+    @Override
+    protected void onStop() {
+        super.onStop();
+        db.close();
+    }
+
+    /**
+     * logic for calculation of the date, for the AlarmManager
+     * depending on age, predispositions and the official recommendations for each doctor, the reminder dates are calculated
+     */
     private void determineIntervallForReminder() {
         //get current Date
         Date currentDate = new java.util.Date(System.currentTimeMillis());
@@ -467,6 +485,9 @@ public class CalenderActivity extends BaseActivity {
         }
     }
 
+    /**
+     * if an appointment is recommended, method addRow will be executed
+     */
     private void buildTable() {
         if (physYes) {
             addRow(getResources().getString(R.string.physician), appDphys);
@@ -492,7 +513,7 @@ public class CalenderActivity extends BaseActivity {
         if (neuYes){
             addRow(getResources().getString(R.string.neurologist), appDneu);
         }
-        if (orthoYes) {
+        if (orthoYes){
             addRow(getResources().getString(R.string.orthopedist), appDortho);
         }
         if (pulYes) {
@@ -500,6 +521,11 @@ public class CalenderActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Method to add a row to an existing TableLayout
+     * @param doc String doctor to be set as Text in TableRow
+     * @param nextDate Date nextDate to be set as Text in TableRow
+     */
     private void addRow(String doc, Date nextDate) {
         @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String dateUpcoming = sdf.format(nextDate);
@@ -522,7 +548,6 @@ public class CalenderActivity extends BaseActivity {
         date.setGravity(Gravity.CENTER);
         date.setPadding(30, 0, 30, 0);
         date.setLayoutParams(lp);
-        TableRow.LayoutParams lpButton = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
 
         row.addView(physician);
         row.addView(date);
@@ -530,6 +555,10 @@ public class CalenderActivity extends BaseActivity {
     }
 
 
+    /**
+     * get lastAppointments, which the user added in LastAppointmentsActivity
+     * Strings have to be converted to Dates
+     */
     private void getAppointmentDates() {
         @SuppressLint("SimpleDateFormat") DateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         Cursor cursor = db.getAppointmentsByID(LastUser.getLastUserID());
@@ -541,90 +570,80 @@ public class CalenderActivity extends BaseActivity {
             switch (doc) {
                 case "Hausarzt":
                 case "physician":
-                    String appPhysician = lastApp;
                     try {
-                        appDphys = sdf.parse(appPhysician);
+                        appDphys = sdf.parse(lastApp);
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                     break;
                 case "Zahnarzt":
                 case "dentist":
-                    String appDentist = lastApp;
                     try {
-                        appDdent = sdf.parse(appDentist);
+                        appDdent = sdf.parse(lastApp);
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                     break;
                 case "Frauenarzt":
                 case "gynaecologist":
-                    String appGyn = lastApp;
                     try {
-                        appDgyn = sdf.parse(appGyn);
+                        appDgyn = sdf.parse(lastApp);
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                     break;
                 case "Hautarzt":
                 case "dermatologist":
-                    String appDerma = lastApp;
                     try {
-                        appDderma = sdf.parse(appDerma);
+                        appDderma = sdf.parse(lastApp);
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                     break;
                 case "Augenarzt":
                 case "opthalmologist":
-                    String appOpth = lastApp;
                     try {
-                        appDopthal = sdf.parse(appOpth);
+                        appDopthal = sdf.parse(lastApp);
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                     break;
                 case "HNO Arzt":
                 case "ENT specialist":
-                    String appEntDoc = lastApp;
                     try {
-                        appDent = sdf.parse(appEntDoc);
+                        appDent = sdf.parse(lastApp);
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                     break;
                 case "Kardiologe":
                 case "cardiologist":
-                    String appCard = lastApp;
                     try {
-                        appDcardio = sdf.parse(appCard);
+                        appDcardio = sdf.parse(lastApp);
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                     break;
                 case "Neurologe":
                 case "neurologist":
-                    String appNeur = lastApp;
                     try {
-                        appDneu = sdf.parse(appNeur);
+                        appDneu = sdf.parse(lastApp);
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                     break;
                 case "Orthopäde":
                 case "orthopedist":
-                    String appOrtho = lastApp;
                     try {
-                        appDortho = sdf.parse(appOrtho);
+                        appDortho = sdf.parse(lastApp);
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                     break;
                 case "Lungenarzt":
                 case "pulmonologist":
-                    String appPulm = lastApp;
                     try {
-                        appDpul = sdf.parse(appPulm);
+                        appDpul = sdf.parse(lastApp);
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
@@ -640,6 +659,11 @@ public class CalenderActivity extends BaseActivity {
     }
 
 
+    /**
+     * method to build actionbar
+     * @param menu menu
+     * @return boolean true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuinfl = getMenuInflater();
@@ -648,6 +672,11 @@ public class CalenderActivity extends BaseActivity {
     }
 
 
+    /**
+     * onClick on different MenuItems go to Activities
+     * @param item MenuItem of Actionbar
+     * @return boolean true
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -670,24 +699,36 @@ public class CalenderActivity extends BaseActivity {
         }
     }
 
+    /**
+     * go to CalenderActivity
+     */
     private void goToProfile() {
         Intent intent = new Intent(this, ChangeProfileActivity.class);
         intent.putExtra("source", "CalenderActivity");
         startActivity(intent);
     }
 
+    /**
+     * go to SettingsActivity
+     */
     private void gotToSettings() {
         Intent intent = new Intent(this, SettingsActivity.class);
         intent.putExtra("source", "CalenderActivity");
         startActivity(intent);
     }
 
+    /**
+     * go to DoctorsMapActivity
+     */
     private void goToMap() {
         Intent intent = new Intent(this, DoctorsMapActivity.class);
         intent.putExtra("source", "CalenderActivity");
         startActivity(intent);
     }
 
+    /**
+     * go to LastAppointmentsActivity
+     */
     private void goToAppointments() {
         Intent intent = new Intent(this, LastAppointmentsActivity.class);
         intent.putExtra("source", "CalenderActivity");

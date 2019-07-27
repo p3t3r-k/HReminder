@@ -31,6 +31,9 @@ import java.util.Objects;
 
 import static android.graphics.Color.parseColor;
 
+/**
+ * Activity to let User adapt his/her profil information
+ */
 public class ChangeProfileActivity extends BaseActivity {
 
     private String callingActivity = "";
@@ -63,6 +66,12 @@ public class ChangeProfileActivity extends BaseActivity {
     private int allergiesInt;
     private boolean allFilled = false;
 
+
+    /**
+     * build Layout, Actionbar, and DatePickerDialog for birthdayInput
+     * get instance of DBHelper
+     * @param savedInstanceState savedInstance
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +92,10 @@ public class ChangeProfileActivity extends BaseActivity {
 
     }
 
+    /**
+     * get ID of last logged User for database query
+     * and input data that is stored in DB
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -95,10 +108,12 @@ public class ChangeProfileActivity extends BaseActivity {
 
     }
 
+    /**
+     * get all Data from Database and display it in Activity
+     * @param cursor Cursor with Profile information
+     */
     private void getDataFromDB(Cursor cursor) {
         cursor.moveToFirst();
-
-        //gender, birthdate, weight, height, heart, neuro, ortho, derma, eyes, ears, smoke, allergy
 
         sex = cursor.getString(0);
         birthdateStr = cursor.getString(1);
@@ -166,10 +181,11 @@ public class ChangeProfileActivity extends BaseActivity {
             radioButtonAllergies = findViewById(R.id.noAllergies);
             radioButtonAllergies.toggle();
         }
-
-
     }
 
+    /**
+     * get newly put in data
+     */
     private void getUserData() {
         boolean sexFilled;
         boolean smokeFilled;
@@ -178,9 +194,7 @@ public class ChangeProfileActivity extends BaseActivity {
         boolean weightFilled;
         boolean heightFilled;
 
-
         //get sex
-        //Layout
         RadioGroup radioGroupSex = findViewById(R.id.radioGroup);
         // get selected radio button from radioGroup
         int selectedId = radioGroupSex.getCheckedRadioButtonId();
@@ -264,7 +278,7 @@ public class ChangeProfileActivity extends BaseActivity {
             hearingInt = 0;
         }
 
-        //get smoking
+        //get if smoking
         RadioGroup radioGroupSmoke = findViewById(R.id.radioGroupSmoke);
         // get selected radio button from radioGroup
         int selectedIdSmoke = radioGroupSmoke.getCheckedRadioButtonId();
@@ -281,7 +295,7 @@ public class ChangeProfileActivity extends BaseActivity {
             smokeFilled = false;
         }
 
-        //get allergies
+        //get if allergies
         RadioGroup radioGroupAllergies = findViewById(R.id.radioGroupAllergies);
         // get selected radio button from radioGroup
         int selectedIdAllergies = radioGroupAllergies.getCheckedRadioButtonId();
@@ -297,12 +311,15 @@ public class ChangeProfileActivity extends BaseActivity {
         } else {
             allergiesFilled = false;
         }
-
         allFilled = sexFilled && smokeFilled && allergiesFilled && dateFilled && weightFilled && heightFilled;
-
     }
 
 
+    /**
+     * create Actionbar
+     * @param menu Menu
+     * @return boolean
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuinfl = getMenuInflater();
@@ -310,6 +327,11 @@ public class ChangeProfileActivity extends BaseActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     * onClick on Actionbar Buttons
+     * @param item MenuItem
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -317,7 +339,7 @@ public class ChangeProfileActivity extends BaseActivity {
                 gotToSettings();
                 return true;
             case R.id.action_help:
-                Toast.makeText(getApplicationContext(), "Help icon is selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Help will come soon.", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_home:
                 goToHome();
@@ -338,6 +360,9 @@ public class ChangeProfileActivity extends BaseActivity {
         }
     }
 
+    /**
+     * DatePicker Dialog
+     */
     private void buildDatePickerDialog() {
         myCalendar = Calendar.getInstance();
 
@@ -355,29 +380,42 @@ public class ChangeProfileActivity extends BaseActivity {
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show());
     }
 
+    /**
+     * set Label of DatePicker
+     */
     private void updateLabel() {
-        String myFormat = "dd.MM.yyyy"; //In which you need put here
+        String myFormat = "dd.MM.yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.GERMANY);
 
         dateEdit.setText(sdf.format(myCalendar.getTime()));
     }
 
+    /**
+     * go to SettingsActivity
+     */
     private void gotToSettings() {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 
+
+    /**
+     * go to CalenderActivity
+     */
     private void goToHome() {
         Intent intent = new Intent(this, CalenderActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * on Click on Button get Data and if all is filled, update database with new information and go to CalenderActivity
+     * if not everything is filled, a AlertDialog appears
+     * @param view Button
+     */
     public void onClickSwitchToHome(View view) {
         getUserData();
         if (allFilled) {
             String idString = LastUser.getLastUserID();
-
-
             db.updateProfile(idString, sex, birthdateStr, weightS, heightS, cardiacInt, neuroInt, orthoInt, skinInt, eyeInt, hearingInt, smokeInt, allergiesInt);
 
             Intent intent = new Intent(this, CalenderActivity.class);
@@ -392,6 +430,9 @@ public class ChangeProfileActivity extends BaseActivity {
         }
     }
 
+    /**
+     * go to LastAppointmentsActivity
+     */
     private void goToAppointments() {
         Intent intent = new Intent(this, LastAppointmentsActivity.class);
         intent.putExtra("source", "ChangeProfileActivity");

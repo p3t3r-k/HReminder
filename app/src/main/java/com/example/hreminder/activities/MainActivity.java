@@ -14,6 +14,9 @@ import com.example.hreminder.database.DbHelper;
 import com.example.hreminder.R;
 
 
+/**
+ * Login Activity
+ */
 public class MainActivity extends BaseActivity {
 
     private String checkLoginUsername;
@@ -22,7 +25,10 @@ public class MainActivity extends BaseActivity {
     private DbHelper db;
     private Session session;
 
-
+    /**
+     * build Layout, get instance of DB and session
+     * @param savedInstanceState savedInstance
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +52,9 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    /**
+     * get input of login data
+     */
     private void login() {
 
         EditText getLoginUsername = findViewById(R.id.inputUsername);
@@ -57,7 +66,11 @@ public class MainActivity extends BaseActivity {
     }
 
 
-
+    /**
+     * on Click check if put in data matches stored User information and log in
+     * else AlerDialog is displayed
+     * @param view Button
+     */
     public void onClickSwitchToCalender(View view) {
 
         login();
@@ -84,11 +97,19 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    /**
+     * onClick go to RegisterActivity
+     * @param view Button Register
+     */
     public void onClickSwitchToRegister(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * onClick go to FingerprintActivity
+     * @param view Button
+     */
     public void onClickPromptFingerprint(View view) {
         //Fingerprint Abfrage starten
         Intent intent = new Intent(this, FingerprintPrActivity.class);

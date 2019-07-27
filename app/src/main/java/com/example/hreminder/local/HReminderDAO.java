@@ -1,12 +1,6 @@
 package com.example.hreminder.local;
 
-import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.Query;
-import androidx.room.Update;
-
-import com.example.hreminder.database.HReminder;
+/*import com.example.hreminder.database.HReminder;
 
 import io.reactivex.Flowable;
 
@@ -36,3 +30,4 @@ public interface HReminderDAO {
 
 
 }
+*/

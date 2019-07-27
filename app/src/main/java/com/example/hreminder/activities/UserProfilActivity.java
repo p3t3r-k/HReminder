@@ -19,6 +19,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+/**
+ * Activity to set up the profile of user
+ */
 public class UserProfilActivity extends BaseActivity {
 
     private String sex;
@@ -40,6 +43,10 @@ public class UserProfilActivity extends BaseActivity {
     private DbHelper db;
 
 
+    /**
+     * build layout and get Database instance
+     * @param savedInstanceState savedInstance
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +60,9 @@ public class UserProfilActivity extends BaseActivity {
 
     }
 
+    /**
+     * build DatePicker for birthdate input
+     */
     private void buildDatePickerDialog() {
         myCalendar = Calendar.getInstance();
 
@@ -70,6 +80,9 @@ public class UserProfilActivity extends BaseActivity {
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show());
     }
 
+    /**
+     * set Date to DateEdit
+     */
     private void updateLabel() {
         String myFormat = "dd.MM.yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.GERMANY);
@@ -77,6 +90,9 @@ public class UserProfilActivity extends BaseActivity {
         dateEdit.setText(sdf.format(myCalendar.getTime()));
     }
 
+    /**
+     * get input data and store into variables
+     */
     private void getUserData() {
         boolean sexFilled;
         boolean smokeFilled;
@@ -217,7 +233,11 @@ public class UserProfilActivity extends BaseActivity {
 
     }
 
-
+    /**
+     * if put in data is valid, add to database and go to LastAppointmensActivity
+     * else AlertDialog to inform user
+     * @param view Button
+     */
     public void onClickSwitchToLastApp(View view) {
         getUserData();
         if (allFilled) {

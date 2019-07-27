@@ -10,6 +10,9 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.hreminder.R;
 
+/**
+ * Class for AlarmManager
+ */
 @SuppressWarnings("deprecation")
 public class AlarmNotificationReceiver extends BroadcastReceiver {
 

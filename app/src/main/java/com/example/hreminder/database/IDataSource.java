@@ -1,8 +1,6 @@
 package com.example.hreminder.database;
 
-import io.reactivex.Flowable;
-
-public interface IDataSource {
+/*public interface IDataSource {
 
     Flowable<HReminder> getUserById(int userID);
     Flowable<HReminder> getAllUsers();
@@ -12,3 +10,4 @@ public interface IDataSource {
     void deleteAllDB();
 
 }
+*/

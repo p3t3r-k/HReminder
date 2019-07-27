@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * DatabaseHelper Class
+ */
 public class DbHelper extends SQLiteOpenHelper {
 
     //public static final String TAG = DbHelper.class.getSimpleName();
@@ -15,13 +18,17 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private long id_PK;
 
-    //User Table - Login
+    /**
+     * User Table - Login
+     */
     private static final String USER_TABLE = "users";
     private static final String COLUMN_ID = "_id";
     private static final String COLUMN_NAME = "Username";
     private static final String COLUMN_PIN = "PIN";
 
-    //UserProfile Table
+    /**
+     *UserProfile Table
+     */
     private static final String USERPROFILE_TABLE = "profiles";
     private static final String COLUMN_ID_Pr = "_id";
     private static final String COLUMN_GENDER = "gender";
@@ -37,24 +44,33 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String COLUMN_SMOKE = "smoke";
     private static final String COLUMN_ALLERGY = "allergy";
 
-    //Appointments Table
+    /**
+     * Appointments Table
+     */
     private static final String APPOINTMENTS_TABLE = "appointments";
     private static final String COLUMN_ID_AP = "_id";
     private static final String COLUMN_ID_User = "_id_user";
     private static final String COLUMN_DOC = "physician";
     private static final String COLUMN_DATE = "lastAppoint";
 
-    //Log Table
+    /**
+     * Log Table
+     */
     private static final String LOG_TABLE = "logs";
     private static final String COLUMN_ID_LOG = "_id";
     private static final String COLUMN_LASTUSER_ID = "lastUserID";
 
-
+    /**
+     * String Create Table Users
+     */
     private static final String CREATE_TABLE_USERS = "CREATE TABLE " + USER_TABLE + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + COLUMN_NAME + " TEXT ,"
             + COLUMN_PIN + " TEXT);";
 
+    /**
+     * String Create Table Userprofile
+     */
     private static final String CREATE_TABLE_USERPROFILE = "CREATE TABLE " + USERPROFILE_TABLE + "("
             + COLUMN_ID_Pr + " INTEGER PRIMARY KEY,"
             + COLUMN_GENDER + " TEXT ,"
@@ -70,6 +86,9 @@ public class DbHelper extends SQLiteOpenHelper {
             + COLUMN_SMOKE + " INTEGER ,"
             + COLUMN_ALLERGY + " INTEGER);";
 
+    /**
+     * String Create Table Appointments
+     */
     private static final String CREATE_TABLE_APPOINTMENTS = "CREATE TABLE " + APPOINTMENTS_TABLE + "("
             + COLUMN_ID_AP + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + COLUMN_ID_User + " INTEGER ,"
@@ -77,14 +96,25 @@ public class DbHelper extends SQLiteOpenHelper {
             + COLUMN_DATE + " TEXT" +
             ");";
 
+    /**
+     * String Create Table Logs
+     */
     private static final String CREATE_TABLE_LOG = "CREATE TABLE " + LOG_TABLE + "("
             + COLUMN_ID_LOG + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + COLUMN_LASTUSER_ID + " TEXT);";
 
+    /**
+     * constructor
+     * @param context Context
+     */
     public DbHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
+    /**
+     * create all Tables
+     * @param db Database
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_USERS);
@@ -93,6 +123,12 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_LOG);
     }
 
+    /**
+     * on Upgrade drop existing table and create new tables
+     * @param db Database
+     * @param oldVersion oldV
+     * @param newVersion newV
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + USER_TABLE);
@@ -106,7 +142,9 @@ public class DbHelper extends SQLiteOpenHelper {
     //USER_TABLE ACTIONS
 
     /**
-     * Storing user details in database
+     * Storing user details (username,pin) in database
+     * @param username Username
+     * @param pin PIN
      */
     public void addUser(String username, String pin) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -120,6 +158,12 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * get user
+     * @param username Username
+     * @param pin PIM
+     * @return boolean
+     */
     public boolean getUser(String username, String pin) {
         String selectQuery = "select * from  " + USER_TABLE + " where " +
                 COLUMN_NAME + " = " + "'" + username + "'" + " and " + COLUMN_PIN + " = " + "'" + pin + "'";
@@ -138,6 +182,12 @@ public class DbHelper extends SQLiteOpenHelper {
         return false;
     }
 
+    /**
+     * check PIN with ID
+     * @param id UserID
+     * @param pin PIN
+     * @return boolean
+     */
     public boolean checkPinByID(String id, String pin) {
         String selectQuery = "select * from  " + USER_TABLE + " where " +
                 COLUMN_ID + " = " + "'" + id + "'" + " and " + COLUMN_PIN + " = " + "'" + pin + "'";
@@ -156,6 +206,10 @@ public class DbHelper extends SQLiteOpenHelper {
         return false;
     }
 
+    /**
+     * check if Any User is registered
+     * @return boolean
+     */
     public boolean getAnyUser() {
         String selectQuery = "SELECT * FROM " + USER_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -172,6 +226,11 @@ public class DbHelper extends SQLiteOpenHelper {
         return false;
     }
 
+    /**
+     * get USser ID with username
+     * @param username Username
+     * @return ID or -1 (no user like that)
+     */
     public long getUserIDByName(String username) {
         String selectQuery = "select * from  " + USER_TABLE + " where " +
                 COLUMN_NAME + " = " + "'" + username + "'";
@@ -190,6 +249,11 @@ public class DbHelper extends SQLiteOpenHelper {
         return -1;
     }
 
+    /**
+     * get Username with ID
+     * @param id ID
+     * @return Username or null (no user like that)
+     */
     public String getUsernameByID(String id) {
         String selectQuery = "select " + COLUMN_NAME + " from  " + USER_TABLE + " where " +
                 COLUMN_ID + " = " + "'" + id + "'";
@@ -208,6 +272,12 @@ public class DbHelper extends SQLiteOpenHelper {
         return null;
     }
 
+    /**
+     * update existing PIN
+     * @param id ID
+     * @param pin new PIN
+     * @return boolean
+     */
     public boolean updatePIN(String id, String pin) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -221,6 +291,22 @@ public class DbHelper extends SQLiteOpenHelper {
 
     //USERPROFILE_TABLE ACTIONS
 
+    /**
+     * store userprofile information
+     * @param id ID
+     * @param gender sex
+     * @param birthdate birthdate
+     * @param weight weight
+     * @param height height
+     * @param heart cardiac predisposition
+     * @param neuro neurological predisposition
+     * @param ortho orthopedic predisposition
+     * @param derma skin predisposition
+     * @param eyes eye predisposition
+     * @param ears hearing impairment
+     * @param smoke smoker
+     * @param allergy allergy issues
+     */
     public void addUserProfile(String id, String gender, String birthdate, String weight, String height, int heart, int neuro, int ortho, int derma,
                                int eyes, int ears, int smoke, int allergy) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -245,24 +331,11 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-
-//    //für Testzwecke
-//    public String getUserProfileByID(String id) {
-//        String selectQuery = "SELECT * FROM " + USERPROFILE_TABLE + " where " +
-//                COLUMN_ID_Pr + " = " + "'" + id + "'";
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = db.rawQuery(selectQuery, null);
-//        cursor.moveToFirst();
-//        String userprofileInfo = cursor.getString(1) + "\n" + cursor.getString(2) + "\n" + cursor.getString(3)
-//                + "\n" + cursor.getString(4) + "\n" + cursor.getString(5) + "\n" + cursor.getInt(6) + "\n" + cursor.getInt(7) + "\n" + cursor.getInt(8)
-//                + "\n" + cursor.getInt(9) + "\n" + cursor.getInt(10) + "\n" + cursor.getInt(11) + "\n" + cursor.getInt(12) + "\n";
-//
-//        cursor.close();
-//        db.close();
-//        return userprofileInfo;
-//    }
-
-
+    /**
+     * get profile info
+     * @param id ID
+     * @return Cursor with profile information
+     */
     public Cursor getProfileByID(String id) {
         String selectQuery = "SELECT gender,birthdate,weight,height,heart,neuro,ortho,derma,eyes,ears,smoke,allergy FROM " + USERPROFILE_TABLE + " where " +
                 COLUMN_ID_Pr + " = " + "'" + id + "'";
@@ -271,6 +344,11 @@ public class DbHelper extends SQLiteOpenHelper {
         return db.rawQuery(selectQuery, null);
     }
 
+    /**
+     * check if profile exists by ID
+     * @param id ID
+     * @return boolean
+     */
     public boolean checkIfProfileExists(String id){
         String selectQuery = "SELECT * FROM " + USERPROFILE_TABLE + " where " +
                 COLUMN_ID_Pr + " = " + "'" + id + "'";
@@ -288,6 +366,22 @@ public class DbHelper extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * update profile information
+     *  @param id ID
+     *  @param gender sex
+     *  @param birthdate birthdate
+     *  @param weight weight
+     *  @param height height
+     *  @param heart cardiac predisposition
+     *  @param neuro neurological predisposition
+     *  @param ortho orthopedic predisposition
+     *  @param derma skin predisposition
+     *  @param eyes eye predisposition
+     *  @param ears hearing impairment
+     *  @param smoke smoker
+     *  @param allergy allergy issues
+     */
     public void updateProfile(String id, String gender, String birthdate, String weight, String height, int heart, int neuro, int ortho, int derma,
                               int eyes, int ears, int smoke, int allergy) {
 
@@ -313,6 +407,12 @@ public class DbHelper extends SQLiteOpenHelper {
 
     //APPOINTMENTS_TABLE ACTIONS
 
+    /**
+     * store new last appointment
+     * @param id ID
+     * @param physician doctor
+     * @param date date of last appointment
+     */
     public void addAppointment(String id, String physician, String date) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -325,6 +425,11 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * check if any appointments exist with ID
+     * @param id ID
+     * @return boolean
+     */
     public boolean checkIfAppointmentsExistByID(String id) {
         String selectQuery = "SELECT * FROM " + APPOINTMENTS_TABLE + " where " +
                 COLUMN_ID_User + " = " + "'" + id + "'";
@@ -343,6 +448,11 @@ public class DbHelper extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * get doc and date of last appointment by ID
+     * @param id ID
+     * @return Cursor with doc, lastAppointment
+     */
     public Cursor getAppointmentsByID(String id) {
         String selectQuery = "SELECT physician, lastAppoint FROM " + APPOINTMENTS_TABLE + " where " +
                 COLUMN_ID_User + " = " + "'" + id + "'";
@@ -353,30 +463,37 @@ public class DbHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    /**
+     * get doctor by ID
+     * @param id ID
+     * @return Cursor with doc
+     */
     public Cursor getDocByID(String id) {
         String selectQuery = "SELECT physician FROM " + APPOINTMENTS_TABLE + " where " +
                 COLUMN_ID_User + " = " + "'" + id + "'";
         SQLiteDatabase db = this.getReadableDatabase();
-
-        /* cursor.moveToFirst();
-        String doc = cursor.getString(1);
-        cursor.close();*/
-        // db.close();
         return db.rawQuery(selectQuery, null);
     }
 
+    /**
+     * get date by ID
+     * @param id ID
+     * @return Cursor with date
+     */
     public Cursor getDateByID(String id) {
         String selectQuery = "SELECT lastAppoint FROM " + APPOINTMENTS_TABLE + " where " +
                 COLUMN_ID_User + " = " + "'" + id + "'";
         SQLiteDatabase db = this.getReadableDatabase();
-
-        /* cursor.moveToFirst();
-        String date = cursor.getString(2);
-        cursor.close(); */
-        // db.close();
         return db.rawQuery(selectQuery, null);
     }
 
+    /**
+     * delete specific appointment by ID
+     * @param idUser ID
+     * @param doc doctor
+     * @param date Appointment date
+     * @return boolean
+     */
     public boolean deleteAppByID(String idUser, String doc, String date) {
         SQLiteDatabase db = this.getWritableDatabase();
         String where = COLUMN_ID_User + " = " + idUser + " AND " + COLUMN_DOC + " = '" + doc + "' AND " + COLUMN_DATE + " = '" + date + "'";
@@ -387,6 +504,10 @@ public class DbHelper extends SQLiteOpenHelper {
 
     //LOG TABLE ACTIONS
 
+    /**
+     * store last logged in User
+     * @param lastUserID lastUserID
+     */
     public void setLastUserID(String lastUserID) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -397,6 +518,10 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * get last logged user
+     * @return ID of user
+     */
     public String getLastUserID() {
         String selectQuery = "SELECT * FROM " + LOG_TABLE + " ORDER BY " +
                 COLUMN_ID_LOG + " DESC LIMIT 1";
@@ -410,6 +535,10 @@ public class DbHelper extends SQLiteOpenHelper {
         return lastUserID;
     }
 
+    /**
+     * check if a log "file" exists
+     * @return boolean
+     */
     public boolean checkIfLogExists() {
         String selectQuery = "SELECT * FROM " + LOG_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -425,8 +554,10 @@ public class DbHelper extends SQLiteOpenHelper {
         return false;
     }
 
-
-
+    /**
+     * drop Users, Userprofile, Appointments and Log Table
+     * @param id ID
+     */
     public  void dropUserProfile(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(USERPROFILE_TABLE, COLUMN_ID_Pr + "=" + id, null);

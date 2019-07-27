@@ -47,6 +47,9 @@ import java.util.Objects;
 
 import static android.graphics.Color.parseColor;
 
+/**
+ * Activity to display embedded GoogleMaps
+ */
 public class DoctorsMapActivity extends BaseActivity implements OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener {
 
     @Override

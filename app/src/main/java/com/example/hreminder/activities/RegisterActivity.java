@@ -16,6 +16,9 @@ import com.example.hreminder.R;
 
 import java.util.regex.Pattern;
 
+/**
+ * Activity to let user register and create an account
+ */
 public class RegisterActivity extends BaseActivity {
 
     private String getcreatePin;
@@ -24,10 +27,12 @@ public class RegisterActivity extends BaseActivity {
 
     private boolean checkInput = false;
 
-
     private DbHelper db;
 
-
+    /**
+     * build layout, and get instance of database
+     * @param savedInstanceState savedInstance
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +41,9 @@ public class RegisterActivity extends BaseActivity {
         db = new DbHelper(this);
     }
 
-
+    /**
+     * get inputData
+     */
     private void getUserData() {
 
         //get username
@@ -55,6 +62,10 @@ public class RegisterActivity extends BaseActivity {
 
     }
 
+    /**
+     * check if put in data is valid and fulfills the requirements
+     * else AlertDialog shows up
+     */
     private void checkData() {
 
         if (getcreateUsername.isEmpty() && getcreatePin.isEmpty()) {
@@ -104,7 +115,10 @@ public class RegisterActivity extends BaseActivity {
 
     }
 
-
+    /**
+     * if input is valid, add Account to database and go to UserProfilActivity
+     * @param view Button
+     */
     public void onClickSwitchToProfileCreate(View view) {
 
         getUserData();

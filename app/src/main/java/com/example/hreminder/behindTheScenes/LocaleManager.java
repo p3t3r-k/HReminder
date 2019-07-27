@@ -76,13 +76,15 @@ public class LocaleManager {
         return context;
     }
 
-    /**
+   /**
      * get current locale
      * @param res Resources
      * @return Locale Config
      */
-    public static Locale getLocale(Resources res) {
+  /*  public static Locale getLocale(Resources res) {
         Configuration config = res.getConfiguration();
         return Build.VERSION.SDK_INT >= 24 ? config.getLocales().get(0) : config.locale;
     }
+
+    */
 }

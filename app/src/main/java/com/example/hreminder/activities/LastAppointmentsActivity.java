@@ -37,6 +37,9 @@ import java.util.Objects;
 
 import static android.graphics.Color.parseColor;
 
+/**
+ * Activity to let the user add his last appointments for each doctor
+ */
 public class LastAppointmentsActivity extends BaseActivity {
 
     private String callingActivity = "";
@@ -51,6 +54,10 @@ public class LastAppointmentsActivity extends BaseActivity {
 
     private String iDUser;
 
+    /**
+     * build layout, spinner for doctors choice, Actionbar, and get DBHelper instance
+     * @param savedInstanceState savedInstance
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,11 +84,11 @@ public class LastAppointmentsActivity extends BaseActivity {
 
         db = new DbHelper(this);
         buildDatePickerDialog();
-
-
-        //Date currentDate = new java.util.Date(System.currentTimeMillis());
     }
 
+    /**
+     * get ID of last logged User and rebuild TableLayout with content of database
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -92,12 +99,18 @@ public class LastAppointmentsActivity extends BaseActivity {
         }
     }
 
+    /**
+     * release Database
+     */
     @Override
     protected void onStop() {
         super.onStop();
         db.close();
     }
 
+    /**
+     * go through database entries and add row for each appointment
+     */
     private void rebuildTableLayout() {
         Cursor cursorDoc = db.getDocByID(LastUser.getLastUserID());
         Cursor cursorDate = db.getDateByID(LastUser.getLastUserID());
@@ -118,6 +131,9 @@ public class LastAppointmentsActivity extends BaseActivity {
         }
     }
 
+    /**
+     * DatePicker Dialog for Appointment
+     */
     private void buildDatePickerDialog() {
         myCalendar = Calendar.getInstance();
 
@@ -137,6 +153,9 @@ public class LastAppointmentsActivity extends BaseActivity {
         startAlarm(myCalendar);
     }
 
+    /**
+     * set Label for EditText
+     */
     private void updateLabel() {
         String myFormat = "dd.MM.yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.GERMANY);
@@ -144,11 +163,19 @@ public class LastAppointmentsActivity extends BaseActivity {
     }
 
 
+    /**
+     * go to CalenderActivity
+     * @param view Button
+     */
     public void onClickSwitchToCalenderAct(View view) {
         Intent intent = new Intent(this, CalenderActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * on Click a row will be added to the tablelayout
+     * @param view Button
+     */
     public void onClickAddAppointment(View view) {
         if (getData()) {
             db.addAppointment(iDUser, selectedPhysician, selectedDate);
@@ -157,6 +184,10 @@ public class LastAppointmentsActivity extends BaseActivity {
         }
     }
 
+    /**
+     * get input data of appointment and doctor
+     * @return boolean
+     */
     private boolean getData() {
         Spinner spinnerDocs = findViewById(R.id.spinnerDoc);
         selectedPhysician = spinnerDocs.getSelectedItem().toString();
@@ -173,6 +204,9 @@ public class LastAppointmentsActivity extends BaseActivity {
         }
     }
 
+    /**
+     * a row will be added to tablelayout with Doctor and respective Date
+     */
     private void addRow() {
         tableLayout = findViewById(R.id.tableLayoutLastApp);
         row = new TableRow(this);
@@ -240,6 +274,10 @@ public class LastAppointmentsActivity extends BaseActivity {
 
     }
 
+    /**
+     * creates an instance of AlarmManager and add a reminder for user to make a new doctor's appointment
+     * @param myCalendar Calendar
+     */
     private void startAlarm(Calendar myCalendar) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlarmNotificationReceiver.class);
@@ -257,6 +295,11 @@ public class LastAppointmentsActivity extends BaseActivity {
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, currentYear, pendingIntent);
     }
 
+    /**
+     * on Click of Actionbar Buttons
+     * @param item MenuItem
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

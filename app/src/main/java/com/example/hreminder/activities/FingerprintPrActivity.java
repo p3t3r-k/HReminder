@@ -32,6 +32,9 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
+/**
+ * Activity to use FingerprintSensor to log into Account
+ */
 public class FingerprintPrActivity extends BaseActivity {
     // Declare a string variable for the key we’re going to use in our fingerprint authentication
     private static final String KEY_NAME = "yourKey";
@@ -40,6 +43,11 @@ public class FingerprintPrActivity extends BaseActivity {
     private boolean allRequirements = true;
 
 
+    /**
+     * get instance of KeyguardManager, FingerprintManager and DB
+     * check if all requirements are fulfilled, if yes generate Key and init Cipher
+     * @param savedInstanceState saved Instances
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,12 +59,10 @@ public class FingerprintPrActivity extends BaseActivity {
 
         TextView textView = findViewById(R.id.textViewInfo);
 
-
         DbHelper db = new DbHelper(this);
         if(!db.getAnyUser()){
                 textView.setText(R.string.notRegistered);
                 allRequirements = false;
-
         }
 
         if (db.checkIfLogExists()){
@@ -65,10 +71,7 @@ public class FingerprintPrActivity extends BaseActivity {
                 textView.setText(R.string.notRegistered);
                 allRequirements = false;
             }
-
         }
-
-
 
         //Check whether the device has a fingerprint sensor
         if (!fingerprintManager.isHardwareDetected()) {
@@ -83,7 +86,6 @@ public class FingerprintPrActivity extends BaseActivity {
             textView.append("\n\n"+getApplicationContext().getResources().getString(R.string.noPermission));
             allRequirements = false;
         }
-
 
         //Check that the user has registered at least one fingerprint
         if (!fingerprintManager.hasEnrolledFingerprints()) {
@@ -113,8 +115,10 @@ public class FingerprintPrActivity extends BaseActivity {
         }
     }
 
-
-    //Create the generateKey method that we’ll use to gain access to the Android keystore and generate the encryption key
+    /**
+     *generateKey method to gain access to the Android keystore and generate the encryption key
+     * @throws FingerprintException Exception
+     */
     private void generateKey() throws FingerprintException {
         try {
             // Obtain a reference to the Keystore using the standard Android keystore container identifier (“AndroidKeystore”)//
@@ -143,7 +147,6 @@ public class FingerprintPrActivity extends BaseActivity {
 
             //Generate the key//
             keyGenerator.generateKey();
-
         } catch (KeyStoreException
                 | NoSuchAlgorithmException
                 | NoSuchProviderException
@@ -155,10 +158,13 @@ public class FingerprintPrActivity extends BaseActivity {
         }
     }
 
-    //Create a new method that we’ll use to initialize our cipher//
+    /**
+     * method to initialize cipher
+     * @return boolean
+     */
     private boolean initCipher() {
         try {
-            //Obtain a cipher instance and configure it with the properties required for fingerprint authentication//
+            //Obtain a cipher instance and configure it with the properties required for fingerprint authentication
             cipher = Cipher.getInstance(
                     KeyProperties.KEY_ALGORITHM_AES + "/"
                             + KeyProperties.BLOCK_MODE_CBC + "/"
@@ -173,11 +179,11 @@ public class FingerprintPrActivity extends BaseActivity {
             SecretKey key = (SecretKey) keyStore.getKey(KEY_NAME,
                     null);
             cipher.init(Cipher.ENCRYPT_MODE, key);
-            //Return true if the cipher has been initialized successfully//
+            //Return true if the cipher has been initialized successfully
             return true;
         } catch (KeyPermanentlyInvalidatedException e) {
 
-            //Return false if cipher initialization failed//
+            //Return false if cipher initialization failed
             return false;
         } catch (KeyStoreException | CertificateException
                 | UnrecoverableKeyException | IOException
@@ -186,6 +192,9 @@ public class FingerprintPrActivity extends BaseActivity {
         }
     }
 
+    /**
+     * FingerprintException
+     */
     private class FingerprintException extends Exception {
         FingerprintException(Exception e) {
             super(e);
