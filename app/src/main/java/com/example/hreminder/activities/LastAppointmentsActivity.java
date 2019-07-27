@@ -1,10 +1,14 @@
 package com.example.hreminder.activities;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +25,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NavUtils;
 
+import com.example.hreminder.behindTheScenes.AlarmNotificationReceiver;
 import com.example.hreminder.behindTheScenes.BaseActivity;
 import com.example.hreminder.behindTheScenes.LastUser;
 import com.example.hreminder.database.DbHelper;
@@ -28,6 +33,7 @@ import com.example.hreminder.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -75,6 +81,7 @@ public class LastAppointmentsActivity extends BaseActivity {
         buildDatePickerDialog();
 
 
+        //Date currentDate = new java.util.Date(System.currentTimeMillis());
     }
 
     @Override
@@ -113,7 +120,6 @@ public class LastAppointmentsActivity extends BaseActivity {
         }
     }
 
-
     private void buildDatePickerDialog() {
         myCalendar = Calendar.getInstance();
 
@@ -129,6 +135,8 @@ public class LastAppointmentsActivity extends BaseActivity {
         dateEdit.setOnClickListener(v -> new DatePickerDialog(LastAppointmentsActivity.this, date, myCalendar
                 .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show());
+
+        startAlarm(myCalendar);
     }
 
     private void updateLabel() {
@@ -232,6 +240,23 @@ public class LastAppointmentsActivity extends BaseActivity {
 
         });
 
+    }
+
+    private void startAlarm(Calendar myCalendar) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlarmNotificationReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+
+        if (myCalendar.before(Calendar.getInstance())) {
+            myCalendar.add(Calendar.DATE, 1);
+        }
+
+        myCalendar.setTimeInMillis(System.currentTimeMillis());
+        myCalendar.set(Calendar.HOUR_OF_DAY, 10);
+
+        int currentYear = myCalendar.get(Calendar.YEAR);
+        currentYear++;
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, currentYear, pendingIntent);
     }
 
     @Override

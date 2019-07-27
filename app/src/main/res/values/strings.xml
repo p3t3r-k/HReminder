@@ -136,6 +136,9 @@
     <string name="noLockscreen">"Bitte aktivieren Sie eine Verschlüsselung für den Sperrbildschirm."</string>
     <string name="authentHelp">"Authentifizierung Hilfe:"</string>
     <string name="notRegistered">"Sie sind noch nicht registriert!\nBitte registrieren Sie sich zuerst."</string>
+    <string name="searchIcon">searchIcon</string>
+    <string name="mapsSearchHint">Gewünschten Arzt eingeben</string>
+    <string name="myLocationIcon">myLocationIcon</string>
 
 
 </resources>
