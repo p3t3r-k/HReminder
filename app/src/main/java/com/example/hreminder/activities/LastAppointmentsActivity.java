@@ -89,7 +89,7 @@ public class LastAppointmentsActivity extends BaseActivity {
         super.onStart();
         iDUser = LastUser.getLastUserID();
 
-        if (db.getAppointmentsByID(iDUser)) {
+        if (db.checkIfAppointmentsExistByID(iDUser)) {
             rebuildTableLayout();
         }
     }
@@ -176,7 +176,7 @@ public class LastAppointmentsActivity extends BaseActivity {
     }
 
     private void addRow() {
-        tableLayout = findViewById(R.id.tableLayout);
+        tableLayout = findViewById(R.id.tableLayoutLastApp);
         row = new TableRow(this);
         TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
 

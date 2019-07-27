@@ -94,9 +94,9 @@ public class UserProfilActivity extends BaseActivity {
             // find the radiobutton by returned id
             RadioButton radioButtonSex = findViewById(selectedId);
             if (radioButtonSex.getText().equals(getString(R.string.femaleRadio))) {
-                sex = "w";
+                sex = getResources().getString(R.string.femaleRadio);
             } else {
-                sex = "m";
+                sex = getResources().getString(R.string.maleRadio);
             }
             sexFilled = true;
         } else {

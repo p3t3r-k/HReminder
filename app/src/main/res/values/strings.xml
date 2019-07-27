@@ -62,7 +62,18 @@
         <item>Kardiologe</item>
         <item>Neurologe</item>
         <item>Orthopäde</item>
+        <item>Lungenarzt</item>
     </string-array>
+    <string name ="physician">"Hausarzt"</string>
+    <string name ="dentist">"Zahnarzt"</string>
+    <string name ="gynaecologist">"Frauenarzt"</string>
+    <string name ="dermatologist">"Hautarzt"</string>
+    <string name ="ophthalmologist">"Augenarzt"</string>
+    <string name ="ENTspecialist">"HNO Arzt"</string>
+    <string name ="cardiologist">"Kardiologe"</string>
+    <string name ="neurologist">"Neurologe"</string>
+    <string name ="orthopedist">"Orthopäde"</string>
+    <string name ="pulmonologist">"Lungenarzt"</string>
     <string name="lastApp">"Letzter Besuch"</string>
     <string name="getDate">"Termin erfassen"</string>
     <string name="savedDates">"Erfasste Termine:"</string>

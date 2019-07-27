@@ -113,7 +113,7 @@ public class ChangeProfileActivity extends BaseActivity {
         smokeInt = cursor.getInt(10);
         allergiesInt = cursor.getInt(11);
 
-        if (sex.equals("m")) {
+        if (sex.equals(getResources().getString(R.string.maleRadio))) {
             radioButtonSex = findViewById(R.id.maleRadio);
             radioButtonSex.toggle();
         } else {
@@ -188,9 +188,9 @@ public class ChangeProfileActivity extends BaseActivity {
             // find the radiobutton by returned id
             radioButtonSex = findViewById(selectedId);
             if (radioButtonSex.getText().equals(getString(R.string.femaleRadio))) {
-                sex = "w";
+                sex = getResources().getString(R.string.femaleRadio);
             } else {
-                sex = "m";
+                sex = getResources().getString(R.string.maleRadio);
             }
             sexFilled = true;
         } else {

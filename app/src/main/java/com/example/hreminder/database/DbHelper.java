@@ -325,7 +325,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public boolean getAppointmentsByID(String id) {
+    public boolean checkIfAppointmentsExistByID(String id) {
         String selectQuery = "SELECT * FROM " + APPOINTMENTS_TABLE + " where " +
                 COLUMN_ID_User + " = " + "'" + id + "'";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -341,6 +341,16 @@ public class DbHelper extends SQLiteOpenHelper {
             db.close();
             return true;
         }
+    }
+
+    public Cursor getAppointmentsByID(String id) {
+        String selectQuery = "SELECT physician, lastAppoint FROM " + APPOINTMENTS_TABLE + " where " +
+                COLUMN_ID_User + " = " + "'" + id + "'";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        cursor.moveToFirst();
+        return cursor;
     }
 
     public Cursor getDocByID(String id) {
@@ -422,6 +432,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.delete(USERPROFILE_TABLE, COLUMN_ID_Pr + "=" + id, null);
         db.delete(USER_TABLE,COLUMN_ID + "="+id,null);
         db.delete(APPOINTMENTS_TABLE,COLUMN_ID_User + "="+id,null);
+        db.delete(LOG_TABLE,null,null);
     }
 
 
