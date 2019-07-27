@@ -79,8 +79,6 @@
     <string name="lastApp">"Last Appointment"</string>
     <string name="getDate">"Register appointment"</string>
     <string name="savedDates">"Erfasste Termine:"</string>
-    <string name="exampleDoc">"Beispiel: Zahnarzt"</string>
-    <string name="exampleDate">"Beispiel: 10.12.2018"</string>
     <string name="deleteApp">"x"</string>
     <string name="finished">"Finished"</string>
     <string name="appointDeleted">"Appointment deleted: "</string>
@@ -101,7 +99,6 @@
 
     <!-- Calender Activity -->
     <string name="calenderHead">"Appointment-Recommendation"</string>
-    <string name="calenderOverview">"Overview:"</string>
     <string name="calenderAppointments">"Add appointment:"</string>
 
     <!-- NavigationDrawer Activity -->

@@ -1,7 +1,6 @@
 package com.example.hreminder.activities;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
@@ -10,30 +9,21 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import androidx.appcompat.app.ActionBar;
 
+import com.example.hreminder.R;
 import com.example.hreminder.behindTheScenes.BaseActivity;
 import com.example.hreminder.behindTheScenes.LastUser;
 import com.example.hreminder.database.DbHelper;
-import com.example.hreminder.R;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -46,46 +36,17 @@ public class CalenderActivity extends BaseActivity {
     private DbHelper db;
     private String lastUserID;
 
-
-    private RadioButton radioButtonSex;
     private String sex;
-    private String birthdateStr;
-    private EditText weightEdit;
-    private String weightS;
-    private EditText heightEdit;
-    private String heightS;
-    private CheckBox cardiac;
     private int cardiacInt;
-    private CheckBox neuro;
     private int neuroInt;
-    private CheckBox ortho;
     private int orthoInt;
-    private CheckBox skin;
     private int skinInt;
-    private CheckBox eye;
     private int eyeInt;
-    private CheckBox hearing;
     private int hearingInt;
-    private RadioButton radioButtonSmoke;
     private int smokeInt;
-    private RadioButton radioButtonAllergies;
     private int allergiesInt;
 
     private int age;
-
-    private String doc;
-    private String lastApp;
-
-    private String appPhysician;
-    private String appDentist;
-    private String appGyn;
-    private String appDerma;
-    private String appOpth;
-    private String appEntDoc;
-    private String appCard;
-    private String appNeur;
-    private String appOrtho;
-    private String appPulm;
 
     private boolean physYes = false;
     private boolean dentistYes = false;
@@ -108,12 +69,6 @@ public class CalenderActivity extends BaseActivity {
     private Date appDneu;
     private Date appDortho;
     private Date appDpul;
-
-    private int jahrZeitraum;
-    private int monateZeitraum;
-
-    private TableLayout tableLayout;
-    private TableRow row;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,9 +105,9 @@ public class CalenderActivity extends BaseActivity {
         Cursor cursor = db.getProfileByID(lastUserID);
         cursor.moveToFirst();
         sex = cursor.getString(0);
-        birthdateStr = cursor.getString(1);
-        weightS = cursor.getString(2);
-        heightS = cursor.getString(3);
+        String birthdateStr = cursor.getString(1);
+        String weightS = cursor.getString(2);
+        String heightS = cursor.getString(3);
         cardiacInt = cursor.getInt(4);
         neuroInt = cursor.getInt(5);
         orthoInt = cursor.getInt(6);
@@ -171,18 +126,21 @@ public class CalenderActivity extends BaseActivity {
             e.printStackTrace();
         }
         Date currentDate = new java.util.Date(System.currentTimeMillis());
-        age = ((int) ((currentDate.getTime() / (24 * 60 * 60 * 1000) / 365) - (int) (birthDate.getTime() / (24 * 60 * 60 * 1000)) / 365));
+        if (birthDate != null) {
+            age = ((int) ((currentDate.getTime() / (24 * 60 * 60 * 1000) / 365) - (int) (birthDate.getTime() / (24 * 60 * 60 * 1000)) / 365));
+        }
 
         getAppointmentDates();
         determineIntervallForReminder();
         buildTable();
     }
 
-    public void determineIntervallForReminder() {
+    private void determineIntervallForReminder() {
         //get current Date
         Date currentDate = new java.util.Date(System.currentTimeMillis());
 
         //Case Woman
+        int jahrZeitraum;
         if (sex.equals(getResources().getString(R.string.femaleRadio))) {
             //Gynäkologe
             if (age > 16 && appDgyn != null) {
@@ -258,7 +216,7 @@ public class CalenderActivity extends BaseActivity {
         }
         //Zahnarzt <18
         if (age < 18 && appDdent != null) {
-            monateZeitraum = 6;
+            int monateZeitraum = 6;
             //difference in days
             int diff = (int) ((currentDate.getTime() / (24 * 60 * 60 * 1000)) - (int) (appDdent.getTime() / (24 * 60 * 60 * 1000)));
             //more than half a year ago
@@ -320,7 +278,7 @@ public class CalenderActivity extends BaseActivity {
                 appDopthal = cal.getTime();
                 opthalYes = true;
             }
-        } else if (age >= 10 && age <= 50) { //kein letzter Termin eingetragen
+        } else if (age >= 10 && age <= 50 && eyeInt != 1) { //kein letzter Termin eingetragen
             appDopthal = currentDate;
             opthalYes = true;
         }
@@ -507,40 +465,47 @@ public class CalenderActivity extends BaseActivity {
             appDpul = currentDate;
             pulYes = true;
         }
-
-        //Test
-        appDphys.toString();
-        appDgyn.toString();
-        appDdent.toString();
-        appDderma.toString();
-        appDent.toString();
-        appDopthal.toString();
-        appDcardio.toString();
-        appDneu.toString();
-        appDortho.toString();
-        appDpul.toString();
-
     }
 
-    public void buildTable() {
-        if (physYes = true) addRow(getResources().getString(R.string.physician), appDphys);
-        if (gynYes = true)  addRow(getResources().getString(R.string.gynaecologist), appDgyn);
-        if (dentistYes = true)  addRow(getResources().getString(R.string.dentist), appDdent);
-        if (dermaYes = true)  addRow(getResources().getString(R.string.dermatologist), appDderma);
-        if (entYes = true)  addRow(getResources().getString(R.string.ENTspecialist), appDent);
-        if (opthalYes = true)  addRow(getResources().getString(R.string.ophthalmologist), appDopthal);
-        if (cardYes = true)  addRow(getResources().getString(R.string.cardiologist), appDcardio);
-        if (neuYes = true)  addRow(getResources().getString(R.string.neurologist), appDneu);
-        if (orthoYes = true)  addRow(getResources().getString(R.string.orthopedist), appDortho);
-        if (pulYes = true)  addRow(getResources().getString(R.string.pulmonologist), appDpul);
+    private void buildTable() {
+        if (physYes) {
+            addRow(getResources().getString(R.string.physician), appDphys);
+        }
+        if (gynYes) {
+            addRow(getResources().getString(R.string.gynaecologist), appDgyn);
+        }
+        if (dentistYes){
+            addRow(getResources().getString(R.string.dentist), appDdent);
+        }
+        if (dermaYes){
+            addRow(getResources().getString(R.string.dermatologist), appDderma);
+        }
+        if (entYes) {
+            addRow(getResources().getString(R.string.ENTspecialist), appDent);
+        }
+        if (opthalYes){
+            addRow(getResources().getString(R.string.ophthalmologist), appDopthal);
+        }
+        if (cardYes){
+            addRow(getResources().getString(R.string.cardiologist), appDcardio);
+        }
+        if (neuYes){
+            addRow(getResources().getString(R.string.neurologist), appDneu);
+        }
+        if (orthoYes) {
+            addRow(getResources().getString(R.string.orthopedist), appDortho);
+        }
+        if (pulYes) {
+            addRow(getResources().getString(R.string.pulmonologist), appDpul);
+        }
     }
 
     private void addRow(String doc, Date nextDate) {
         @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String dateUpcoming = sdf.format(nextDate);
 
-        tableLayout = findViewById(R.id.tableLayoutCal);
-        row = new TableRow(this);
+        TableLayout tableLayout = findViewById(R.id.tableLayoutCal);
+        TableRow row = new TableRow(this);
         TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
         row.setLayoutParams(lp);
 
@@ -565,18 +530,18 @@ public class CalenderActivity extends BaseActivity {
     }
 
 
-    public void getAppointmentDates() {
+    private void getAppointmentDates() {
         @SuppressLint("SimpleDateFormat") DateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         Cursor cursor = db.getAppointmentsByID(LastUser.getLastUserID());
         for (int i = 1; i <= cursor.getCount(); i++) {
 
-            doc = cursor.getString(0);
-            lastApp = cursor.getString(1);
+            String doc = cursor.getString(0);
+            String lastApp = cursor.getString(1);
 
             switch (doc) {
                 case "Hausarzt":
                 case "physician":
-                    appPhysician = lastApp;
+                    String appPhysician = lastApp;
                     try {
                         appDphys = sdf.parse(appPhysician);
                     } catch (ParseException e) {
@@ -585,7 +550,7 @@ public class CalenderActivity extends BaseActivity {
                     break;
                 case "Zahnarzt":
                 case "dentist":
-                    appDentist = lastApp;
+                    String appDentist = lastApp;
                     try {
                         appDdent = sdf.parse(appDentist);
                     } catch (ParseException e) {
@@ -594,7 +559,7 @@ public class CalenderActivity extends BaseActivity {
                     break;
                 case "Frauenarzt":
                 case "gynaecologist":
-                    appGyn = lastApp;
+                    String appGyn = lastApp;
                     try {
                         appDgyn = sdf.parse(appGyn);
                     } catch (ParseException e) {
@@ -603,7 +568,7 @@ public class CalenderActivity extends BaseActivity {
                     break;
                 case "Hautarzt":
                 case "dermatologist":
-                    appDerma = lastApp;
+                    String appDerma = lastApp;
                     try {
                         appDderma = sdf.parse(appDerma);
                     } catch (ParseException e) {
@@ -612,7 +577,7 @@ public class CalenderActivity extends BaseActivity {
                     break;
                 case "Augenarzt":
                 case "opthalmologist":
-                    appOpth = lastApp;
+                    String appOpth = lastApp;
                     try {
                         appDopthal = sdf.parse(appOpth);
                     } catch (ParseException e) {
@@ -621,7 +586,7 @@ public class CalenderActivity extends BaseActivity {
                     break;
                 case "HNO Arzt":
                 case "ENT specialist":
-                    appEntDoc = lastApp;
+                    String appEntDoc = lastApp;
                     try {
                         appDent = sdf.parse(appEntDoc);
                     } catch (ParseException e) {
@@ -630,7 +595,7 @@ public class CalenderActivity extends BaseActivity {
                     break;
                 case "Kardiologe":
                 case "cardiologist":
-                    appCard = lastApp;
+                    String appCard = lastApp;
                     try {
                         appDcardio = sdf.parse(appCard);
                     } catch (ParseException e) {
@@ -639,7 +604,7 @@ public class CalenderActivity extends BaseActivity {
                     break;
                 case "Neurologe":
                 case "neurologist":
-                    appNeur = lastApp;
+                    String appNeur = lastApp;
                     try {
                         appDneu = sdf.parse(appNeur);
                     } catch (ParseException e) {
@@ -648,7 +613,7 @@ public class CalenderActivity extends BaseActivity {
                     break;
                 case "Orthopäde":
                 case "orthopedist":
-                    appOrtho = lastApp;
+                    String appOrtho = lastApp;
                     try {
                         appDortho = sdf.parse(appOrtho);
                     } catch (ParseException e) {
@@ -657,7 +622,7 @@ public class CalenderActivity extends BaseActivity {
                     break;
                 case "Lungenarzt":
                 case "pulmonologist":
-                    appPulm = lastApp;
+                    String appPulm = lastApp;
                     try {
                         appDpul = sdf.parse(appPulm);
                     } catch (ParseException e) {
@@ -665,7 +630,7 @@ public class CalenderActivity extends BaseActivity {
                     }
                     break;
                 default:
-                    Toast.makeText(this, "Something failed.", Toast.LENGTH_SHORT);
+                    Toast.makeText(this, "Something failed.", Toast.LENGTH_SHORT).show();
             }
             if (cursor.moveToNext()) {
                 //go to next

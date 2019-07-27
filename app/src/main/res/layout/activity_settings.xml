@@ -30,25 +30,27 @@
         android:onClick="onClickSwitchToPin"/>
 
     <Button
-        android:id="@+id/btnSignOut"
+        android:id="@+id/btnChangeProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnPin"
+        android:text="@string/changeProfile"
+        android:onClick="onClickSwitchToChangeProfile"/>
+
+    <Button
+        android:id="@+id/btnSignOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnChangeProfile"
         android:onClick="onClickLogout"
         android:text="@string/signOut" />
 
-    <Button
-        android:id="@+id/btnData"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnSignOut"
-        android:text="@string/datasecurity" />
 
     <Button
         android:id="@+id/btnDelete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnData"
+        android:layout_below="@id/btnSignOut"
         android:onClick="onClickDeleteProfile"
         android:text="@string/deleteProfil" />
 
@@ -60,11 +62,10 @@
         android:text="@string/about" />
 
     <Button
-        android:id="@+id/btnChangeProfile"
+        android:id="@+id/btnData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnAbout"
-        android:text="@string/changeProfile"
-        android:onClick="onClickSwitchToChangeProfile"/>
+        android:text="@string/datasecurity" />
 
 </RelativeLayout>
