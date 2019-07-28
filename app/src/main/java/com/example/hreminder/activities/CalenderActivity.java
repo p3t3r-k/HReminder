@@ -90,11 +90,6 @@ public class CalenderActivity extends BaseActivity {
         ActionBar abar = getSupportActionBar();
         Objects.requireNonNull(abar).setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
 
-     /*   session = new Session(this);
-        if(!session.loggedin()){
-            logout();
-        }
-        */
         db = new DbHelper(this);
 
         Bundle extras = getIntent().getExtras();
@@ -950,12 +945,6 @@ public class CalenderActivity extends BaseActivity {
         //  intent.putExtra("idUser",loggedUserID);
         startActivity(intent);
     }
-
-  /*  private void logout() {
-        session.setLoggedin(false);
-        finish();
-        startActivity(new Intent(CalenderActivity.this, MainActivity.class));
-    } */
 
 }
 

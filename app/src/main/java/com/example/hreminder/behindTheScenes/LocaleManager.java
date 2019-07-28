@@ -76,7 +76,7 @@ public class LocaleManager {
         return context;
     }
 
-   /**
+   /*
      * get current locale
      * @param res Resources
      * @return Locale Config

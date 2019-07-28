@@ -274,9 +274,6 @@ public class DoctorsMapActivity extends BaseActivity implements OnMapReadyCallba
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            /*case R.id.action_back:
-                NavUtils.navigateUpFromSameTask(this);
-                return true; */
             case R.id.action_settings:
                 gotToSettings();
                 return true;

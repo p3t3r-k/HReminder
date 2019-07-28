@@ -32,7 +32,7 @@ import java.util.Objects;
 import static android.graphics.Color.parseColor;
 
 /**
- * Activity to let User adapt his/her profil information
+ * Activity to let User adapt his/her profile information
  */
 public class ChangeProfileActivity extends BaseActivity {
 

@@ -1,9 +1,6 @@
 package com.example.hreminder.activities;
 
-import android.app.AlarmManager;
 import android.app.DatePickerDialog;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
@@ -25,7 +22,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NavUtils;
 
 import com.example.hreminder.R;
-import com.example.hreminder.behindTheScenes.AlarmNotificationReceiver;
 import com.example.hreminder.behindTheScenes.BaseActivity;
 import com.example.hreminder.behindTheScenes.LastUser;
 import com.example.hreminder.database.DbHelper;
@@ -43,7 +39,6 @@ import static android.graphics.Color.parseColor;
 public class LastAppointmentsActivity extends BaseActivity {
 
     private String callingActivity = "";
-    //private String loggedUserID;
     private DbHelper db;
     private Calendar myCalendar;
     private EditText dateEdit;
@@ -79,7 +74,6 @@ public class LastAppointmentsActivity extends BaseActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             callingActivity = extras.getString("source");
-            // loggedUserID = extras.getString("idUser");
         }
 
         db = new DbHelper(this);
@@ -254,8 +248,6 @@ public class LastAppointmentsActivity extends BaseActivity {
 
         deleteRowButton.setOnClickListener(v -> {
             row = (TableRow) v.getParent();
-            int rowID = (Integer) row.getTag();
-
 
             String txVDoc;
             String txVDate;
@@ -272,27 +264,6 @@ public class LastAppointmentsActivity extends BaseActivity {
 
         });
 
-    }
-
-    /**
-     * creates an instance of AlarmManager and add a reminder for user to make a new doctor's appointment
-     * @param myCalendar Calendar
-     */
-    private void startAlarm(Calendar myCalendar) {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, AlarmNotificationReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
-
-        if (myCalendar.before(Calendar.getInstance())) {
-            myCalendar.add(Calendar.DATE, 1);
-        }
-
-        myCalendar.setTimeInMillis(System.currentTimeMillis());
-        myCalendar.set(Calendar.HOUR_OF_DAY, 10);
-
-        int currentYear = myCalendar.get(Calendar.YEAR);
-        currentYear++;
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, currentYear, pendingIntent);
     }
 
     /**
