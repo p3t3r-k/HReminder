@@ -146,7 +146,7 @@
     <string name="myLocationIcon">myLocationIcon</string>
 
     <!--  AlarmNotificationReceiver -->
-    <string name="notifictionHeader">It is time to visit your doctor!</string>
+    <string name="notificationHeader">It is time to visit your doctor!</string>
     <string name="notificationMessage">You should make a doctors appointment. Open HealthyReminder now and get started.</string>
 
 

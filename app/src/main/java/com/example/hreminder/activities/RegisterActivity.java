@@ -116,7 +116,7 @@ public class RegisterActivity extends BaseActivity {
     }
 
     /**
-     * if input is valid, add Account to database and go to UserProfilActivity
+     * if input is valid, add Account to database and go to UserProfileActivity
      * @param view Button
      */
     public void onClickSwitchToProfileCreate(View view) {

@@ -19,7 +19,11 @@ import com.example.hreminder.activities.MainActivity;
 @SuppressWarnings("deprecation")
 public class AlarmNotificationReceiver extends BroadcastReceiver {
 
-
+    /**
+     * when intent is received notify the user
+     * @param context context
+     * @param intent intent from the startAlarm method in CalenderActivity
+     */
     @SuppressWarnings("deprecation")
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -32,15 +36,15 @@ public class AlarmNotificationReceiver extends BroadcastReceiver {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
 
-        //String contentTitle = Integer.toString(R.string.notifictionHeader);
-        //String contentText = Integer.toString(R.string.notificationMessage);
+        String contentTitle = context.getResources().getString(R.string.notificationHeader);
+        String contentText = context.getResources().getString(R.string.notificationMessage);
 
         builder.setAutoCancel(true)
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setWhen(System.currentTimeMillis())
                 .setSmallIcon(R.drawable.logo)
-                .setContentTitle("Es ist Zeit zum Arzt zu gehen!")
-                .setContentText("Sie sollten neue Arzttermine ausmachen. Öffnen Sie HealthyReminder und legen Sie los.")
+                .setContentTitle(contentTitle)
+                .setContentText(contentText)
                 .setContentIntent(resultPendingIntent)
                 .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_SOUND)
                 .setContentInfo("Info");

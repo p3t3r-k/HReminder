@@ -52,6 +52,55 @@ import static android.graphics.Color.parseColor;
  */
 public class DoctorsMapActivity extends BaseActivity implements OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener {
 
+
+    private GoogleMap mMap;
+    private Boolean mLocationPermissionsGranted = false;
+
+    private AutoCompleteTextView mSearchText;
+    private ImageView mGps;
+
+    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
+    private static final float DEFAULT_ZOOM = 15f;
+    private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(
+            new LatLng(-40, -168), new LatLng(71, 136));
+
+    /**
+     * set Actionbar
+     * ask for permission to use GPS sensor
+     *
+     * @param savedInstanceState saved instances
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_doctors_map);
+        ActionBar abar = getSupportActionBar();
+        Objects.requireNonNull(abar).setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        mSearchText = findViewById(R.id.input_search);
+        mGps = findViewById(R.id.ic_gps);
+
+        getLocationPermission();
+    }
+
+    /**
+     *
+     */
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getLocationPermission();
+        initMap();
+    }
+
+    /**
+     * starts the map if permissions are granted
+     *
+     * @param googleMap Google map
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -70,59 +119,23 @@ public class DoctorsMapActivity extends BaseActivity implements OnMapReadyCallba
         }
     }
 
-    private GoogleMap mMap;
-    private Boolean mLocationPermissionsGranted = false;
-
-    private AutoCompleteTextView mSearchText;
-    private ImageView mGps;
-    private FusedLocationProviderClient mFusedLocationProviderClient;
-    private PlaceAutocompleteAdapter mPlaceAutocompleteAdapter;
-    private GoogleApiClient mGoogleApiClient;
-
-    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
-    private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
-    private static final float DEFAULT_ZOOM = 15f;
-    private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(
-            new LatLng(-40, -168), new LatLng(71, 136));
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctors_map);
-        ActionBar abar = getSupportActionBar();
-        Objects.requireNonNull(abar).setBackgroundDrawable(new ColorDrawable(parseColor("#a4c639")));
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
-        mSearchText = findViewById(R.id.input_search);
-        mGps = findViewById(R.id.ic_gps);
-
-        getLocationPermission();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        getLocationPermission();
-        initMap();
-    }
-
+    /**
+     * method that initialises the map
+     */
+    @SuppressWarnings("deprecation")
     private void init() {
 
-        mGoogleApiClient = new GoogleApiClient
+        GoogleApiClient mGoogleApiClient = new GoogleApiClient
                 .Builder(this)
                 .addApi(Places.GEO_DATA_API)
                 .addApi(Places.PLACE_DETECTION_API)
                 .enableAutoManage(this, this)
                 .build();
 
-        mPlaceAutocompleteAdapter = new PlaceAutocompleteAdapter(this, mGoogleApiClient,
+        PlaceAutocompleteAdapter mPlaceAutocompleteAdapter = new PlaceAutocompleteAdapter(this, mGoogleApiClient,
                 LAT_LNG_BOUNDS, null);
 
         mSearchText.setAdapter(mPlaceAutocompleteAdapter);
-
-//        mSearchText.setOnItemClickListener(mAutocompleteClickListener);
 
         mSearchText.setOnEditorActionListener((textView, actionId, keyEvent) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH
@@ -141,7 +154,9 @@ public class DoctorsMapActivity extends BaseActivity implements OnMapReadyCallba
         hideSoftKeyboard();
     }
 
-
+    /**
+     * method with which you can search for specific locations
+     */
     private void geoLocate() {
 
         String searchString = mSearchText.getText().toString();
@@ -160,41 +175,49 @@ public class DoctorsMapActivity extends BaseActivity implements OnMapReadyCallba
 
             Toast.makeText(this, address.toString(), Toast.LENGTH_SHORT).show();
 
-            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), DEFAULT_ZOOM,
+            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()),
                     address.getAddressLine(0));
 
         }
     }
 
+    /**
+     * method which gets coordinates of the device location with FusedLocationProviderClient
+     */
     private void getDeviceLocation() {
 
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        FusedLocationProviderClient mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         try {
             if (mLocationPermissionsGranted) {
-
                 final Task location = mFusedLocationProviderClient.getLastLocation();
                 //noinspection unchecked
                 location.addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        //Log.d(TAG, "onComplete: found location!");
                         Location currentLocation = (Location) task.getResult();
 
-                        moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
-                                DEFAULT_ZOOM,
-                                "My Location");
-
+                        if (currentLocation != null) {
+                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
+                                    "My Location");
+                        }
                     } else {
                         Toast.makeText(DoctorsMapActivity.this, "unable to get current location", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
         } catch (SecurityException e) {
+            e.printStackTrace();
         }
     }
 
-    private void moveCamera(LatLng latLng, float zoom, String title) {
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+    /**
+     * moves the camera on the map to the devices location
+     *
+     * @param latLng coordinates of the device
+     * @param title  name of the location the device is in
+     */
+    private void moveCamera(LatLng latLng, String title) {
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, DoctorsMapActivity.DEFAULT_ZOOM));
 
         if (!title.equals("My Location")) {
             MarkerOptions options = new MarkerOptions()
@@ -206,16 +229,21 @@ public class DoctorsMapActivity extends BaseActivity implements OnMapReadyCallba
         hideSoftKeyboard();
     }
 
-
+    /**
+     * method that start the map
+     */
     private void initMap() {
-        // Log.d(TAG, "initMap: initializing map");
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 
-        mapFragment.getMapAsync(DoctorsMapActivity.this);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(DoctorsMapActivity.this);
+        }
     }
 
+    /**
+     * method that requests permission to use GPS sensor
+     */
     private void getLocationPermission() {
-        //Log.d(TAG, "getLocationPermission: getting location permissions");
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION};
 
@@ -236,9 +264,15 @@ public class DoctorsMapActivity extends BaseActivity implements OnMapReadyCallba
         }
     }
 
+    /**
+     * result of permission request to use location services
+     *
+     * @param requestCode  Code which requests permission
+     * @param permissions  gets the permission to use GPS sensor
+     * @param grantResults result if permission is granted or not
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        // Log.d(TAG, "onRequestPermissionsResult: called.");
         mLocationPermissionsGranted = false;
 
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
@@ -246,11 +280,9 @@ public class DoctorsMapActivity extends BaseActivity implements OnMapReadyCallba
                 for (int grantResult : grantResults) {
                     if (grantResult != PackageManager.PERMISSION_GRANTED) {
                         mLocationPermissionsGranted = false;
-                        //Log.d(TAG, "onRequestPermissionsResult: permission failed");
                         return;
                     }
                 }
-                // Log.d(TAG, "onRequestPermissionsResult: permission granted");
                 mLocationPermissionsGranted = true;
                 //initialize our map
                 initMap();
@@ -258,11 +290,19 @@ public class DoctorsMapActivity extends BaseActivity implements OnMapReadyCallba
         }
     }
 
+    /**
+     * hide Keyboard when input has been made
+     */
     private void hideSoftKeyboard() {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
-
+    /**
+     * method to build actionbar
+     *
+     * @param menu menu
+     * @return boolean true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuinfl = getMenuInflater();
@@ -270,7 +310,12 @@ public class DoctorsMapActivity extends BaseActivity implements OnMapReadyCallba
         return super.onCreateOptionsMenu(menu);
     }
 
-
+    /**
+     * onClick on different MenuItems go to Activities
+     *
+     * @param item MenuItem of Actionbar
+     * @return boolean true
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -293,17 +338,25 @@ public class DoctorsMapActivity extends BaseActivity implements OnMapReadyCallba
         }
     }
 
-
+    /**
+     * go to CalenderActivity
+     */
     private void goToCalendar() {
         Intent intent = new Intent(this, CalenderActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * go to SettingsActivity
+     */
     private void gotToSettings() {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * go to LastAppointmentsActivity
+     */
     private void goToAppointments() {
         Intent intent = new Intent(this, LastAppointmentsActivity.class);
         intent.putExtra("source", "DoctorsMapActivity");

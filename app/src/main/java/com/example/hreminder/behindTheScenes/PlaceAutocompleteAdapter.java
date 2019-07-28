@@ -57,7 +57,7 @@ public class PlaceAutocompleteAdapter
     /**
      * The bounds used for Places Geo Data autocomplete API requests.
      */
-    private LatLngBounds mBounds;
+    private final LatLngBounds mBounds;
 
     /**
      * The autocomplete filter used to restrict queries to a specific set of place types.

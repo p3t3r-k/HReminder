@@ -111,8 +111,6 @@ public class CalenderActivity extends BaseActivity {
 
     }
 
-    
-
     /**
      * get ID of last logged user and get relevant information of User for further calculations
      */
@@ -574,6 +572,7 @@ public class CalenderActivity extends BaseActivity {
      * get lastAppointments, which the user added in LastAppointmentsActivity
      * Strings have to be converted to Dates
      */
+    @SuppressWarnings("StatementWithEmptyBody")
     private void getAppointmentDates() {
         @SuppressLint("SimpleDateFormat") DateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         Cursor cursor = db.getAppointmentsByID(LastUser.getLastUserID());
@@ -673,9 +672,16 @@ public class CalenderActivity extends BaseActivity {
         cursor.close();
     }
 
+
+    /**
+     * start AlarmManager in order to get a notification
+     * Dates are converted to long for AlarmManager to work
+     * start a notification for every doctor that is needed, when needed
+     */
     private void startAlarm() {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         @SuppressLint("SimpleDateFormat") SimpleDateFormat f = new SimpleDateFormat("dd-MMM-yyyy");
+
 
         //GP-------------------------------------------------------------------------------------------------------------------
         if (!alarmPhys) {
