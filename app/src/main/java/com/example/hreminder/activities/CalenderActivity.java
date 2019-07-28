@@ -1,6 +1,9 @@
 package com.example.hreminder.activities;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
@@ -17,6 +20,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 
 import com.example.hreminder.R;
+import com.example.hreminder.behindTheScenes.AlarmNotificationReceiver;
 import com.example.hreminder.behindTheScenes.BaseActivity;
 import com.example.hreminder.behindTheScenes.LastUser;
 import com.example.hreminder.database.DbHelper;
@@ -97,7 +101,10 @@ public class CalenderActivity extends BaseActivity {
         if (extras != null) {
             lastUserID = extras.getString("idUser");
         }
+
     }
+
+    
 
     /**
      * get ID of last logged user and get relevant information of User for further calculations
@@ -138,6 +145,7 @@ public class CalenderActivity extends BaseActivity {
         getAppointmentDates();
         determineIntervallForReminder();
         buildTable();
+        startAlarm();
     }
 
     /**
@@ -495,22 +503,22 @@ public class CalenderActivity extends BaseActivity {
         if (gynYes) {
             addRow(getResources().getString(R.string.gynaecologist), appDgyn);
         }
-        if (dentistYes){
+        if (dentistYes) {
             addRow(getResources().getString(R.string.dentist), appDdent);
         }
-        if (dermaYes){
+        if (dermaYes) {
             addRow(getResources().getString(R.string.dermatologist), appDderma);
         }
         if (entYes) {
             addRow(getResources().getString(R.string.ENTspecialist), appDent);
         }
-        if (opthalYes){
+        if (opthalYes) {
             addRow(getResources().getString(R.string.ophthalmologist), appDopthal);
         }
-        if (cardYes){
+        if (cardYes) {
             addRow(getResources().getString(R.string.cardiologist), appDcardio);
         }
-        if (neuYes){
+        if (neuYes) {
             addRow(getResources().getString(R.string.neurologist), appDneu);
         }
         if (orthoYes){
@@ -656,6 +664,213 @@ public class CalenderActivity extends BaseActivity {
             }
         }
         cursor.close();
+    }
+
+    private void startAlarm() {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat f = new SimpleDateFormat("dd-MMM-yyyy");
+
+        //GP-------------------------------------------------------------------------------------------------------------------
+        Intent intentGP = new Intent(this, AlarmNotificationReceiver.class);
+        final int _id1 = (int) System.currentTimeMillis();
+        PendingIntent pendingIntentGP = PendingIntent.getBroadcast(this, _id1, intentGP, 0);
+
+        long milliseconds1 = 0;
+        try {
+            Date d = f.parse(String.valueOf(appDphys));
+            milliseconds1 = d.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar calendarGP = Calendar.getInstance();
+        calendarGP.setTimeInMillis(milliseconds1);
+        calendarGP.set(Calendar.HOUR_OF_DAY, 10);
+
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendarGP.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntentGP);
+
+
+        //Gyn-----------------------------------------------------------------------------------------------------------------
+        Intent intentGyn = new Intent(this, AlarmNotificationReceiver.class);
+        final int _id2 = (int) System.currentTimeMillis();
+        PendingIntent pendingIntentGyn = PendingIntent.getBroadcast(this, _id2, intentGyn, 0);
+
+        long milliseconds2 = 0;
+        try {
+            Date d = f.parse(String.valueOf(appDgyn));
+            milliseconds2 = d.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar calendarGyn = Calendar.getInstance();
+        calendarGyn.setTimeInMillis(milliseconds2);
+        calendarGyn.set(Calendar.HOUR_OF_DAY, 10);
+
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendarGyn.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntentGyn);
+
+        //Dentist--------------------------------------------------------------------------------------------------------------
+        Intent intentDent = new Intent(this, AlarmNotificationReceiver.class);
+        final int _id3 = (int) System.currentTimeMillis();
+        PendingIntent pendingIntentDent = PendingIntent.getBroadcast(this, _id3, intentDent, 0);
+
+        long milliseconds3 = 0;
+        try {
+            Date d = f.parse(String.valueOf(appDdent));
+            milliseconds3 = d.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar calendarDent = Calendar.getInstance();
+        calendarDent.setTimeInMillis(milliseconds3);
+        calendarDent.set(Calendar.HOUR_OF_DAY, 10);
+
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendarDent.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntentDent);
+
+        //Derma----------------------------------------------------------------------------------------------------------------
+        Intent intentDerma = new Intent(this, AlarmNotificationReceiver.class);
+        final int _id4 = (int) System.currentTimeMillis();
+        PendingIntent pendingIntentDerma = PendingIntent.getBroadcast(this, _id4, intentDerma, 0);
+
+        long milliseconds4 = 0;
+        try {
+            Date d = f.parse(String.valueOf(appDderma));
+            milliseconds4 = d.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar calendarDerma = Calendar.getInstance();
+        calendarDerma.setTimeInMillis(milliseconds4);
+        calendarDerma.set(Calendar.HOUR_OF_DAY, 10);
+
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendarDerma.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntentDerma);
+
+        //ENT------------------------------------------------------------------------------------------------------------------
+        Intent intentENT = new Intent(this, AlarmNotificationReceiver.class);
+        final int _id5 = (int) System.currentTimeMillis();
+        PendingIntent pendingIntentENT = PendingIntent.getBroadcast(this, _id5, intentENT, 0);
+
+        long milliseconds5 = 0;
+        try {
+            Date d = f.parse(String.valueOf(appDent));
+            milliseconds5 = d.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar calendarENT = Calendar.getInstance();
+        calendarENT.setTimeInMillis(milliseconds5);
+        calendarENT.set(Calendar.HOUR_OF_DAY, 10);
+
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendarENT.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntentENT);
+
+        //Eyes-----------------------------------------------------------------------------------------------------------------
+        Intent intentEyes = new Intent(this, AlarmNotificationReceiver.class);
+        final int _id6 = (int) System.currentTimeMillis();
+        PendingIntent pendingIntentEyes = PendingIntent.getBroadcast(this, _id6, intentEyes, 0);
+
+        long milliseconds6 = 0;
+        try {
+            Date d = f.parse(String.valueOf(appDopthal));
+            milliseconds6 = d.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar calendarEyes = Calendar.getInstance();
+        calendarEyes.setTimeInMillis(milliseconds6);
+        calendarEyes.set(Calendar.HOUR_OF_DAY, 10);
+
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendarEyes.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntentEyes);
+
+        //Cardio---------------------------------------------------------------------------------------------------------------
+        Intent intentCardio = new Intent(this, AlarmNotificationReceiver.class);
+        final int _id7 = (int) System.currentTimeMillis();
+        PendingIntent pendingIntentCardio = PendingIntent.getBroadcast(this, _id7, intentCardio, 0);
+
+        long milliseconds7 = 0;
+        try {
+            Date d = f.parse(String.valueOf(appDcardio));
+            milliseconds7 = d.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar calendarCardio = Calendar.getInstance();
+        calendarCardio.setTimeInMillis(milliseconds7);
+        calendarCardio.set(Calendar.HOUR_OF_DAY, 10);
+
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendarCardio.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntentCardio);
+
+        //Neuro----------------------------------------------------------------------------------------------------------------
+        Intent intentNeuro = new Intent(this, AlarmNotificationReceiver.class);
+        final int _id8 = (int) System.currentTimeMillis();
+        PendingIntent pendingIntentNeuro = PendingIntent.getBroadcast(this, _id8, intentNeuro, 0);
+
+        long milliseconds8 = 0;
+        try {
+            Date d = f.parse(String.valueOf(appDneu));
+            milliseconds8 = d.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar calendarNeuro = Calendar.getInstance();
+        calendarNeuro.setTimeInMillis(milliseconds8);
+        calendarNeuro.set(Calendar.HOUR_OF_DAY, 10);
+
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendarNeuro.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntentNeuro);
+
+        //Ortho----------------------------------------------------------------------------------------------------------------
+        Intent intentOrtho = new Intent(this, AlarmNotificationReceiver.class);
+        final int _id9 = (int) System.currentTimeMillis();
+        PendingIntent pendingIntentOrtho = PendingIntent.getBroadcast(this, _id9, intentOrtho, 0);
+
+        long milliseconds9 = 0;
+        try {
+            Date d = f.parse(String.valueOf(appDortho));
+            milliseconds9 = d.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar calendarOrtho = Calendar.getInstance();
+        calendarOrtho.setTimeInMillis(milliseconds9);
+        calendarOrtho.set(Calendar.HOUR_OF_DAY, 10);
+
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendarOrtho.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntentOrtho);
+
+        //Pulmo----------------------------------------------------------------------------------------------------------------
+        Intent intentPulmo = new Intent(this, AlarmNotificationReceiver.class);
+        final int _id10 = (int) System.currentTimeMillis();
+        PendingIntent pendingIntentPulmo = PendingIntent.getBroadcast(this, _id10, intentPulmo, 0);
+
+        long milliseconds10 = 0;
+        try {
+            Date d = f.parse(String.valueOf(appDpul));
+            milliseconds10 = d.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar calendarPulmo = Calendar.getInstance();
+        calendarPulmo.setTimeInMillis(milliseconds10);
+        calendarPulmo.set(Calendar.HOUR_OF_DAY, 10);
+
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendarPulmo.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntentPulmo);
+
     }
 
 

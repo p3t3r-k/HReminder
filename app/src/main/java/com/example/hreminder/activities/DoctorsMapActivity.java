@@ -102,16 +102,13 @@ public class DoctorsMapActivity extends BaseActivity implements OnMapReadyCallba
     }
 
     @Override
-    protected void onResumeFragments() {
-        super.onResumeFragments();
-        mSearchText = findViewById(R.id.input_search);
-        mGps = findViewById(R.id.ic_gps);
-
+    protected void onStart() {
+        super.onStart();
         getLocationPermission();
+        initMap();
     }
 
     private void init() {
-
 
         mGoogleApiClient = new GoogleApiClient
                 .Builder(this)

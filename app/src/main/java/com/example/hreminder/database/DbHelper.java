@@ -354,8 +354,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 COLUMN_ID_Pr + " = " + "'" + id + "'";
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery(selectQuery,null);
-        if (cursor.getCount() > 0){
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.getCount() > 0) {
             cursor.close();
             db.close();
             return true;

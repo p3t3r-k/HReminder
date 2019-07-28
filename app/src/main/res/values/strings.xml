@@ -137,5 +137,10 @@
     <string name="mapsSearchHint">Gewünschten Arzt eingeben</string>
     <string name="myLocationIcon">myLocationIcon</string>
 
+    <!-- AlarmNotificationReceiver -->
+    <string name="notifictionHeader">Es ist Zeit zum Arzt zu gehen!</string>
+    <string name="notificationMessage">Sie sollten neue Arzttermine ausmachen. Öffnen Sie HealthyReminder und legen Sie los.</string>
+
+
 
 </resources>
